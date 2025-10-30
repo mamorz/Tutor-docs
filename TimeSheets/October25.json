@@ -52,5 +52,17 @@
     "start" : "14:00",
     "end" : "16:30",
     "pause" : "00:00"
+  }, {
+    "action" : "Folienvorbereitung",
+    "day" : 28,
+    "start" : "17:00",
+    "end" : "19:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Folienvorbereitung",
+    "day" : 30,
+    "start" : "13:00",
+    "end" : "21:00",
+    "pause" : "01:00"
   } ]
 }

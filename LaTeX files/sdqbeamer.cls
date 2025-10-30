@@ -1277,3 +1277,9 @@
 
 \newcommand{\n}{\leavevmode \\}
 \newcommand{\skipline}{\leavevmode \\~\\}
+
+\newcommand{\mysectionframe}[1]{
+    \begin{frame}{\,}
+      \centering \huge #1
+    \end{frame}
+}

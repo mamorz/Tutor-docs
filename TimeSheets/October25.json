@@ -1,0 +1,56 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/kit-sdq/TimeSheetGenerator/master/examples/schemas/month.json",
+  "year" : 2025,
+  "month" : 10,
+  "pred_transfer" : "00:00",
+  "succ_transfer" : "00:00",
+  "entries" : [ {
+    "action" : "Erste Einstellungen",
+    "day" : 17,
+    "start" : "14:15",
+    "end" : "18:15",
+    "pause" : "00:00"
+  }, {
+    "action" : "Einstellung der Ordner",
+    "day" : 18,
+    "start" : "15:00",
+    "end" : "18:45",
+    "pause" : "00:00"
+  }, {
+    "action" : "Urlaub in Heidelberg",
+    "day" : 20,
+    "start" : "13:00",
+    "end" : "16:00",
+    "vacation" : true
+  }, {
+    "action" : "LaTeX Grundlagenlernen",
+    "day" : 21,
+    "start" : "14:00",
+    "end" : "17:50",
+    "pause" : "00:00"
+  }, {
+    "action" : "Erstellung von Folien",
+    "day" : 22,
+    "start" : "16:00",
+    "end" : "20:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Folienerstellung",
+    "day" : 25,
+    "start" : "13:30",
+    "end" : "17:30",
+    "pause" : "00:00"
+  }, {
+    "action" : "Folienerstellung",
+    "day" : 27,
+    "start" : "10:00",
+    "end" : "11:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Folienerstellung",
+    "day" : 27,
+    "start" : "14:00",
+    "end" : "16:30",
+    "pause" : "00:00"
+  } ]
+}

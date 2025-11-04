@@ -1,0 +1,14 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/kit-sdq/TimeSheetGenerator/master/examples/schemas/month.json",
+  "year" : 2025,
+  "month" : 11,
+  "pred_transfer" : "00:00",
+  "succ_transfer" : "00:00",
+  "entries" : [ {
+    "action" : "Vorbereitung fürs Tut",
+    "day" : 4,
+    "start" : "19:00",
+    "end" : "20:00",
+    "pause" : "00:00"
+  } ]
+}

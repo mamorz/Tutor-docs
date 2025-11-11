@@ -28,5 +28,11 @@
     "start" : "17:30",
     "end" : "21:00",
     "pause" : "00:00"
+  }, {
+    "action" : "Vorbereitung fürs Tutorium",
+    "day" : 8,
+    "start" : "12:00",
+    "end" : "21:00",
+    "pause" : "01:00"
   } ]
 }

@@ -112,6 +112,9 @@
 
 % Aufzählungen
 \setbeamertemplate{itemize items}[square]
+\setbeamerfont{itemize/enumerate body}{size=\large}
+\setbeamerfont{itemize/enumerate subbody}{size=\large}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\large}
 
 % Boxen
 \setbeamerfont{highlight box}{series=\bfseries, size=\normalsize}

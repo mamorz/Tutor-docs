@@ -1286,3 +1286,5 @@
       \centering \huge #1
     \end{frame}
 }
+
+\newcommand{\quotedword}[1]{$"\textrm{#1}"$}

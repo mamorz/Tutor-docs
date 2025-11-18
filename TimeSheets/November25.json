@@ -64,5 +64,29 @@
     "start" : "17:30",
     "end" : "19:00",
     "pause" : "00:00"
+  }, {
+    "action" : "Folienerstellung",
+    "day" : 14,
+    "start" : "14:00",
+    "end" : "18:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Folienvorbereitung",
+    "day" : 17,
+    "start" : "15:00",
+    "end" : "18:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Vorbereitung fürs Tut",
+    "day" : 18,
+    "start" : "10:30",
+    "end" : "13:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Tutorium",
+    "day" : 18,
+    "start" : "15:45",
+    "end" : "17:15",
+    "pause" : "00:00"
   } ]
 }

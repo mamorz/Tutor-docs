@@ -1,0 +1,104 @@
+\documentclass[de, 16:9, 14pt]{sdqbeamer}
+
+%% Imports
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{pgfgantt}
+\usepackage{amssymb}
+\usepackage{minted}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{tabto}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+
+
+\usemintedstyle{colorful}
+
+\definecolor{jetbrains-comments}{RGB}{140,140,140}
+\definecolor{jetbrains-keywords}{RGB}{0,51,179}
+\definecolor{jetbrains-strings}{RGB}{6,125,23}
+\definecolor{background-color}{RGB}{240,240,240}
+
+\lstdefinelanguage{JavaPlus}{
+    language=Java,
+    morekeywords={enum, assert, var, Math}
+}
+
+\lstdefinestyle{javaBenoit}{
+    language = JavaPlus,
+	frame=tb,										% Ort der Umrandung
+	framerule=0pt,									% Dicke der Umrandung
+	framesep=5pt,									% Abstand der Umrandung zum Text
+	framexleftmargin=17pt,							% Verschiebung der linken Umrandung, so dass die Zeilennummern eingerahmt werden
+	xleftmargin=18pt,								% Verschiebung des kompletten Listings, sodass es mit der Überschrift aligned
+	aboveskip=3mm,
+	belowskip=3mm,
+	columns=flexible,
+	basicstyle={\scriptsize\ttfamily},				% Schriftgröße und Font (Code)
+	numbers=left,									% Zeilennummern
+	numbersep=5pt,									% Abstand zwischen Zeilennummern und Text
+	numberstyle=\tiny\color{gray},					% Schriftgröße und Farbe (Zeilennummern)
+	keywordstyle=\color{jetbrains-keywords}\textbf,	% Farbe der Schlüsselwörter
+	commentstyle=\color{jetbrains-comments}\textit,	% Farbe der Kommentare
+	stringstyle=\color{jetbrains-strings},			% Farbe der Strings
+	backgroundcolor=\color{background-color},		% Hintergrundfarbe
+	breaklines=true,
+	breakatwhitespace=true,
+	showspaces=false,           					% Leerzeichen anzeigen?
+	showtabs=false,             					% Tabs anzeigen?
+	showstringspaces=false,							% Leerzeichen in Strings anzeigen?
+	inputencoding=utf8,                             % UTF-8 Encoding
+    extendedchars = true,                           % Extended ASCII
+    literate={œ}{{\oe}}1,                           % Zusätzliche Zeichen hinzufügen
+}
+
+% --- Define colors similar to your screenshot ---
+\definecolor{javakeyword}{RGB}{147,0,211}  % purple
+\definecolor{javastring}{RGB}{255,0,0}     % red
+\definecolor{javacomment}{RGB}{0,128,0}    % green (dark)
+
+% --- Define Java code style ---
+\lstdefinestyle{javaColorful}{
+  language=JavaPlus,
+  basicstyle=\ttfamily\large,          % larger monospace font
+  keywordstyle=\color{javakeyword}\bfseries,
+  stringstyle=\color{javastring},
+  commentstyle=\color{javacomment},
+  showstringspaces=false,
+  tabsize=4,
+  breaklines=true,
+  frame=none,                          % no border around code
+  numbers=none,                        % no line numbers
+}
+
+
+\lstset{style = javaBenoit}
+
+
+
+
+
+
+
+\title[2. Tutorium - Variablen und Datentypen] {Variablen und Datentypen}
+\subtitle {Programmieren Tutorium Nr.17}
+\author[Aleks Zakharov] {Aleksandr Zakharov}
+\date[12.\,11.\,2025]{12. November 2025}
+\grouplogo{}
+\graphicspath{{./images/}}
+
+
+
+\begin{document}
+
+\begin{frame} [title green horizontal, picture=images/palladio_bauplan.jpg]
+    \titlepage
+\end{frame}
+
+
+\end{document}

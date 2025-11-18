@@ -1288,3 +1288,6 @@
 }
 
 \newcommand{\quotedword}[1]{$"\textrm{#1}"$}
+
+\newcommand{\keyword}[1]{\texttt{\textbf{\textcolor{kit-blue}{#1}}}}
+\newcommand{\comment}[1]{\texttt{\emph{{\textcolor{gray}{#1}}}}

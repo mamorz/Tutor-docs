@@ -1,0 +1,218 @@
+\section{Wiederholung: Vererbung}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Vererbung \textit{(inheritance)} erlaubt es, neue Klassen aus bestehenden aufzubauen
+            \item Dabei übernimmt (erbt) die neue sog. Unterklasse alle Methoden und Attribute der Oberklasse
+
+                  \begin{itemize}
+                      \item Die Unterklasse (subclass) \textit{ist eine} Spezialisierung der Oberklasse
+                      \item Die Oberklasse (superclass) ist eine Generalisierung der Unterklasse
+                  \end{itemize}
+
+            \item Schlüsselwort: \pause \texttt{class A extends B \{\dots\}}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Was wird vererbt?}
+        \pause
+
+        \begin{itemize}
+            \item Attribute
+            \item Methoden
+            \item NICHT Konstruktoren
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Wahr oder Falsch?}
+        In Java gibt es Mehrfachvererbung.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        \begin{itemize}
+            \item Eine Klasse darf beliebig viele Unterklassen haben.
+            \item Eine Klasse darf Unterklasse einer Unterklasse sein
+            \item Eine Klasse darf aber höchstens eine (direkte) Oberklasse besitzen!
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Wahr oder Falsch?}
+        Es gibt zwei verschiedene Sichtbarkeiten.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        Es ist wichtig, Attribute und Methoden vor externen Zugriffen zu schützen, bzw. diesen Zugriff bewusst zuzulassen. Dafür gibt es die folgenden Schlüsselworte:
+
+        \begin{center}
+            \begin{tabular}{lcccc}
+                \textbf{Modifier}      & \textbf{Klasse} & \textbf{Paket} & \textbf{Unterklasse} & \textbf{Welt} \\
+                \midrule[1pt]
+                \textbf{public}        & Y               & Y              & Y                    & Y             \\
+                \cmidrule[0.5pt]{2-5}
+                \textbf{protected}     & Y               & Y              & Y                    & N             \\
+                \cmidrule[0.5pt]{2-5}
+                \textbf{<no modifier>} & Y               & Y              & N                    & N             \\
+                \cmidrule[0.5pt]{2-5}
+                \textbf{private}       & Y               & N              & N                    & N             \\
+            \end{tabular}
+        \end{center}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Wahr oder Falsch?}
+        Private Attribute und Methoden sind in den Unterklassen nicht sichtbar.
+    \end{block}
+
+    \pause
+
+    \begin{block}{Wahr!}
+        \begin{itemize}
+            \item Dafür gibt es das Schlüsselwort \textit{protected}
+            \item \textit{protected} ist innerhalb der Klasse und allen Unterklassen sichtbar
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Wahr oder Falsch?}
+        Finale Klassen können überschrieben werden.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        \begin{itemize}
+            \item Mit dem Schlüsselwort \texttt{final} kann eine Klasse als „nicht mehr erweiterbar“ deklariert werden
+            \item Finale Klasse können also nicht mehr als Oberklasse verwendet werden
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Wahr oder Falsch?}
+        Das Schlüsselwort \texttt{super} erlaubt den Zugriff auf Methoden der Oberklasse.
+    \end{block}
+
+    \pause
+
+    \begin{block}{Wahr!}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-inheritance/src/dog.java}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Polymorphie}
+        \begin{itemize}
+            \item Definition: Eine Methode ist \textit{polymorph}, wenn sie in verschiedenen Klassen die gleiche Signatur hat, jedoch erneut implementiert ist.
+            \item Welchen Form von Polymorphie kennt ihr?
+
+                  \pause
+
+            \item Überschreiben
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Subtyping}
+        \pause
+
+        \begin{itemize}
+            \item Es ist erlaubt Objekte einer Unterklasse im Kontext der Oberklasse zu verwenden
+            \item \textit{„Every Orange is a Fruit“}
+            \item \texttt{Fruit f = new Orange();}
+            \item Aber nicht \texttt{Orange o = new Fruit();}!
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Dynamische Bindung}
+        Man spricht von dynamischer Bindung, wenn ein Methodenaufruf zur Laufzeit anhand des tatsächlichen (dynamischen) Typs eines Objektes aufgelöst wird.
+    \end{block}
+
+    \begin{exampleblock}{Beispiel}
+        \texttt{Fruit f1 = new Fruit();} \\
+        \texttt{Fruit f2 = new Orange();} \\
+        \texttt{f1.consume();} \\
+        \texttt{f2.consume();}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wiederholung: Vererbung}
+    \begin{block}{Statische Bindung}
+        Man spricht von statischer Bindung, wenn ein Methodenaufruf zur Übersetzungszeit anhand des (statischen) Typs eines Objektes aufgelöst wird.
+    \end{block}
+
+    \begin{exampleblock}{Beispiel}
+        \texttt{Fruit f1 = new Fruit();} \\
+        \texttt{Fruit f2 = new Orange();} \\
+        \texttt{bob.doSomething(Fruit fruit);} \\
+        \texttt{bob.consume(Orange orange);}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Typecast}
+
+\begin{frame}{Vererbung - Typecast}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Erinnerung: \texttt{(Type) variable;}
+            \item Up-Cast:
+
+                  \begin{itemize}
+                      \item ist immer erlaubt, da „ist-ein“ Beziehung gilt
+                      \item wird bei Zuweisungen und Methodenaufruf implizit ausgeführt
+                  \end{itemize}
+
+            \item Down-Cast:
+
+                  \begin{itemize}
+                      \item kann zu Laufzeitfehlern führen
+                      \item ist immer explizit anzugeben
+                      \item sollte vorher mit \texttt{getClass()} oder \texttt{instanceof} geprüft werden
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Vererbung - Typecast}
+    \begin{exampleblock}{Beispiel - getClass()}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-inheritance/src/equals.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Vererbung - Typecast}
+    \begin{exampleblock}{Beispiel - instanceof}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-inheritance/src/instanceof.java}
+    \end{exampleblock}
+
+    \begin{center}
+        \textbf{instanceof bitte in diesem Modul nicht verwenden. \\ Direkter Punktabzug!}
+    \end{center}
+\end{frame}
+
+\subsection{Object}
+
+\begin{frame}{Object}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item \texttt{Object} ist die Oberklasse aller anderen Klassen (Wurzel des Vererbungsbaumes)
+            \item Methoden aus \texttt{Object} können überschrieben werden
+            \item Ihr kennt bereits: \texttt{equals()}, \texttt{hashCode()}, \texttt{toString()}, \texttt{clone()}, \dots
+            \item Achtung, primitive Datentypen (\texttt{int, double, \dots}) erben nicht von \texttt{Object}
+        \end{itemize}
+    \end{block}
+\end{frame}

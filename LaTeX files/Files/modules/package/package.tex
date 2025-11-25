@@ -1,0 +1,58 @@
+\section{Pakete}
+
+\begin{frame}{Pakete}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Pakete in Java dienen der Strukturierung des Quelltextes und sollen Namenskonflikte vermeiden
+            \item Innerhalb eines Pakets ist jeder Name eine Klasse eindeutig
+
+                  \begin{itemize}
+                      \item Der gleiche Name kann jedoch in einem anderen Pakete
+                            frei zur Bezeichnung einer anderen Klasse benutzt
+                            werden (siehe \texttt{java.util.List} und
+                            \texttt{java.awt.List})
+                  \end{itemize}
+
+                  \pause
+
+            \item Deklaration mit \texttt{package edu.kit.informatik;} über dem Klassenbeginn
+            \item Eine Klasse ist Teil eines Paketes, wenn:
+
+                  \begin{itemize}
+                      \item Sie in dem Ordner mit dem Paketnamen liegt
+                      \item Sie \texttt{package <paketname>;} ganz am Anfang stehen hat
+                  \end{itemize}
+
+                  \pause
+
+            \item Der Namen von Paketen in Java wird immer klein geschrieben!
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Pakete}
+    \begin{block}{Import von Paketen}
+        \begin{itemize}
+            \item Um eine Klasse verwenden zu können, muss angegeben werden, in welchem Paket sie liegt. Hierzu gibt es zwei unterschiedliche Möglichkeiten.
+            \item Die Klasse wird über ihren vollen (qualifizierten) Namen angesprochen: \\
+                  \texttt{java.util.Date d = new java.util.Date();}
+            \item Am Anfang des Programms werden die gewünschten Klassen mit Hilfe einer import-Anweisung eingebunden: \\
+                  \texttt{import java.util.Date;} \\
+                  \texttt{// \dots} \\
+                  \texttt{Date d = new Date();}
+            \item Bei den import-Anweisungen sollten kein Wildcards verwendet werden
+            \item Am besten wildcard imports in der IDE abschalten
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Pakete}
+    \begin{block}{Nützliches}
+        \begin{itemize}
+            \item Alle Klassen im Paket java.lang sind für die Sprache so essentiell, dass sie von jeder Klasse automatisch importiert werden
+            \item Pakete können selber wieder beliebig viele Unterpakete haben
+            \item Das Importieren von nicht benötigten Klassen kann den eigenen Namensraum stören (Namenskonflikte)
+        \end{itemize}
+    \end{block}
+\end{frame}
+

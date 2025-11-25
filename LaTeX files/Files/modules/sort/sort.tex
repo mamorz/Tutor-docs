@@ -1,0 +1,40 @@
+\section{Sortieren}
+
+\begin{frame}{Sortieren}
+    \begin{block}{Bubblesort}
+        \begin{itemize}
+            \item in-place, stabil, Laufzeit (b/a/n): $n$, $n^2$, $n^2$
+            \item Durchiterieren; Nachbarn tauschen, wenn links > rechts
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Selection Sort}
+        \begin{itemize}
+            \item in-place, stabil (möglich), Laufzeit: $n^2$
+            \item Bereiche sortiert/unsortiert; kleinstes unsortiertes Element einsortieren
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Insertion sort}
+        \begin{itemize}
+            \item in-place, stabil, Laufzeit (b/a/n): $n$, $n^2$, $n^2$
+            \item Bereiche sortiert/unsortiert; erstes unsortiertes Element einsortieren
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Sortieren}
+    \begin{block}{Mergesort}
+        \begin{itemize}
+            \item stabil, Laufzeit: $n * log(n)$
+            \item „Teile und Herrsche“, rekursiv halbieren und zusammenfügen
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Quicksort}
+        \begin{itemize}
+            \item in-place (möglich), nicht stabil, Laufzeit (b/a/n): $n * log(n)$, $n * log(n)$, $n^2$
+            \item „Teile und Herrsche“, rekursiv nach Pivotelement in kleiner/größer teilen
+        \end{itemize}
+    \end{block}
+\end{frame}

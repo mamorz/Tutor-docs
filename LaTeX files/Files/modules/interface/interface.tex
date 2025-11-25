@@ -1,0 +1,160 @@
+\section{Interfaces}
+
+\setbeamercovered{invisible}
+\begin{frame}[fragile]{Interfaces}
+    \begin{block}{Spiele!}
+
+        \vspace*{-0.5em}
+
+        \begin{lstlisting}[basicstyle=\footnotesize]
+class @@cMovable@@ {
+    public void moveTo(Location location) {...}
+}
+class @@cDamageable@@ {
+    public void damage(int amount) {...}
+}
+    \end{lstlisting}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Spiele - Ergibt das so Sinn? Was fällt auf?}
+        \begin{itemize}
+            \item Mit einem Array von \texttt{Movable}s kann man alle bewegen, mit
+                  einem Array von \texttt{Damageable}s kann man AOE-Effekte auf alle
+                  anwenden
+
+                  \pause
+
+            \item Es macht aber Sinn, die beiden zu trennen! Manche Gegner sind
+                  vielleicht unbesiegbar und Gebäude kann man vielleicht zerstören.
+
+                  \pause
+
+            \item Jede Klasse modelliert hier eine \textbf{Eigenschaft} oder ein
+                  bestimmtes Verhalten
+        \end{itemize}
+
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Interfaces}
+    \begin{alertblock}{Ein NPS}
+        \begin{lstlisting}
+class @@cNPC@@ extends @@cDamageable@@, @@cMovable@@ {...}
+        \end{lstlisting}
+
+        Was ist hier falsch?
+    \end{alertblock}
+
+    \pause
+
+    \begin{block}{Lösung: Interfaces!}
+        \begin{lstlisting}[basicstyle=\footnotesize]
+interface @@cMovable@@ {
+    public void moveTo(Location location) {...}
+}
+interface @@cDamageable@@ {
+    public void damage(int amount) {...}
+}
+
+class @@cNPC@@ implements @@cDamageable@@, @@cMovable@@ {...}
+class @@cBuilding@@ implements @@cDamageable@@ {...}
+    \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interfaces - Ganz kurz}
+    \begin{block}{Die Idee}
+        \begin{itemize}
+            \item Interfaces abstrahieren gewisse Eigenschaften und Verhaltensweisen \textbf{über Klassen hinweg!}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Benennung}
+        \begin{itemize}
+            \item Im Beispiel: \texttt{-able} für Eigenschaften/Verhalten
+            \item Allgemein wie Klassen (sinnvoll :])
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interfaces}
+    \begin{block}{Die Idee}
+        Interfaces \textbf{abstrahieren von der tatsächlichen Implementierung} einer Klasse.
+    \end{block}
+
+    \pause
+
+    \begin{block}{Merke}
+        Ein \textbf{Interface} \dots
+        \begin{itemize}
+            \item ist eine Sammlung von Methodenköpfen ohne Rümpfe
+
+                  \pause
+
+            \item legt die Methodennamen und Parametertypen fest
+
+                  \pause
+
+            \item macht keine Annahme über die Implementierung der Methoden
+
+                  \pause
+
+            \item kann selbst zur Typisierung verwendet werden (ist damit Datentyp für Objekte)
+
+                  \pause
+
+            \item wird von einer Klasse implementiert, indem für jede Methode des Interface eine Implementierung vorgenommen wird
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interfaces - Syntax}
+    \begin{block}{Syntax}
+        \begin{itemize}
+            \item Deklaration
+                  \lstinputlisting[basicstyle=\small]{../modules/interface/src/interface-1.java}
+
+                  \pause
+
+            \item Implementierung
+                  \lstinputlisting[basicstyle=\small]{../modules/interface/src/interface-2.java}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interfaces - Zusammenfassung}
+    \begin{block}{Zusammenfassung}
+        \begin{itemize}
+            \item Eine Klasse kann mehrere Interfaces gleichzeitig implementieren
+
+                  \pause
+
+            \item Alle Methoden aller Interfaces müssen in der implementierenden Klasse implementiert werden
+
+                  \pause
+
+            \item Syntax für Methodenköpfe im Interface: \textit{Rückgabetyp Methodenname(Parameterliste);}
+
+                  \pause
+
+            \item Interfaces gehören (normalerweise) wie Klassen in eigene Dateien (Schlüsselwort \textit{interface} statt \textit{class})
+
+                  \pause
+
+            \item Interfaces haben keine Objekte (keine Instantiierung mit \textit{new}!)
+
+                  \pause
+
+            \item Methodenaufruf nutzt jeweils die speziellste implementierte Methode
+
+                  \pause
+
+            \item Alle Methoden und Konstanten sind automatisch \textbf{public}
+            \item Alle Konstanten sind zwingend \texttt{public static final}
+        \end{itemize}
+    \end{block}
+\end{frame}

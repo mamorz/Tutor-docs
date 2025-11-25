@@ -1,0 +1,76 @@
+\graphicspath{{../modules/git/images/}}
+
+
+\section{git}
+\subsection{Was ist git?}
+    \begin{frame}{Was ist git?}
+        \begin{itemize}
+            \item Versionskontrollsystem um gemeinsam dezentral Softwareprojekte zu entwickeln
+            \aitem Zu viel für dieses Tutorium, ihr braucht es nur um Aufgaben abzugeben 
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \begin{center}
+            \includegraphics[width=450px]{git_lifecycle.png}    
+        \end{center}
+    \end{frame}
+
+\subsection{Wichtige Befehle I}
+    \begin{frame}{Wichtige Befehle I}
+        \setbeamercovered{transparent}
+        
+        \begin{block}{\textit{git clone}}
+            \begin{itemize}
+                \item Läd das repository vom Server herunter 
+                \item Benutzen um das Repository zu holen wenn man es noch nicht hat
+            \end{itemize}
+        \end{block}
+
+        \pause
+
+        \begin{block}{\textit{git status}}
+            \begin{itemize}
+                \item Hilfe mein repo brennt!
+                \aitem git status zeigt auch an was los ist
+            \end{itemize}
+        \end{block}   
+
+        \pause
+
+        \begin{block}{\textit{git add}}
+            \begin{itemize}
+                \item Verschiebt eine Datei von der untracked in die staged area
+                \item Wenn ihr die datei nicht added wird sie von git ignoriert
+                \aitem Fügt alle Dateien auch wirklich hinzu!
+            \end{itemize}
+        \end{block}          
+    \end{frame}
+
+\subsection{Wichtige Befehle II}    
+    \begin{frame}{Wichtige Befehle II}
+        \setbeamercovered{transparent}
+
+        \begin{block}{\textit{git commit}}
+            \begin{itemize}
+                \item Bestätigt die gemachten Änderungen an der Datei
+                \item Stellt quasi einen snapshot dar, zu dem man zurückkehren kann
+                \item Wichtig: Aussagekräftige commit mesages schreiben, die beschreiben was ihr geändert habt
+            \end{itemize}
+        \end{block}
+
+        \pause
+
+        \begin{block}{\textit{git push}}
+            \begin{itemize}
+                \aitem lädt die Änderungen auf den Server hoch
+            \end{itemize}
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{ }
+        \begin{center}
+            \Huge{Livebeispiel anhand von Artemis!}
+        \end{center}
+        
+    \end{frame}

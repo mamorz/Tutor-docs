@@ -1,0 +1,119 @@
+\section{Operatoren}
+
+\begin{frame}{Operatoren}
+    \begin{block}{Präzedenz}
+        \begin{itemize}
+            \item Eine Präzedenz bestimmt welche Operation bzw. Operator zuerst ausgewertet wird
+            \item Bekanntes Beispiel: Punkt vor Strich
+            \item 1 ist nun die höchste Präzedenz, 11 die niedrigste
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Operatoren}
+    \begin{block}{Arithmetische Operatoren}
+        \begin{center}
+            \begin{tabular}[h]{rlr}
+                Operator             & Beschreibung                     & Präzedenz \\
+                \midrule[1pt]
+                +x, -x               & Vorzeichen (unäres Plus/Minus)   & 1         \\
+                x * y, x / y, x \% y & Multiplikation, Division, Modulo & 2         \\
+                x + y, x - y         & Addition, Subtraktion            & 3         \\
+            \end{tabular}
+        \end{center}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Vergleichsoperatoren}
+        \begin{center}
+            \begin{tabular}[h]{rlr}
+                Operator                     & Beschreibung               & Präzedenz \\
+                \midrule[1pt]
+                x < y, x <= y, x > y, x >= y & Größenvergleich            & 5         \\
+                x == y, x != y               & Gleichheit \& Ungleichheit & 6         \\
+            \end{tabular}
+        \end{center}
+    \end{block}
+
+    \pause
+
+    \begin{center}
+        Vorsicht geboten bei Vergleichen! \\
+        Siehe Gleitkommazahlen und Identität von Objekten.
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Operatoren}
+    \begin{block}{Wahrheitswerte}
+        \begin{center}
+            \begin{tabular}[h]{rlr}
+                Operator & Beschreibung & Präzedenz \\
+                \midrule[1pt]
+                !x       & NOT          & 1         \\
+                x \&\& y & AND          & 10        \\
+                x || y   & OR           & 11        \\
+            \end{tabular}
+        \end{center}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Kurzauswertung}
+        \begin{itemize}
+            \item Die logischen Operatoren auf Wahrheitswerten (\texttt{||} und \texttt{\&\&}) können kurzschließen\\
+                  $\quad \Rightarrow$ Bei \texttt{false \&\& true} wird nur die linke Seite ausgewertet
+            \item Dies ist gerade mit \textit{null} checks sinnvoll:
+
+                  \begin{lstlisting}[breaklines=true]
+if(x != null && x.age > 18)
+            \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Operatoren}
+    \begin{block}{Bitweise Operatoren}
+        \begin{center}
+            \begin{tabular}[h]{rlr}
+                Operator          & Beschreibung               & Präzedenz \\
+                \midrule[1pt]
+                \textasciitilde x & Bitweises Komplement       & 1         \\
+                x <{}< y          & Linksshift (arithmetisch)  & 4         \\
+                x >{}> y          & Rechtsshift (arithmetisch) & 4         \\
+                x >{}>{}> y       & Rechtsshift (logisch)      & 4         \\
+                x \& y            & Bitweises Und              & 7         \\
+                x \^{} y          & Bitweises XOR              & 8         \\
+                x | y             & Bitweises Oder             & 9         \\
+            \end{tabular}
+        \end{center}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Operatoren}
+    \begin{alertblock}{Achtung!}
+        \begin{itemize}
+            \item „\texttt{\&}“ und „\texttt{|}“ funktionieren auch bei booleans
+            \item Sie bewirken dort aber \textbf{keine} Kurzauswertung
+            \item Und sie haben eine \textbf{höhere} Präzedenz
+
+                  \begin{lstlisting}
+if(x & y || z) /* is */ if( (x & y) || z)
+            \end{lstlisting}
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Operatoren}
+    \begin{block}{Verkürzende Operatoren}
+        \begin{center}
+            \begin{tabular}[h]{rlr}
+                Operator              & Beschreibung                & Äquivalenz              \\
+                \midrule[1pt]
+                x = y++, x = y--      & Postinkrement \& -dekrement & x = y; y = y + 1; \dots \\
+                x = ++y, x = --y      & Präinkrement \& -dekrement  & y = y + 1; x = y; \dots \\
+                x += y, x *= y, \dots & Kurzschreibweise            & x = x + y, \dots        \\
+            \end{tabular}
+        \end{center}
+    \end{block}
+\end{frame}

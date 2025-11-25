@@ -1,0 +1,266 @@
+\graphicspath{{../modules/tips-tricks/img/}}
+
+\section{Tipps \& Tricks}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Erst denken - dann programmieren!}
+        \begin{itemize}
+            \item Entwickle einen Plan vor der Implementierung
+            \item „Divide and conquer“
+            \item Stift und Papier verwenden (Aufbaudiagramme \& Pseudocode)
+            \item Finden von Schnittstellen (Sichtbarkeit)
+            \item Finden geeigneter Datenstrukturen
+            \item Fragen entwickeln ($\rightarrow$ Forum!)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{UNIX-Philosophie}
+        \begin{itemize}
+            \item Modularität
+            \item Klarheit
+            \item Einfachheit
+            \item Intuitiv
+            \item Ebenso ansehenswert: SOLID-Prinzipien im \href{https://ilias.studium.kit.edu/goto.php?target=wiki_wpage_25914_996911&client_id=produktiv}{ILIAS-Wiki}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Paketstruktur}
+        \begin{itemize}
+            \item Verwende Pakete zur Strukturierung
+            \item Bsp: \texttt{edu.kit.informatik.connectfour.data.board}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{„Fail fast“}
+        \begin{itemize}
+            \item Mit Fehlern rechnen
+            \item Fehler früh erkennen
+            \item Konsistenten Zustand einer Klasse behalten
+            \item Exceptions verwenden
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{„Fail fast“ - Nein \dots}
+        \lstinputlisting[basicstyle=\small]{../modules/tips-tricks/src/fail-fast-0.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{„Fail fast“ - Nein \dots}
+        \lstinputlisting[basicstyle=\small]{../modules/tips-tricks/src/fail-fast-1.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{„Fail fast“ - JA!}
+        \lstinputlisting[basicstyle=\small]{../modules/tips-tricks/src/fail-fast-2.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Programmieren gegen Schnittstellen}
+        \begin{itemize}
+            \item Wer erinnert sich? (Letztes Tutorium)
+
+                  \pause
+
+            \item \texttt{List<String> someList = Arraylist<>();}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Verhalten nach Zustand}
+        \begin{itemize}
+            \item Objekte sollten sich ihrem Zustand entsprechend verhalten und nicht nach ihrem Zustand verwendet werden
+            \item Richtig: Starte Auto ohne angeschnallt zu sein $\Rightarrow$ Auto erkennt und startet nicht
+            \item Falsch: Überprüfe Gurt $\Rightarrow$ Starte Auto, falls angeschnallt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{Verhalten nach Zustand}
+        \lstinputlisting[basicstyle=\small]{../modules/tips-tricks/src/behaviour.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Datenkapselung}
+        \begin{itemize}
+            \item Attribute immer \texttt{private}
+            \item Sinnvolle Getter/Setter
+            \item Überprüfen der übergebenen Werte
+            \item Nur \texttt{public} wenn notwendig
+            \item Nie Implementierungsdetails preisgeben
+            \item Perspektive eines Angreifers einnehmen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Datenstruktur vs. abstrakter Datentyp}
+        \begin{itemize}
+            \item Einen Datenstruktur ist eine konkrete Anordnung/Organisation/Speicherung von Daten im Rechner
+            \item Abstrakte Datentypen hingegen verraten nichts über eine mögliche Implementierung
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{Datenstruktur vs. abstrakter Datentyp?}
+        \begin{itemize}
+            \item Queue \only<2>{$\rightarrow$ abstrakter Datentyp}
+            \item Stack \only<2>{$\rightarrow$ abstrakter Datentyp}
+            \item Heap \only<2>{$\rightarrow$ Datenstruktur}
+            \item Map \only<2>{$\rightarrow$ abstrakter Datentyp}
+            \item PriorityQueue \only<2>{$\rightarrow$ abstrakter Datentyp}
+            \item HashMap \only<2>{$\rightarrow$ Datenstruktur}
+            \item Array \only<2>{$\rightarrow$ Datenstruktur}
+            \item Graph \only<2>{$\rightarrow$ abstrakter Datentyp}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Bezeichner}
+        \begin{itemize}
+            \item Aussagekräftige, nicht deutsche Bezeichner verwenden!
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Ausnahmesituationen}
+        \begin{itemize}
+            \item Exceptions sind Ausnahmesituationen, nicht Kontrollfluss!
+            \item Eigene Exception schreiben
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{InputException - Teil 1}
+        \lstinputlisting[basicstyle=\tiny]{../modules/tips-tricks/src/input-exception-1.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{exampleblock}{InputException - Teil 2}
+        \lstinputlisting[basicstyle=\tiny]{../modules/tips-tricks/src/input-exception-2.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Dokumentation}
+        \begin{itemize}
+            \item Quelltext dokumentieren und kommentieren!
+
+                  \pause
+
+            \item Kommentare beschreiben Logik, nicht Java-Syntax
+            \item JavaDoc \dots
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Vermeide Tour-de-France-Quelltext}
+        \begin{itemize}
+            \item Lange, unübersichtlichen Quelltext in sinnvolle Methoden aufteilen
+            \item Maximal 20 bis 30 Zeilen in einer Methode als Orientierung
+            \item Tiefe Verschachtlungen vermeiden \href{https://blog.codinghorror.com/flattening-arrow-code/}{Click.}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Enums?}
+        \begin{itemize}
+            \item Verwende Enums.
+            \item Die können auch eigene Attribute, Konstruktoren, und Methoen haben
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Debuggen}
+        \begin{itemize}
+            \item Breakpoints (Haltepunkte) erleichtern das Finden von Fehlerursachen im Quelltext
+            \item Idee: Programm in „Zeitlupe“ laufen lassen
+            \item Vorgehensweise:
+
+                  \begin{itemize}
+                      \item Setze Breakpoints an „kritischen“ Stellen im Quelltext
+                      \item Führe das Programm im Debug-Modus aus
+                      \item Das Programm wird an den markierten Stellen pausieren
+                      \item Der Programmierer hat die Chance, den Zustand des Programms zu untersuchen und nach Anomalien zu suchen (Inhalt von Variablen)
+                      \item Beginne von Vorne
+                  \end{itemize}
+
+            \item Alle gängigen IDEs (verwendet eine!) unterstützen das Setzen von Breakpoints
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Versionskontrolle}
+        \begin{itemize}
+            \item Horrorszenario: Zwei Tage vor der Abgabe stirbt die Festplatte, kein Backup
+            \item Präventive Maßnahme: (Cloud-)Backup \& Versionskontrolle
+            \item Empfehlung: \href{https://git-scm.com/}{Git}
+            \item \href{https://git.scc.kit.edu/}{GitLab-Instanz des SCC}
+            \item Vielzahl von Cheatsheets \& Integration in Entwicklungsumgebung
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Checkstyle?}
+        \begin{itemize}
+            \item Benutzen (lol)
+            \item In der IDE installieren und nicht einfach in Artemis hochladen bis die Abgabe klappt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Testen?}
+        \begin{itemize}
+            \item TESTEN!
+            
+            \pause
+
+            \item JUnit ist toll
+            \item Früh testen um nicht am Ende alle Fehler gleichzeitig fixen zu müssen
+            \item Wenn ihr PrintStatementDriven Development verwendet solltet ihr die print Statements rechtzeitig entfernen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tipps \& Tricks}
+    \begin{block}{Hilfe}
+        \begin{itemize}
+            \item Unterstützt euch gegenseitig
+            \item Teilen von Tests
+            \item \href{https://codetester.ialistannen.de/}{Codetester}
+            \item Fragen im Forum, etc.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Und natürlich}
+    \begin{block}{RTFM}
+        \begin{center}
+            \includegraphics[height=0.65\textheight]{rtfm.jpg}
+        \end{center}
+    \end{block}
+\end{frame}

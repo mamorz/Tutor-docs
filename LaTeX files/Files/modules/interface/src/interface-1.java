@@ -1,0 +1,1 @@
+interface Name { Konstanten und Methodenkoepfe}

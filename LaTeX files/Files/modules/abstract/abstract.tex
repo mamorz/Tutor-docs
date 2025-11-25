@@ -1,0 +1,26 @@
+\section{Abstrakt}
+
+\begin{frame}{Abstrakte Klassen \& Methoden}
+    \begin{block}{Allgemein}
+        Mit dem Schlüsselwort \texttt{abstract} kann man eine Klasse als „reine Oberklasse“ deklarieren
+
+        \begin{itemize}
+            \item Abstrakte Klassen können nicht direkt instanziiert werden
+            \item Keine oder unvollständige Implementierung
+            \item Methoden können ebenfalls als \texttt{abstract} deklariert werden, wenn sie in der abstrakten Klasse (noch) nicht implementiert werden
+            \item Eine Klasse mit abstrakten Methoden muss abstrakt sein
+            \item Unterschied zu Interfaces?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Abstrakte Klassen \& Methoden}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/abstract/src/abstract.java}
+    \end{exampleblock}
+
+    \begin{itemize}
+        \item Die Frucht kann nicht direkt instanziiert werden
+        \item \texttt{consume} wird nicht implementiert, nur die Signatur
+    \end{itemize}
+\end{frame}

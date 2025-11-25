@@ -1,0 +1,1 @@
+String s = "Test: " + 5 + 7 * 5;

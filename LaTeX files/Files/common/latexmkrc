@@ -1,0 +1,4 @@
+$pdf_mode = 1;
+
+# See https://tex.stackexchange.com/a/498358
+$clean_ext = "synctex.gz nav snm thm soc loc glg acn vrb";

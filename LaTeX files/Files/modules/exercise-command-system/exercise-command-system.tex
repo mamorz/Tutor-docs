@@ -1,0 +1,27 @@
+\section{Aufgabe: Commands}
+
+\begin{frame}{Aufgabe: Commands}
+    \begin{block}{Aufgabe}
+        Schreibe eine kleines Commandsystem mit kompletter Paketstruktur, das sich mit „quit“ beendet.\\
+        Es soll einen Kleinen Taschenrechner unterstützen, also folgende Befehle implementieren:
+        \begin{itemize}
+            \item \texttt{add <num|ans> <num|ans>} Addiert die zwei Argumente
+            \item \texttt{sub <num|ans> <num|ans>} Zieht das zweite vom ersten Argument ab
+            \item \texttt{abs <num|ans>} Berechnet den Betrag des Argumrntes
+            \item \texttt{sqrt <num|ans>} Berechnet die Wurzel des Argumentes
+            \item \texttt{ans} Gibt das letzte Ergebnis aus
+            \item \texttt{undo} Macht den letzten Befehl rückgängig
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Aufgabe: Commands}
+    \begin{block}{Info}
+        \begin{itemize}
+            \item \texttt{<num|ans>} Steht hier jeweils für eine Zahl oder den String ''ans'', bei dem das letzte Ergebnis verwendet werden soll
+            \item Arbeitet so weit wie ihr kommt, vereinfacht die Aufgabe falls es schon spät ist
+            \item Es geht nicht um die eigentliche Logik sondern darum das Entwurfsmuster anzuwenden
+            \item Geht davon aus, dass alle Eingaben korrekt sind. Mehr dazu wie man Eingaben validiert gibt's im Tutorium zum parsen
+        \end{itemize}  
+    \end{block}
+\end{frame}

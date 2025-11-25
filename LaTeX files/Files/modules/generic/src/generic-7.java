@@ -1,0 +1,1 @@
+LinkedList<Point> ps = new LinkedList<Point>();

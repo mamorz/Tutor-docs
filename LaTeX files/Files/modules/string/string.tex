@@ -1,0 +1,36 @@
+\section{String}
+
+\begin{frame}{String}
+    \begin{block}{Was Strings so können \dots}
+        \lstinputlisting[basicstyle=\small]{../modules/string/src/strings.java}
+    \end{block}
+\end{frame}
+
+\begin{frame}{String}
+    \begin{block}{.toString()}
+        \begin{itemize}
+            \item Jedes Objekt sollte sich durch die Methode \texttt{.toString()} mit einer Zeichenkette identifizieren
+            \item Die Methode wird automatisch aufgerufen, wenn die Methode \texttt{print()} oder \texttt{println()} mit einer Objektreferenz aufgerufen werden
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{String}
+    \begin{exampleblock}{Beispiel .toString()}
+        \lstinputlisting[basicstyle=\small]{../modules/string/src/to-string.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{StringBuilder / StringBuffer}
+    \begin{block}{Da gibt's auch noch \dots}
+        \textbf{StringBuilder} oft Mittel der Wahl (z.B. bei Stringkonkatenation in Schleifen) \textit{(Link: \href{https://www.journaldev.com/538/string-vs-stringbuffer-vs-stringbuilder}{String vs StringBuffer vs StringBuilder})}. Auszugsweise (siehe auch zugehörige JavaDoc):
+
+        \lstinputlisting[basicstyle=\small]{../modules/string/src/stringbuffer.java}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Nicht vergessen!}
+    \begin{alertblock}{Wichtig!}
+        Strings immer mit .equals vergleichen!
+    \end{alertblock}
+\end{frame}

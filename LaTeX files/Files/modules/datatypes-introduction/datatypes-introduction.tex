@@ -1,0 +1,69 @@
+\section{Datentypen}
+
+\begin{frame}{Datentypen}
+    \begin{block}{Typen}
+        \begin{itemize}
+            \item Was sind die Unterschiede zwischen $\mathbb{N}, \mathbb{R}, \mathbb{Z}$, \dots ?
+
+                  \pause
+
+            \item Ein \frqq Typ\flqq\ bezeichnet eine Menge \frqq gleichartiger\flqq\ Werte
+            \item Er legt die möglichen Werte fest, die Variablen, Attribute, Funktionen, \dots annehmen können
+            \item Java kennt acht elementare / primitive Datentypen
+            \item Jede Klasse stellt ebenfalls einen eigenen Datentyp dar
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Primitive Datentypen}
+
+\begin{frame}{Primitive Datentypen}
+    \begin{block}{Primitive / Elementare Datentypen in Java}
+        \begin{footnotesize}
+            \begin{center}
+                \begin{tabular}{cccc}
+                    \textbf{Typ} & \textbf{Erklärung} & \textbf{Wertebereich}                      & \textbf{Beispielwerte}                          \\
+                    \midrule [1pt]
+                    boolean      & Wahrheitswerte     & true oder false                            & true, false                                     \\
+                    \cmidrule[0.5pt]{2-4}
+                    char         & 16-Bit-Unicode     & 0x0000 \dots 0xffff                        & 'A', '\textbackslash n', '\textbackslash u05D0' \\
+                    \cmidrule[0.5pt]{2-4}
+                    byte         & 8-Bit-Integer      & $-2^7\dots2^7-1$                           & 12                                              \\
+                    \cmidrule[0.5pt]{2-4}
+                    short        & 16-Bit-Integer     & $-2^{15}\dots2^{15}-1$                     & 12                                              \\
+                    \cmidrule[0.5pt]{2-4}
+                    int          & 32-Bit-Integer     & $-2^{31}\dots2^{31}-1$                     & 12                                              \\
+                    \cmidrule[0.5pt]{2-4}
+                    long         & 64-Bit-Integer     & $-2^{63}\dots2^{63}-1$                     & 12L, 14L                                        \\
+                    \cmidrule[0.5pt]{2-4}
+                    float        & 32-Bit-Gleitk.     & 1,40239846E-45f\dots                       & 9.81F, 0.3E-8F, 2f                              \\
+                                 &                    & 3,40282347E+38f                            &                                                 \\
+                    \cmidrule[0.5pt]{2-4}
+                    double       & 64-Bit-Gleitk.     & \scriptsize{4,94065645841246544E-324\dots} & 9.81, 3e1                                       \\
+                                 &                    & \scriptsize{1,79769131486231570E+308}      &                                                 \\
+                \end{tabular}
+            \end{center}
+        \end{footnotesize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Datentypen}
+    \begin{block}{Zeichenketten}
+        \begin{itemize}
+            \item Ideen?
+
+                  \pause
+
+            \item Zusammensetzung aus \textit{char} mittels \textit{String}
+
+                  \pause
+
+            \item Ist kein primitiver Datentyp. Aber woran erkennt man das?
+
+                  \pause
+
+            \item Genau! Beginnt mit einem Großbuchstaben!
+            \item Ausserdem sind ein paar Besonderheiten z.B. beim Vergleichen zu beachten
+        \end{itemize}
+    \end{block}
+\end{frame}

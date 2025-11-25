@@ -1,0 +1,142 @@
+\graphicspath{{../modules/programming-introduction/img/}}
+
+\section{Programmieren}
+
+\subsection{\frqq Schöner programmieren\flqq}
+
+\begin{frame}{Programmieren - aber \frqq schön\flqq}
+    \begin{block}{\frqq Schöner programmieren\flqq}
+        \begin{itemize}
+            \item Warum sollte man \frqq sauber\flqq programmieren?
+
+                  \pause
+
+            \item Was ist eigentlich \frqq sauber\flqq programmieren?
+
+                  \pause
+
+                  \begin{itemize}
+                      \item Namen / Bezeichner sind aussagekräftig und in Englisch
+                      \item Kommentare existieren und sind sinnvoll
+                      \item Einheitliche Sprache in Kommentaren
+                      \item Sourcecode enthält sinnvolle Einrückungen
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{So?}
+        \lstinputlisting[]{../modules/programming-introduction/src/demo-bad.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Programmieren - aber \frqq schön\flqq II}
+    \begin{exampleblock}{Oder doch lieber so?}
+        \lstinputlisting[]{../modules/programming-introduction/src/demo-nice.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Programmieren - aber \frqq schön\flqq III}
+    \begin{block}{Hilfe}
+        \begin{itemize}
+            \item Checkstyle!
+            \item Automatische Überprüfung, abgaberelevant!
+            \item Formatter helfen euch
+            \item Tipp: Später noch verwenden, bspw. Google Code Style
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Klassen und Objekte}
+
+\begin{frame}
+    \begin{center}
+        \begin{huge}
+            Klassen und Objekte
+        \end{huge}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Wozu Klassen und Objekte?}
+    \begin{itemize}
+
+        \pause
+
+        \item Klassen und Objekte sollen uns helfen, von der Realität zu abstrahieren. Diese also möglichst einfach, aber auch weitestgehend vollständig (soweit machbar / sinnvoll) abzubilden. \\
+
+              \begin{center}
+                  \includegraphics[scale=0.25]{class-object}
+              \end{center}
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Unterschied Klasse / Objekt}
+    \begin{block}{Klasse}
+        Ideen?
+    \end{block}
+\end{frame}
+
+\begin{frame}{Unterschied Klasse / Objekt}
+    \begin{block}{Klasse}
+        \parpic[r]{\includegraphics[scale=0.25]{class}}
+
+        \begin{itemize}
+            \item Eine Klasse ist der \frqq Bauplan\flqq\ für gleichartige Objekte und legt für diese fest:
+
+                  \begin{itemize}
+                      \item \textit{Attribute}
+                      \item \textit{Methoden}
+                  \end{itemize}
+
+            \item Schema:
+                  \lstinputlisting[]{../modules/programming-introduction/src/class-scheme.java}
+            \item Dateiname = Klassenname (Buch.java für Klasse Buch)
+        \end{itemize}
+
+    \end{block}
+\end{frame}
+
+\begin{frame}{Unterschied Klasse / Objekt}
+    \begin{block}{Objekt}
+        Ihr seid wieder dran!
+    \end{block}
+\end{frame}
+
+\begin{frame}{Unterschied Klasse / Objekt II}
+    \begin{block}{Objekt}
+        \parpic[r]{\includegraphics[scale=0.25]{object}}
+
+        \begin{itemize}
+            \item Mit der Klasse als \frqq Bauplan\flqq\ können nun viele Objekte \frqq gebaut\flqq\ werden.
+            \item \textit{Attribute} bestimmen den \textit{Zustand} des Objekts,
+            \item \textit{Methoden} das \textit{Verhalten}
+            \item Besitzen eine Identität, die verglichen \textit{(==)} werden kann
+
+                  \pause
+
+            \item Was macht ein Vergleich mit \textit{(==)} bei primitiven Datentypen?
+        \end{itemize}
+
+    \end{block}
+\end{frame}
+
+\subsection{Beispielklasse}
+
+\begin{frame}{Klasse - Ein Beispiel}
+    \begin{exampleblock}{Beispiel: Student}
+        \begin{itemize}
+            \item Welche Informationen benötigen wir für einen Studenten?
+
+                  \pause
+
+            \item z.B.: Matrikelnummer, Name, Vorname, Strasse, Hausnummer, Postleitzahl, Ort, Telefon, Email, Studiengang, Fachsemester, \dots
+
+                  \pause
+
+            \item Das könnte dann wie folgt aussehen:\\
+                  \lstinputlisting[basicstyle=\tiny,language=java]{../modules/programming-introduction/src/student.java}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}

@@ -1,0 +1,3 @@
+class Name<T extends Point> {
+    ...
+}

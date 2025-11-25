@@ -1,0 +1,1 @@
+public static final int dfgh = 80; // buffer variable

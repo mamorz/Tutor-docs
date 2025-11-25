@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+(*) -->  if "[bedingung]" then
+--> "If block"
+--> "danach"
+else
+--> "Else block"
+--> "danach"
+endif
+
+@enduml

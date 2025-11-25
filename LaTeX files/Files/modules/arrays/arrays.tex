@@ -1,0 +1,118 @@
+\graphicspath{{../modules/arrays/img/}}
+
+\section{Arrays}
+
+\begin{frame}{Arrays - Definition}
+    \begin{block}{Definition}
+
+        \pause
+
+        \begin{itemize}
+            \item geordnete (nicht sortierte!) Sammlung von Elementen \dots
+            \item \dots eines Typs: Alle Elemente haben den gleichen Typ
+            \item Länge: Anzahl der Elemente ($n$)
+            \item Nummerierung: Von $0$ bis $n - 1$ (Indizierung started bei \textbf{0})
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Beispiel}
+        \begin{center}
+            \includegraphics[scale=0.4]{arraysample}
+        \end{center}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Arrays - Deklaration}
+    \begin{block}{Deklaration}
+        Es gibt zwei Varianten, Arrays zu deklarieren \dots
+
+        \pause
+
+        \begin{itemize}
+            \item \texttt{Typ1[] arrayName = new Typ1[anzahlElemente];} \\
+                  \hspace{1em}\texttt{z.B. float[] a = new float[8];}
+
+                  \pause
+
+            \item \texttt{Typ2[] arrayName = \{element1, element2, \dots\};} \\
+                  \hspace{1em}\texttt{z.B. int[] primeNumbers = \{2, 3, 5, 7, 11\};}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Häufiger Fehler}
+        \lstinputlisting[basicstyle=\small]{../modules/arrays/src/frequent-error.java}
+        Wieso?
+
+        \pause
+
+        \textbf{Keine Zahl im Datentyp!}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Arrays - Selektion}
+    \begin{block}{Elemente selektieren}
+        \begin{itemize}
+            \item \texttt{arrayName[elementIndex];}
+            \item \texttt{primeNumbers[0]} liefert das erste Element
+
+                  \pause
+
+            \item \textit{Was liefern:} \texttt{primeNumbers[1]} \textit{und}
+                  \texttt{primeNumbers[4]}?
+
+                  \pause
+
+            \item \textit{Was ist mit } \texttt{primeNumbers[5]}?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Arrays - Werte setzen}
+    \begin{block}{Wertzuweisung}
+        \begin{itemize}
+            \item \texttt{arrayName[elementIndex] = wert;}
+            \item \texttt{ z.B. primeNumbers[0] = 13;}
+                  \\ \ \\
+                  Wie sieht jetzt die Belegung aus?
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Arraylänge}
+        Die Länge eines Array erhält man mit
+        \begin{itemize}
+            \item \texttt{arrayName.length; // Achtung, Attribut, keine Methode!} \\
+                  \hspace{1em}\texttt{z.B. primeNumbers.length; // liefert den Wert 5}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Arrays - iterieren}
+    \begin{exampleblock}{Iterieren über Arrays}
+        \lstinputlisting[basicstyle=\small]{../modules/arrays/src/iterate-array.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Arrays - Objektlike}
+    \begin{alertblock}{Achtung!}
+        Arrays werden intern wie Objekte behandelt! \\
+        Also bitte beachten, wann Ihr eine Referenz und wann einen Wert erhaltet!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Aufgabe - Arrays}
+    \begin{block}{Arrays - einfach Array}
+        Schreiben Sie eine Methode \dots
+        \begin{itemize}
+            \item \textbf{public static int arraySum(int[] array)}, \\
+                  die die Summe der Zahlen des übergebenen Arrays als Rückgabewert hat.
+            \item \textbf{public static double average(int[] array)}, \\
+                  die den durchschnittlichen Wert der Zahlen des übergebenen Arrays als Rückgabewert hat.
+        \end{itemize}
+    \end{block}
+\end{frame}

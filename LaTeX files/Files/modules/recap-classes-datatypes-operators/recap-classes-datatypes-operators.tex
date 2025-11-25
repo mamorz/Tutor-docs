@@ -1,0 +1,122 @@
+\section{Wiederholung}
+
+\begin{frame}{Wiederholung}
+    \begin{block}{Bisherige Inhalte}
+        \begin{itemize}
+            \item Klassen
+            \item Objekte
+            \item Attribute
+            \item Variablen
+            \item Datentypen
+            \item enum
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Wer weiss es?}
+        Was war das alles gleich nochmal? (eigene Worte, Beispiel)
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wiederholung - Objekte}
+    \begin{block}{Was sind die Eigenschaften eines Objektes?}
+        \begin{itemize}
+            \item Identität
+            \item Zustand
+            \item Verhalten
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung - Objekte}
+    \begin{exampleblock}{Ja, Nein oder Jein?}
+        \texttt{==} kann zum Vergleichen von Objekten benutzt werden
+    \end{exampleblock}
+
+    \pause
+
+    \begin{alertblock}{Jein}
+        \texttt{==} vergleicht die Objekt-\textbf{Identität}.
+        Dies ist meistens nicht gewünscht.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Wiederholung - Datentypen}
+    \begin{exampleblock}{Wahr oder Falsch?}
+        Bei Operationen auf verschieden großen Datentypen wandelt Java den kleineren in den größeren Typ um.
+    \end{exampleblock}
+
+    \pause
+
+    \begin{block}{Wahr}
+        Java wandelt kleinere Datentypen in den Typ des größeren um, falls beide in einer Operation benutzt werden: \\
+        \texttt{4 + (long) 5 = 9} wandelt \texttt{4} in einen \texttt{long} und gibt einen \texttt{long} zurück
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung - Datentypen}
+    \begin{exampleblock}{Wahr oder Falsch?}
+        Variablen von jedem Datentyp können \texttt{null} als Wert annehmen.
+    \end{exampleblock}
+
+    \pause
+
+    \begin{alertblock}{Falsch}
+        Nur Variablen von Referenzdatentypen (Klassen) können \texttt{null} als Wert annehmen. \\
+        \begin{lstlisting}
+int    a = null; // Fehler, int   ist keine Klasse
+@@cString@@ b = null; // Okay  , String ist eine Klasse
+        \end{lstlisting}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung - Datentypen}
+    \begin{exampleblock}{Wahr oder Falsch?}
+        Enums können keine Methoden enthalten.
+    \end{exampleblock}
+
+    \pause
+
+    \begin{alertblock}{Falsch}
+        Enums sind auch Klassen und können Variablen und Methoden enthalten.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Wiederholung - Operatoren}
+    \begin{exampleblock}{Was ist Kurzschlussauswertung?}
+
+        \pause
+
+        Wenn das Ergebnis eines Vergleiches bereits nach dem Auswerten der linken Seite feststeht, wird die rechte Seite nicht ausgewertet
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wiederholung - Operatoren}
+    \begin{exampleblock}{Was ist der Unterschied zwischen \texttt{\&} und \texttt{\&\&}?}
+
+        \pause
+
+        \texttt{\&\&} nutzt \textbf{Kurzchlussauswertung},\& nicht
+        \\ \ \\
+        \texttt{||} analog\\
+        Die einzelnen Operatoren sind die bitweisen
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung - Operatoren}
+    \begin{exampleblock}{Was ist der Unterschied zwischen \texttt{i++} und \texttt{++i}?}
+
+        \pause
+
+        \begin{itemize}
+            \item \texttt{i++} gibt den momentanen Wert von \texttt{i} zurück und erhöht \texttt{i} danach
+            \item \texttt{++i} gibt den bereits erhöhten Wert von \texttt{i} zurück
+            \item \begin{lstlisting}
+int x = 5;
+int y = x++; // x = 6, y = 5
+
+int x = 5;
+int y = ++x; // x = 6, y = 6
+            \end{lstlisting}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}

@@ -1,0 +1,81 @@
+\graphicspath{{../modules/java-api/img/}}
+
+\section{Java API}
+
+\begin{frame}{Java API}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item „Application Programming Interface“
+            \item Sammlung von Funktionalitäten von häufig benötigten Klassen und Pakete
+            \item In der „richtigen“ Welt der Programmierung
+
+                  \begin{itemize}
+                      \item verwende vorhandenes möglichst effizient und vielseitig
+                      \item keine Zeit mit Neuimplementierung von vorhandenen Dingen verschwenden
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wichtige Links}
+    \begin{block}{Javadoc}
+        \begin{itemize}
+            \item Java 8: \url{https://docs.oracle.com/javase/8/docs/api/}
+            \item Java 11 (Mit Suche!): \url{https://docs.oracle.com/javase/11/docs/api/}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Oracle Dokumentation und Tutorials}
+        \begin{itemize}
+            \item Allgemein: \url{https://docs.oracle.com/javase/tutorial/index.html}
+            \item Hilfreich: Suchanfrage \texttt{<Klasse> site:https://docs.oracle.com/javase/tutorial}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Java API}
+    \begin{block}{Überblick}
+        \begin{itemize}
+            \item java.lang (Object, String, Enum, Math, Iterable, Byte, Float, \dots)
+            \item java.util (collections, formatting, data structure manipulation)
+            \item java.io (obviously input/output, streams, manipulating files on FS)
+            \item java.net (networking, URL, connections)
+            \item java.security
+            \item java.swing, awt, javafx (graphical stuff)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Java API - Collection}
+    \begin{center}
+        \includegraphics[scale=0.18]{list-map-set.png} \\
+
+        \begin{flushright}
+            \begin{tiny}
+                \textit{[Quelle: https://i.stack.imgur.com/aSDsG.png - Collection]}
+            \end{tiny}
+        \end{flushright}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Java API - Collection}
+    \begin{block}{Map<K, V>}
+        \begin{itemize}
+            \item (key, value) Paare
+            \item Funktionen
+
+                  \begin{itemize}
+                      \item put(K key, V value)
+                      \item get(K key)
+                      \item remove(K key)
+                  \end{itemize}
+
+            \item implementiert durch
+
+                  \begin{itemize}
+                      \item HashMap (sehr schnell für gehashte Werte)
+                      \item TreeMap (ein Baum \dots)
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}

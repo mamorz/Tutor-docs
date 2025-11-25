@@ -1,0 +1,1 @@
+public static final int CHARACTERS_PER_LINE = 80;

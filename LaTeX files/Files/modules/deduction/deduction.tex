@@ -1,0 +1,51 @@
+\section{Abzüge}
+
+\begin{frame}{Abzüge in den Abschlussaufgaben}
+    \begin{block}{Teil 1}
+        \begin{itemize}
+            \item Verwendung von Wildcards bei Importanweisung
+            \item Nicht den geeignetsten Schleifentyp gewählt, z.B. While statt For oder For statt For-Each
+            \item Keine Variabilität in der implementierten Logik, z.B. viele Parameter hartkodiert (Magic Numbers)
+            \item Code enthält auskommentierte Quelltext-Schnipsel, TODOs, oder unangemessene Kommentare
+            \item JavaDoc ist leer oder beschreibt nur triviales, insbesondere werden die Fehlerfälle (wann Exceptions geworfen werden) nicht erwähnt (Geerbte Methoden müssen kein JavaDoc haben)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Abzüge in den Abschlussaufgaben}
+    \begin{block}{Teil 2}
+        \begin{itemize}
+            \item Sehr komplexe Codestelle fehlt ein erklärender Kommentar oder Komplexe Codestelle sollte eigentlich durch geeignete Hilfsmethoden strukturiert werden
+            \item Zu tiefe Verschachtelungstiefe die trivialerweise und sinnvoll in eine private Untermethode verpackt hätte werden können.
+            \item Nicht-finale Attribute, die final sein könnten
+            \item Statische Methode oder Attribut in einer Klasse sollte eigentlich Instanzmethode oder Attribut sein
+            \item Falsche Sichtbarkeit: Methode oder Attribut sollte eigentlich Private sein
+            \item Zugriffsmethoden für Implementierungsdetails (Kapselung verletzt), z.B. für Arrays oder List
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Abzüge in den Abschlussaufgaben}
+    \begin{block}{Teil 3}
+        \begin{itemize}
+            \item Objekt-Orientierte Modellierung nicht konsequent angewandt
+            \item Code-Kopien, statt gemeinsame Funktionalität in Hilfsmethode oder Oberklasse
+            \item Ausgaben auf Terminal sind nicht in einer UI-Klasse verkapselt, sondern über die Domänenklassen verteilt, oder stark gemischt mit Logik
+            \item Objekte werden über Strings referenziert, anstatt über typisierte Java-Referenzen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Abzüge in den Abschlussaufgaben}
+    \begin{block}{Teil 4}
+        \begin{itemize}
+            \item Exception werden für den Kontrollfluss benutzt
+            \item Try/catch Blöcke sind sehr groß und umfassen nicht nur die nötigen Konstrukte
+            \item IndexOutOfBoundsException oder NullPointerException fangen statt Größe zuvor zu prüfen oder auf null zu prüfen
+        \end{itemize}
+    \end{block}
+
+    \begin{center}
+        Und vieles mehr \dots
+    \end{center}
+\end{frame}

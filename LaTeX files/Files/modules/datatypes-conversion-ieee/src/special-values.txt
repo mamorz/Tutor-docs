@@ -1,0 +1,13 @@
+@@cSystem@@.out.println(@@cDouble@@.POSITIVE_INFINITY);
+@@cSystem@@.out.println(1.0 / 0.0);
+@@cSystem@@.out.println(@@cDouble@@.POSITIVE_INFINITY==(1.0/0.0));
+@@cSystem@@.out.println(@@cDouble@@.NEGATIVE_INFINITY);
+@@cSystem@@.out.println(-1.0 / 0.0);
+@@cSystem@@.out.println(@@cDouble@@.NEGATIVE_INFINITY==-1.0/0.0);
+@@cSystem@@.out.println(@@cDouble@@.NaN);
+@@cSystem@@.out.println(0.0 / 0.0);
+@@cSystem@@.out.println(@@cDouble@@.NaN == (0.0 / 0.0));
+@@cSystem@@.out.println(@@cDouble@@.NaN == @@cDouble@@.NaN);
+@@cSystem@@.out.println((1E300 * 1E20) == (1.0 / 0));
+@@cSystem@@.out.println((1.0 / 0.0) == (-1.0 / 0.0));
+@@cSystem@@.out.println((1 / 0.0) == (1.0 / 0));

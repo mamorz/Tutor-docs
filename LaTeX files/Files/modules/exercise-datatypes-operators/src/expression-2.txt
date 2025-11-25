@@ -1,0 +1,10 @@
+boolean m = true;
+boolean n = false;
+boolean o = true;
+boolean p1, p2, p3, p4, p5;
+		
+p1 = !m;
+p2 = m && n;
+p3 = !m || !o;
+p4 = (m && n) || !o;
+p5 = !(!m && n) || !o;

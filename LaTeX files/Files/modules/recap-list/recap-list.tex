@@ -1,0 +1,187 @@
+\graphicspath{{../modules/recap-list/img/}}
+\section{Was bisher geschah \dots}
+\begin{frame}{Was bisher geschah \dots}
+    \begin{block}{Bisherige Inhalte}
+        \begin{itemize}
+            \begin{multicols}{2}
+                \item Klassen, Datentypen \& Objekte
+                \item Variablen \& Attribute
+                \item Methoden \& Konstruktoren
+                \item Kontrollstrukturen
+                \item Präzedenz
+                \item Arrays \& Strings
+                \item Kommentieren (incl. JavaDoc)
+                \item Checkstyle (Whitespace)
+                \item Referenzen
+                \item Shallow Copy / Deep Copy
+            \end{multicols}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{Wdh. Listen}
+
+\begin{frame}{Wdh. Listen}
+    \setbeamercovered{invisible}
+    \begin{block}{Was war das nochmal?}
+        \begin{itemize}
+            \item Abstrakte Datenstruktur zur speicherung von Daten
+            \pause
+            \item Können mehrere Elemente spichern
+            \pause
+            \item Dynamische Länge!
+            \pause
+            \item Im Prinzip intuitiv wie eine \glqq Einkaufsliste''
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wdh. Listen}
+    \setbeamercovered{invisible}
+    \begin{block}{Was für Listen gibt es und was ist das Besondere?}
+        \begin{itemize}
+            \item Single linked Lists
+            \aitem Jedes Element hält nur eine Referenz auf das nächste Element
+            \pause
+            \item Double linked Lists
+            \aitem Jedes Element hält eine Referenz auf das nächste und das letzte Element
+            \pause
+            \item Array Lists
+            \aitem Funktionieren intern mit Arrays und kopieren bei Bedarf Daten rum. 
+            Daher sind sie (oft) schneller.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wdh. Listen}
+    \setbeamercovered{invisible}
+    \begin{block}{Welche Operationen auf Listen gibt es?}
+        \begin{itemize}
+            \item \lstinline{insert()}
+            \item \lstinline{removeAfter(int index)}
+            \item \lstinline{contains(E element)}
+            \item \lstinline{get(int index)}
+            \item \dots
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wdh. Listen}
+    \setbeamercovered{invisible}
+    \begin{block}{Welche Operationen könnten potentiell Probleme bereiten?}
+        \begin{itemize}
+            \item \lstinline{insertBefore()} 
+            \aitem Blöd wenn man nur einfach verkettete Liste hat 
+            \item \lstinline{getLast(): E}
+            \aitem Teuer auf single linked lists, da man alle Elemente durchlaufen muss
+            \item \lstinline{contains(E element)}
+            \aitem Man muss potentiell alle Elemente durchgehen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Single linked lists}
+
+\begin{frame}{Single linked lists}
+    \begin{block}{Was war das nochmal?}
+        \begin{itemize}
+            \item ListElements, halten jeweils ein bestimmtes Datum und eine Referenz auf das nächste Objekt
+            \item Listenklasse hält Referenz auf erstes ListElement und weitere Daten, wie zum Beispiel Länge
+        \end{itemize}
+    \end{block}
+    \begin{center}
+        \includegraphics[scale=0.5]{linkedList}        
+    \end{center}
+\end{frame}
+
+\begin{frame}{Double linked lists}
+    \begin{block}{Was war das nochmal?}
+        \begin{itemize}
+            \item ListElements, halten jeweils ein bestimmtes Datum und, Referenz auf das nächste Objekt \textbf{und} eine Referenz auf das letzte Objekt
+            \item Listenklasse hält Referenz auf erstes ListElement, letztes ListElement und weitere Daten, wie zum Beispiel Länge
+        \end{itemize}
+    \end{block}
+    \begin{center}
+        \includegraphics[scale=0.35]{doubleLinkedList}        
+    \end{center}
+\end{frame}
+
+\begin{frame}{Ein paar Operationen auf SingleLinkedLists}
+    \setbeamercovered{invisible}
+    \begin{block}{\lstinline{addFirst(E elem)}}
+        \begin{itemize}
+
+            \pause
+
+            \item Neues Element erzeugen
+            \item Randfälle überprüfen (ist die Liste leer?)
+            \item Den next Zeiger des neuen Elementes auf den first Zeiger der Liste setzen
+            \item Den first Zeiger der Listenklasse updaten
+            \item Zähler für die Länge inkrementieren
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{addFirst - Neues Element erzeugen}
+    \begin{center}
+        \includegraphics[scale=0.5]{addFirst/linkedList_new_elem.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{addFirst - Randfälle prüfen}
+    \begin{center}
+        \includegraphics[scale=0.5]{addFirst/linkedList_new_elem.png}\\
+        \large $\rightarrow$ Liste ist nicht leer.
+    \end{center}
+\end{frame}
+
+\begin{frame}{addFirst - Zeiger des neuen Elementes updaten}
+    \begin{center}
+        \includegraphics[scale=0.5]{addFirst/linkedList_pointer_updated.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{addFirst - first Zeiger der Listenklasse updaten}
+    \begin{center}
+        \includegraphics[scale=0.5]{addFirst/linkedList_inserted.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{addFirst - Zähler inkrementieren}
+    \begin{center}
+        \includegraphics[scale=0.5]{addFirst/linkedList_complete.png}
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Ein paar Operationen auf SingleLinkedLists}
+    \setbeamercovered{invisible}
+    \begin{block}{\lstinline{delete(int index)}}
+        \begin{itemize}
+
+            \pause
+
+            \item Element am Index vorher finden (falls es existiert)
+            \item next Zeiger vom Element umbiegen (dabei Randfälle beachten)
+            \item Da keine Referenzen auf das Objekt mehr existieren, wird es vom Java garbage colector gelöscht
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{\textit{delete(2)} - Element am Index vorher finden}
+    \begin{center}
+        \includegraphics[scale=0.4]{delete/linkedListElementLocated.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{\textit{delete(2)} - Next Zeiger umbiegen}
+    \begin{center}
+        \includegraphics[scale=0.4]{delete/linkedListNextChanged.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{\textit{delete(2)} - Garbage collector entsorgt Objekt}
+    \begin{center}
+        \includegraphics[scale=0.4]{delete/linkedListFinished.png}
+    \end{center}
+\end{frame}

@@ -1,0 +1,65 @@
+\section{Übungsblatt 2}
+
+\begin{frame}{Übungsblatt 2 - Besprechung}
+    \begin{itemize}
+        \item Je Klasse eigene Datei
+        \item Enum nicht nur anlegen, auch das passende Attribut
+        \item Keine inline enums
+        \item Objektorientierung! (Klassen als Datentyp nutzen, \dots)
+        \item Datenkapselung (\texttt{private} \dots)
+        \item Wiederverwendung eigener Methoden (Vermeidung von Code-Duplizierung)
+        \item Utility-Klassen: final class, privaten Konstruktor und die Methoden/Attribute static. Und \textbf{keine Instanzen} dessen!
+        \item \texttt{if(var == true)} $\Leftrightarrow$ \texttt{if(var)}
+        \item \texttt{equals()} verwenden
+        \item Sinnvolle Bezeichner \& Kommentare
+        \item Checkstyle
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Übungsblatt 2 - Besprechung}
+    \begin{itemize}
+        \item Falscher Schleifentyp (while statt for, for statt for-each verwendet)
+        \item Wildcard-Imports sind nicht erlaubt
+        \item Auskommentierten Quelltext nicht abgeben
+        \item \href{https://en.wikipedia.org/wiki/Magic_number_(programming)}{Magic Numbers}
+        \item Vergleichsrichtung: \texttt{"text".equals(var)}
+        \item Bitte kein \texttt{while(true)}
+        \item Kompilieren, Ausführen, \textbf{TESTEN}
+        \item Im Artemis nachschauen ob eswirklich kompiliert hat!
+    \end{itemize}
+\end{frame}
+
+\subsection{Kleiner Einschub}
+
+\begin{frame}[fragile]{Weitere Anmerkungen}
+    \begin{itemize}
+        \item Der Name einer Variablen hat nichts mit der Objektidentität zu tun: \\
+
+              \begin{lstlisting}
+FireTruck truck = new FireTruck();
+FireTruck anotherTruck = truck;
+// Beide Variablen zeigen auf den GLEICHEN Truck
+truck == anotherTruck // true
+              \end{lstlisting}
+
+              \pause
+
+        \item Eine Variable ist nicht notwendig, um ein Objekt zu erstellen
+
+              \begin{lstlisting}
+// Erzeugt einen FireTruck und ruft dessen Konstruktor auf
+new FireTruck();
+      \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Immutable Objects}
+    \begin{itemize}
+        \item Ein „Immutable Object“ ist ein Objekt bei dem der Zustand lediglich einmal am Anfang gesetzt wird und danach nie wieder verändert werden kann. \\
+              Bsp.: alle Strings
+        \item „Immutable Objects“ sind z.B. sehr hilfreich wenn die entsprechenden Objekte kopiert werden müssen, da dann lediglich die Referenz kopiert werden muss.
+        \item Sie enthalten oftmals nur \emph{Daten} $\implies$ \texttt{equals}
+              (\texttt{hashCode}) überschreiben lohnt sich wahrscheinlich
+        \item Siehe \href{https://en.wikipedia.org/wiki/Immutable_object}{Wikipedia - Immutable Object}
+    \end{itemize}
+\end{frame}

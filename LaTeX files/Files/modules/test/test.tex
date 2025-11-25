@@ -1,0 +1,249 @@
+\section{Testen}
+
+\begin{frame}{Testen}
+    \begin{block}{Testen}
+        Jedes Programm sollte getestet werden. Wichtig sind dabei:
+
+        \begin{itemize}
+            \item Auswahl der Testfälle
+
+                  \begin{itemize}
+                      \item Klassifizierung der möglichen Eingabedaten
+                      \item Standardsituationen \textbf{und} Randfälle beachten
+                  \end{itemize}
+
+            \item Auswahl der Testdaten
+
+                  \begin{itemize}
+                      \item Repräsentative Daten zu jedem Testfall
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    $\Longrightarrow$ Versuchen \textit{alle} Situationen abzudecken, in denen das Programm potenziell schief gehen kann.
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{exampleblock}{Ein klassisches Quiz}
+        Der Benutzer gibt drei ganze Zahlen ein. Diese Zahlen repräsentieren die Länge der Seiten eines Dreiecks. Das Programm klassifiziert das Dreieck als gleichseitig, gleichschenklig, oder weder noch. \\
+        Nenne geeignete Testfälle.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{16 Testfälle!}
+        \begin{itemize}
+            \item Gültiges weder-noch-Dreieck
+            \item Gültiges gleichseitiges Dreieck
+            \item Gültiges gleichschenkliges Dreieck (plus Permutationen, z.B. 4,3,3;3,4,3; 3,3,4)
+            \item Genau eine Seite Länge Null
+            \item Eine Seite negative Länge
+            \item Summe zweier nichtnegativer Seiten ergibt dritte Seite (plus Permutationen)
+            \item Summe zweier nichtnegativer Seiten ist kleiner als dritte Seite (plus Permutationen)
+            \item Alle Seiten Länge Null
+            \item Nicht-ganzzahlige Werte
+            \item $\neq$ 3 Parameter
+            \item Erwartete Ausgabe?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Dynamischer Vergleich von tatsächlichen und erwünschtem (= spezifizierten) Programmverhalten
+            \item Ziele: Nachweis, dass Funktionalität erfüllt ist \& Fehlerdetektion
+            \item Unterschied psychologisch wesentlich
+
+                  \begin{itemize}
+                      \item Sollten Programmierer ihre eigenen Programme testen?
+                      \item Im Allgemeinen nein; aber das ergibt organisatorische und Kostenprobleme
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Testfall}
+        Ein Testfall besteht immer aus Ein- und erwarteter Ausgabe (plus ggf. Ausführungsbedingungen). Für jeden Testfall sollte auch eine Begründung existieren, warum er ausgewählt wurde. Im Entwicklungsmodell XP sind Testfälle die (einzige) Spezifikation!
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen - Drei Fehlerarten}
+    \begin{block}{Failure}
+        \begin{itemize}
+            \item Unterschied zwischen Spezifikation und beobachtbarem Verhalten
+            \item Manifestation zur Laufzeit
+            \item Wenn Testfälle als eigenständiges Programm implementiert werden, kann der Vergleich von erwarteter und tatsächlicher Ausgabe als Assertion formuliert werden. Gilt auch für einzelne Funktionen.
+            \item Gute Frameworks, etwa \textit{JUnit}, verfügbar
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen - Drei Fehlerarten}
+    \begin{block}{Error}
+        \begin{itemize}
+            \item Unterschied zwischen tatsächlichem und erwünschtem internen Programmzustand
+            \item Kann, muss aber nicht zu einer Failure führen
+            \item Kann zur Laufzeit „repariert“ (z.B. durch Redundanz)
+            \item Kann mit Assertions überprüft werden
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Fault}
+        \begin{itemize}
+            \item Tatsächlicher oder vermuteter Grund für die Abweichung von tatsächlichem und erwünschtem beobachtbaren Verhalten oder dem Programmzustand
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Testen ist nicht \dots}
+        \begin{itemize}
+            \item Qualitätsverbesserung
+
+                  \begin{itemize}
+                      \item Das wird uA. durch Debugging erreicht
+                  \end{itemize}
+
+            \item Fehlerlokalisierung (fault localization)
+            \item Statische Codeanalyse, ob manuell oder automatisiert
+
+                  \begin{itemize}
+                      \item Formale Beweise
+                      \item Manche nennen verschiedene Lesetechniken (reviews, inspections, walkthroughs) „statisches Testen“. Wir nicht.
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Testen ist schwer \dots}
+        Was macht einen Testfall zu einem guten Testfall?
+
+        \begin{itemize}
+            \item Fähigkeit, Fehler (failures) zu finden
+            \item Fähigkeit, potentielle Fehler zu finden
+
+                  \begin{itemize}
+                      \item Fähigkeit, wahrscheinliche Fehler mit angemessenem Aufwand zu finden
+
+                            \begin{itemize}
+                                \item Kosten: Tests schreiben/ausführen/auszuwerten
+                                \item Kosten: verbleibende Fehler, je nach Schwere
+                                \item Testsuiten sollen aus Managementgründen so klein wie möglich (so groß wie nötig) enthalten
+                                \item Leichte Fault-Lokalisierung
+                            \end{itemize}
+                  \end{itemize}
+        \end{itemize}
+
+        Ausgezeichnet! Und viel zu abstrakt!
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Testselektion}
+        \begin{itemize}
+            \item Approximation „guter“ Testfälle
+            \item Zentrales Problem
+
+                  \begin{itemize}
+                      \item Mögliche Eingabedaten in Blöcke gruppieren, so dass (möglichst) jedes Element eines Blocks denselben Fehler provoziert
+                      \item (Erfordert natürlich a priori-Wissen um mögliche Fehler)
+                  \end{itemize}
+
+                  \pause
+
+            \item Lösung
+
+                  \begin{itemize}
+                      \item Auf der Basis von Anforderungen
+                      \item Mit Wissen um typische Fehler
+                      \item Zufällig (gleichverteilt oder gemäß Nutzerprofilen)
+                      \item Strukturbasiert („jede Zeile einmal ausführen“, „jede Bedingung einmal zu wahr und einmal zu falsch auswerten“, usw.)
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Ende?}
+        \begin{itemize}
+            \item Zeit um (Nutzlos. Nichts tun. Praxis-Kriterium \# 1)
+            \item Keine Fehler mit existierenden Tests (Nutzlos, da waren die Tests wohl nicht genug)
+            \item Strukturelles Kriterium (Jede Zeile wurde ausgeführt, nützlich, keine Garantie)
+            \item Test-Spezifikation erfüllt (viel Vorwissen notwendig)
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Testen ist schwer \dots II}
+        \begin{itemize}
+            \item Fehlende Spezifikationen
+            \item Finden von guten Testselektionskriterien (Beweis sehr schwierig)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Anwendungsbasiertes Testen}
+        \begin{itemize}
+            \item Datenbasiert, aus Basis der Eingabeparameter
+            \item Kontrollflussbasiert, auf Basis angenommener „typischer“ oder „relevanter“ Interaktionen mit dem Programm (also Programmabläufe)
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Category Partition Method}
+        \begin{itemize}
+            \item Identifiziere individuelle funktionale Einheiten, die separat getestet werden können. Bestimme für jede Einheit die das Verhalten der Einheit beeinflussenden Parameter und relevante Umgebungsvariablen. (= Komponenten einzeln testen)
+            \item Bestimme die individuellen Wahlmöglichkeiten für jeden Parameter und jede Umweltvariable.
+            \item Bestimme Abhängigkeiten und Constraints zwischen den Wahlmöglichkeiten.
+            \item Erzeuge alle relevanten, die Constraints erfüllenden, Kombinationen von Werten für die Kategorien.
+            \item Transformiere diese Werte in ausführbare Testfälle inkl. der erwarteten Ausgaben.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{block}{Grenzwerttesten}
+        Wenn die Datentypen der Kategorien eine natürliche Ordnung mit Grenzen aufweisen, dann ergeben diese Grenzen (und Werte „leicht links“ und „rechts davon“) zusätzliche natürliche Kandidaten für Blöcke der partitionierten Kategorie.
+
+        \begin{itemize}
+            \item Beispiel natürliche Zahlen: -1, 0, 1 (und beliebige positive Werte)
+            \item Beispiel Liste: leere Liste (null), einelementige Liste (und diverse nicht-leere Listen)
+            \item Beispiel Array: Länge Null, Länge 1 (und diverse größere Arrays)
+            \item Beispiel String: null, Länge Null, Länge 1 (und größere Längen)
+            \item Beispiel Dreiecke: siehe frühere Folie
+        \end{itemize}
+
+        Diese Art des Testens beruht auf einem intuitiven Fehlermodell: An den Grenzfällen machen Programmierer Fehler (off by one!).
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testen}
+    \begin{exampleblock}{Beispiel}
+        Kategorien für das Testen eines Sortieralgorithmus:
+
+        \begin{itemize}
+            \item Länge (null, 0, 1, > 1)
+            \item Sortierung (aufsteigend, absteigend, identische Werte, nein)
+            \item Einschluss negativer Elemente (einige negative, alle negativ, alle positiv)
+            \item \dots
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Werkzeuge}
+
+\begin{frame}{Testen}
+    \begin{block}{Und wie teste ich jetzt?}
+        \begin{itemize}
+            \item Simple Variante: im Programm verstreute main-Methoden mit \textit{System.out.println()} (später wieder entfernen)
+            \item Statisches Codeanalyse: PMD, Checkstyle, Entwicklungsumgebung, \dots
+            \item Assertions \& JUnit
+        \end{itemize}
+    \end{block}
+\end{frame}

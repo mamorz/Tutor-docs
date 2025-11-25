@@ -1,0 +1,78 @@
+\section{Assertions}
+
+\begin{frame}{Assertions}
+    \begin{block}{Allgemein}
+        \textbf{Zusicherungen} (engl. Assertions) sind ein weiteres wichtiges Hilfsmittel für die Entwicklung von Software. \\
+        Sie werden verwendet, um
+
+        \begin{itemize}
+            \item Restriktionen für Parameter und globale Variablen von Methoden anzugeben (Vorbedingung)
+            \item den Effekt von Methoden formal zu beschreiben (Nachbedingung)
+            \item an zentralen Programmpunkten wichtige Eigenschaften (z.B. mögliche Werte von Variablen) explizit festzuhalten
+        \end{itemize}
+
+        Mit Hilfe von Zusicherungen ist es möglich Korrektheitsaussagen bzgl. eines gegeben Programmes mathematisch zu beweisen.
+    \end{block}
+
+    \begin{center}
+        \textbf{Keine Verwendung in diesem Modul!}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Assertions}
+    \begin{block}{Java}
+        \begin{itemize}
+            \item Java bietet die Möglichkeit Assertions direkt in den Programmtext zu schreiben (\texttt{assert})
+            \item Automatisierte Überprüfung, aber nur während der Laufzeit
+            \item Eingeschränkt durch Java-Syntax im Vergleich zu Kommentaren
+            \item Assertions werden standardmäßig nicht ausgewertet. Sie müssen beim Programmstart mit \texttt{java -ea MyClass} aktiviert werden (\textbf{e}nable \textbf{a}ssertions)
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Syntax}
+        \texttt{assert Boolesche Bedingung;} \\
+        \texttt{assert Boolesche Bedingung: "Detaillierte Fehlermeldung";}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Assertions}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/assertion/src/multiply-scalar.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Assertions}
+    \begin{block}{Eigenschaften}
+        Eine Zusicherung gibt eine Eigenschaft an, die bei der Ausführung des Programms an der entsprechenden Stelle erfüllt sein muss.
+
+        \begin{itemize}
+            \item Eine \textbf{Precondition} muss vor der Abarbeitung des entsprechenden Methodenrumpfs erfüllt sein
+            \item Eine \textbf{Postcondition} muss erfüllt sein, nachdem die Methode abgearbeitet wurde
+            \item Eine \textbf{Instanz-Invariante} ist eine Zusicherung, die sowohl vor als auch nach jedem Methodenaufruf (Ausnahme: private Hilfsmethoden) des zugehörigen Objekts gültig sein muss. \\
+                  Beispiel: \texttt{int length; assert length >= 0;}
+            \item Eine \textbf{Schleifen-Invariante} ist eine Zusicherung, die am Anfang und Ende eines jeden Durchlaufes der zugehörigen Schleife erfüllt sein muss
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Assertions}
+    \begin{exampleblock}{assert vs if}
+        \lstinputlisting[basicstyle=\small]{../modules/assertion/src/assert-if.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Assertions}
+    \begin{block}{assert}
+        \begin{itemize}
+            \item Dokumentation: Nur Überprüfungszweck
+            \item Zur eigentlichen Laufzeit abschaltbar
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{if}
+        \begin{itemize}
+            \item wird immer ausgeführt
+            \item ggf. teuer zur Laufzeit
+        \end{itemize}
+    \end{block}
+\end{frame}

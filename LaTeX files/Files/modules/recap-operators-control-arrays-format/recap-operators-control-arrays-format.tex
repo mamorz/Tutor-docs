@@ -1,0 +1,149 @@
+\graphicspath{{../modules/recap-operators-control-arrays-format/img/}}
+
+\section{Wiederholung}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        \begin{lstlisting}
+// initialiser
+while(condition) {
+  // body
+}
+// after
+    \end{lstlisting}
+
+        ist die Umformung von
+
+        \begin{lstlisting}
+for(initialiser ; condition ; after) {
+  // body
+}
+    \end{lstlisting}
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        Das obere \texttt{after} gehört \emph{in} die Schleife!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        Alle Schleifen können ineinander umgeformt werden.
+    \end{block}
+
+    \pause
+
+    \begin{block}{Wahr!}
+        Diese Aussage ist wahr.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        Ein if ist eine Schleife.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        Ein if ist eine \textbf{VERZWEIGUNG}! Schleifen sind Konstrukte, die Quelltext mehrmals ausführen.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        \texttt{int[5] integers = \{ 1, 2, 3, 4, 5 \}} kompiliert.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        Die Größe eines Arrays ist nicht Teil des Typs.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        In
+
+        \begin{lstlisting}
+for(int i : array)
+    \end{lstlisting}
+
+        nimmt \texttt{i} jeden \emph{Wert} im Array an.
+
+    \end{block}
+
+    \pause
+
+    \begin{block}{Wahr!}
+        Der enhanced-for-loop gibt immer die Werte, nicht den Index zurück.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        \texttt{array.length()} gibt die Länge eines Arrays zurück.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        Die Länge eines Arrays ist ein \emph{Attribut}, keine Methode.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Wiederholung}
+    \begin{block}{Wahr oder Falsch?}
+        \texttt{array[2]} gibt das 2. Element eines Arrays zurück.
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Falsch!}
+        Die Indizierung startet bei \textbf{0}!. Daher gibt dies das dritte Element im Array
+        zurück.
+    \end{alertblock}
+\end{frame}
+
+\subsection{Formatierung}
+
+\begin{frame}{Formatierung}
+    \begin{block}{Einrückung}
+        \begin{itemize}
+            \item Eine neue Zeile für jeden Befehl
+            \item 4 Leerzeichen (keine Tabs!)
+            \item Absetzen von Strukturen
+
+                  \begin{itemize}
+                      \item Tiefere Einrückung kontrollierter Befehle (konsistent!)
+                      \item Keine übertriebene Einrückung
+                      \item Vor und hinter der Struktur (inkl. Kommentar) genaue eine Leerzeile
+                  \end{itemize}
+
+            \item Strukturierung von Operatoren und Operanden durch Leerzeichen
+            \item Leerzeilen zwischen Methoden (konsistent!)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Formatierung}
+    \begin{block}{Überlange Zeilen}
+        \begin{itemize}
+            \item Passt ein Ausdruck nicht auf eine Zeile muss er umgebrochen werden
+            \item Maximale Breite: 120 Zeichen, gewünscht maximal 100 Zeichen
+            \item Hinter einem Komma, aber vor Operatoren
+            \item Trenne die äußere Struktur
+            \item Benutze Stringkonkatenation für überlange Zeichenketten
+            \item Vermeide verwirrende Einrückungen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Formatierung}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-operators-control-arrays-format/src/formatting.java}
+    \end{exampleblock}
+\end{frame}

@@ -1,0 +1,212 @@
+\section{Methoden}
+
+\subsection{Methoden}
+
+\begin{frame}{Methoden}
+    \begin{block}{Wozu?}
+
+        \pause
+
+        \begin{itemize}
+            \item Methoden realisieren das dynamische Verhalten von Objekten
+
+                  \pause
+
+            \item Methoden berechnen etwas aus dem aktuellen Zustand und liefern das Ergebnis zurück
+
+                  \pause
+
+            \item Methoden können auch ganz wildes Zeug machen \dots
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Deklaration}
+        \lstinputlisting[basicstyle=\small]{../modules/methods/src/method.java}
+
+        \begin{itemize}
+            \item Ergebnistyp: void (nichts) oder entsprechende(r) Datentyp / Klasse
+            \item Parameterliste: Typ\textsubscript{1} name\textsubscript{1}, Typ\textsubscript{2} name\textsubscript{2}, \dots, Typ\textsubscript{n} name\textsubscript{n}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Methoden II}
+    \begin{block}{Methodenaufruf}
+        \begin{itemize}
+            \item \texttt{objectName.methodName(Arguments);}
+
+                  \pause
+
+                  \begin{itemize}
+                      \item Und was, wenn Ergebnistyp != \textit{void}?
+                  \end{itemize}
+            \item Argumentenliste: Ausdruck\textsubscript{1}, \dots, Ausdruck\textsubscript{n}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Mehrere Methoden mit gleichem Namen}
+        \begin{itemize}
+            \item Es können mehrere Methoden mit dem gleichen Namen existieren.
+            \item Dabei müssen sie sich aber in der Art und/oder Anzahl ihrer Parameter unterscheiden.
+            \item Stichworte: Überladen, \textcolor{gray}{Überschreiben}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Methoden - Beispiele}
+    \begin{small}
+        \begin{exampleblock}{Methoden mit gleichem Namen}
+            \begin{multicols}{2}
+                \begin{itemize}
+                    \item void doSomething(int a, int b)
+                    \item void doSomething(int a, String b)
+                    \item void doSomething(int a, int b, double c)
+                    \item void doSomething(int a, long b)
+                \end{itemize}
+            \end{multicols}
+        \end{exampleblock}
+    \end{small}
+
+    \pause
+
+    \begin{exampleblock}{toString-Methode - üblicherweise in jeder Klasse}
+        \vspace*{-0.8em}
+        \lstinputlisting[basicstyle=\small]{../modules/methods/src/to-string.java}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{main-Methode}
+
+\begin{frame}{main-Methode}
+    \begin{block}{Allgemein}
+
+        \pause
+
+        \begin{itemize}
+            \item Einstiegspunkt in das Programm
+            \item Jedes \textbf{ausführbare} Programm muss die main-Methode \textbf{genau einmal} enthalten
+            \item Programm endet beim Verlassen der main-Methode
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Wie funktioniert das mit diesen „Kommandozeilenargumenten“?}
+
+        \pause
+
+        \begin{itemize}
+            \item \texttt{public static void main(String[] args) \{ \\
+                      /* Anweisungen */ \\
+                      \}}
+            \item \texttt{String... args} ist auch erlaubt
+            \item Aufruf mit \texttt{java Programm a 1 Text etc}
+            \item Achtung, die Elemente sind alle Strings!
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Konstruktoren}
+
+\begin{frame}{Konstruktoren}
+    \begin{block}{Wozu?}
+        Mit Konstruktoren werden \dots
+
+        \pause
+
+        \begin{itemize}
+            \item neue Objekte erzeugt
+
+                  \pause
+
+            \item Anfangswerte von Objekten festgelegt
+
+                  \pause
+
+            \item Startzustände von Objekten bestimmt
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Merkmale}
+
+        \pause
+
+        \begin{itemize}
+            \item Name des Konstruktors entspricht dem Namen der Klasse
+
+                  \pause
+
+            \item Objekte werden mit dem Operator '\textit{new}' erzeugt:
+
+                  \pause
+
+            \item Mehrere Konstruktoren mit gleichem Namen können existieren
+                  \begin{itemize}
+                      \item Dabei müssen sie sich aber in der Art und/oder Anzahl ihrer Parameter unterscheiden.
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Konstruktoren - Beispiel}
+    \begin{exampleblock}{Wie könnten wir ein kleines Auto der Klasse \textit{Car} instantiieren?}
+
+        \pause
+
+        \texttt{Car smallCar = new Car();}
+        \\ \ \\
+        Es könnten natürlich auch noch Parameter mit übergeben werden:
+        \\ \ \\
+        \texttt{Car smallCar = new Car(``Smart'');}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Konstruktoren}
+    \begin{block}{Konstruktoren - Wissenswertes}
+        \begin{itemize}
+            \item Hat eine Klasse keinen Konstruktor, wird der parameterlose \textit{default}-Konstruktor generiert.
+
+                  \pause
+
+            \item Schreibt ihr einen Konstruktor, wird kein default-Konstruktor erzeugt. \\
+
+                  \pause
+
+            \item Konstruktoren in Java können sich gegenseitig aufrufen. \\
+                  \textbf{Dies MUSS an erster Stelle im aufrufenden Konstruktor geschehen!} (sonst Compiler-Fehler!)
+
+                  \pause
+
+            \item Aufzurufender Konstruktor wird als normale Methode angesehen und mit \textit{this} aufgerufen. \\
+                  Compiler unterscheidet anhand der () automatisch zum this-Pointer.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Konstruktoren}
+    \begin{exampleblock}{Konstruktoren - ohne Verkettung}
+        \lstinputlisting[basicstyle=\small]{../modules/methods/src/constructor-1.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Konstruktoren}
+    \begin{exampleblock}{Konstruktoren - mit Verkettung}
+        \lstinputlisting[basicstyle=\small]{../modules/methods/src/constructor-2.java}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{static}
+
+\begin{frame}{static}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/methods/src/static-1.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{static}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/methods/src/static-2.java}
+    \end{exampleblock}
+\end{frame}

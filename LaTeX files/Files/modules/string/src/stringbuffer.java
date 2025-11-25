@@ -1,0 +1,10 @@
+String append(String);
+StringBuilder delete(int start, int end);
+StringBuilder insert(int offset, any primitive or char []);
+StringBuilder replace(int start, int end, String s);
+StringBuilder reverse();
+void setCharAt(int index, char ch);
+String substring(int start);
+String substring(int start, int end);
+int indexOf(String searchKey);
+int lastIndexOf(String searchKey);

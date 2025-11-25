@@ -1,0 +1,81 @@
+\section{Konventionen}
+
+\begin{frame}{Konventionen}
+    \begin{block}{Sind Bezeichner aussagekräftig und konsistent gewählt?}
+        \begin{itemize}
+            \item Selbsterklärende, eindeutige Namen für Methoden und Variablen
+            \item Verwendung einzelner Buchstaben nur als Laufvariablen (i, j, k) oder Parameter einfacher mathematischer Funktionen (x, y, z)
+            \item Keine weiteren Informationen im Namen kodiert (z.B. \texttt{userAgeAsInt})
+            \item Groß-/Kleinschreibung (und Unterstriche bei Konstanten) zur Trennung von Wortteilen
+            \item Einheitliche Groß-/Kleinschreibung für Konstanten, Variablen, Methoden und Klassen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Konventionen - Beispiele}
+    \begin{alertblock}{schlecht}
+        \begin{itemize}
+            \item \lstinputlisting[basicstyle=\small]{../modules/conventions/src/bad-sample-1.java}
+            \item \lstinputlisting[basicstyle=\small]{../modules/conventions/src/bad-sample-2.java}
+        \end{itemize}
+    \end{alertblock}
+
+    \pause
+
+    \begin{exampleblock}{besser}
+        \begin{itemize}
+            \item \lstinputlisting[basicstyle=\small]{../modules/conventions/src/good-sample.java}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Whitespaces}
+    \begin{block}{Kein Whitespace nach \dots}
+        \begin{center}
+            \begin{tabular}{l l l}
+                \textbf{Operator} & \textbf{Name}          & \textbf{Beispiel}     \\
+                \toprule
+                \texttt{\~}       & Bitweises Komplement   & \texttt{\~{}flag}     \\
+                \texttt{!}        & Logisches Komplement   & \texttt{!splittable}  \\
+                \texttt{++}       & Prefix-Inkrementierung & \texttt{++i;}         \\
+                \texttt{-{}-}     & Prefix-Dekrementierung & \texttt{-{}-i;}       \\
+                \texttt{.}        & Punkt                  & \texttt{Math.abs(5);} \\
+                \texttt{-}        & Unäres Minus           & \texttt{-5}           \\
+                \texttt{+}        & Unäres Plus            & \texttt{+4}
+            \end{tabular}
+        \end{center}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Whitespaces II}
+    \begin{block}{Whitespace um \dots}
+        \begin{center}
+            \begin{tabular}{l l l}
+                \textbf{Operator}                        & \textbf{Name}           \\
+                \toprule
+                \texttt{=}                               & Zuweisung               \\
+                \texttt{+, -, *, /, |, \&, \&\&, ||, \^} & Binäre Operatoren       \\
+                \texttt{+=, -=, *=, /=, \dots}           & Kombinierte Zuweisung   \\
+                \texttt{,}                               & Kommas (z.B. Parameter) \\
+                \texttt{==, !=, >=, <=, \dots}           & Vergleiche              \\
+                \texttt{if, else, for, while, \dots}     & Keywords
+            \end{tabular}
+        \end{center}
+
+        \vspace{1em}
+        Und mehr\dots
+    \end{block}
+\end{frame}
+
+\begin{frame}{Java Code Conventions}
+    \begin{block}{Warum?}
+        \begin{itemize}
+            \item Quelltext wird vor allem \textit{gelesen} -- und nicht nur von euch!
+            \item Softwarewartung erzeugt \textasciitilde80\% der Gesamtkosten für Software
+            \item Quelltext ist die einzig \textit{verlässliche} Dokumentation, da er immer aktuell ist
+            \item Gut geschriebener Code ist besser verständlich als Dokumentation
+            \item Software wird mit Quelltexten ausgeliefert
+            \item \href{http://www.oracle.com/technetwork/java/javase/documentation/codeconvtoc-136057.html}{Java Code Conventions} (JCC) sind internationaler Standard
+        \end{itemize}
+    \end{block}
+\end{frame}

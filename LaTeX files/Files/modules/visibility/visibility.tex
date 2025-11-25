@@ -1,0 +1,71 @@
+\section{Sichtbarkeit, Getter / Setter}
+
+\subsection{Sichtbarkeit}
+
+\begin{frame}{Sichtbarkeit}
+    \begin{block}{Sichtbarkeit}
+        Es ist wichtig, Attribute und Methoden vor externen Zugriffen zu schützen, bzw. diesen Zugriff bewusst zuzulassen. Dafür gibt es die folgenden Schlüsselworte:
+
+        \pause
+
+        \begin{center}
+            \begin{tabular}{lcccc}
+                \textbf{Modifier}      & \textbf{Klasse} & \textbf{Paket} & \textbf{Unterklasse} & \textbf{Welt} \\
+                \midrule[1pt]
+                \textbf{public}        & Y               & Y              & Y                    & Y             \\
+                \cmidrule[0.5pt]{2-5}
+                \textbf{protected}     & Y               & Y              & Y                    & N             \\
+                \cmidrule[0.5pt]{2-5}
+                \textbf{<no modifier>} & Y               & Y              & N                    & N             \\
+                \cmidrule[0.5pt]{2-5}
+                \textbf{private}       & Y               & N              & N                    & N             \\
+            \end{tabular}
+        \end{center}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Sichtbarkeit - Merkregeln}
+    \begin{block}{Sichtbarkeit - Merkregeln für unser Modul}
+        \begin{itemize}
+            \item Alles hat einen Modifier (nein, <no modifier> ist kein Modifier)
+            \item \textit{private} für Attribute, Hilfsmethoden, private Konstruktoren
+            \item \textit{public} definiert Schnittstellen zu anderen Klassen
+            \item \textit{protected} falls notwendig \\ \ \\
+
+                  \pause
+
+            \item \textbf{Beginne immer mit \textit{private} und lockere die Sichtbarkeit}.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Sichtbarkeit - Beispiel}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/visibility/src/visibility.java}
+    \end{exampleblock}
+
+    \begin{block}{Und nun?}
+        Wie können wir aber auf solche \textit{private} Attribute / Methoden zugreifen?
+    \end{block}
+\end{frame}
+
+\subsection{Getter / Setter}
+
+\begin{frame}{Getter / Setter}
+    \begin{block}{Getter / Setter}
+        \textbf{Die Lösung}: sogenannte Getter und Setter! \\
+        \textbf{Getter} helfen beim kontrollierten Auslesen eines private Attributes \\
+        \textbf{Setter} helfen beim kontrollierten Setzen eines private Attributes
+    \end{block}
+
+    \begin{alertblock}{Grundsätzlich \dots}
+        \dots sollten Attribute einer Klasse nur über \textit{Getter} und \textit{Setter} zugreifbar sein. \\
+        Setter ermöglichen auch, Plausibilitätsabfragen zu implementieren und mögliche Fehlerzustände zu verhindern.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Getter / Setter - Beispiel}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\footnotesize]{../modules/visibility/src/getter-setter.java}
+    \end{exampleblock}
+\end{frame}

@@ -1,0 +1,75 @@
+\section{Übungsblatt 4}
+
+\begin{frame}[fragile]{Übungsblatt 4}
+    \begin{itemize}
+        \item Klassenkonstanten sind \texttt{static final} nicht nur \texttt{final}
+        \item
+
+              \begin{lstlisting}
+if(x == true) { return true; } else { return false; }
+return x; // identische Aussage zu vorher
+             \end{lstlisting}
+
+        \item Keine eigenen Implementationen von Stack, etc.
+        \item Bitte nie Fangen von ArrayIndexOutOfBoundsException/NullPointerException/RuntimeException
+        \item Hohe Verschachtelungstiefe \href{https://blog.codinghorror.com/flattening-arrow-code/}{https://blog.codinghorror.com/flattening-arrow-code/}
+        \item Attribute final setzen wenn möglich
+        \item Benutzt Vererbung und objektorientierte Modellierung. Sonst gibt's Abzüge
+        \item Zwei Dateien sind keine adequate Lösung für Blatt 4
+        \item Wenn ihr um 5:00 morgens noch an der Abgabe arbeitet seid ihr zu spät dran
+        \item \lstinline{/**asdfgsadsfa**/} ist kein adequater Javadoc
+        \item Die meisten Abzüge gehen automatisch über die Tests für Funktionalität
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Programmieren gegen Interfaces}
+    \begin{block}{Ein kleines Programm}
+        \begin{lstlisting}
+public @@cArrayList@@<String> split(String input) {}
+public String concat(@@cArrayList@@<String> input) {}
+// Alles gut:
+@@cArrayList@@<String> parts = split("Hello you there");
+concat(parts); // funktioniert
+    \end{lstlisting}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Und jetzt kommt von irgendwo etwas dazu}
+        \begin{lstlisting}
+public @@cLinkedList@@<String> splitAndTransform(String input) {}
+
+// *Sad List noises*: Kaputt
+@@cArrayList@@<String> parts = splitAndTransform("Hello you there");
+// Auch kaputt!
+concat(splitAndTransform("Hello you there"));
+    \end{lstlisting}
+    \end{block}
+    \vspace*{-3pt}
+\end{frame}
+
+\begin{frame}[fragile]{Mit Interfaces}
+    \begin{block}{Ein kleines Programm}
+        \begin{lstlisting}
+public @@cList@@<String> split(String input) {}
+public String concat(@@cList@@<String> input) {}
+// Alles gut:
+@@cList@@<String> parts = split("Hello you there");
+concat(parts); // works
+    \end{lstlisting}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Und jetzt kommt von irgendwo etwas dazu}
+        \begin{lstlisting}
+public @@cList@@<String> splitAndTransform(String input) {}
+
+// *Happy List noises*: Geht
+@@cList@@<String> parts = splitAndTransform("Hello you there");
+// geht auch!
+concat(splitAndTransform("Hello you there"));
+    \end{lstlisting}
+    \end{block}
+    \vspace*{-3pt}
+\end{frame}

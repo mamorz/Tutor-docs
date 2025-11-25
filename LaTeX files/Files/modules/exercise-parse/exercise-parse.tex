@@ -1,0 +1,25 @@
+\section{Aufgabe: Parsen}
+
+\begin{frame}{Und was für euch!}
+    \begin{block}{Eine eigene Sprache}
+        \begin{itemize}
+            \item Nutzt die Basis in \texttt{src/parse} [ohne die Lösung ;)]
+            \item Eure Sprache: Arithmetische Ausdrücke mit binärem Plus, Minus und Klammerung
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Tipps | Hilfen}
+
+        \pause
+
+        \begin{align*}
+            Start            & \mapsto BinaryExpression                                     \\
+            BinaryExpression & \mapsto AtomicExpression\ (\text{'+'}\ |\ \text{'-'})\
+            AtomicExpression                                                                \\
+            AtomicExpression & \mapsto \text{'(' } BinaryExpression \text{ ')'}\ | \ Number \\
+            Number           & \mapsto \text{\texttt{[0-9]+(\textbackslash.[0-9]+)}}
+        \end{align*}
+    \end{block}
+\end{frame}

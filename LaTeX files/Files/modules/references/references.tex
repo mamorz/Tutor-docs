@@ -1,0 +1,79 @@
+\section{Referenzen}
+
+\begin{frame}{Referenz (Wdh.)}
+    \begin{block}{Warum equals?}
+        Warum eigentlich der Hinweis, dass man String nur mit equals vergleichen sollte? \\
+    \end{block}
+
+    \pause
+
+    \begin{block}{Refrenzen}
+        \begin{itemize}
+            \item Werte von nicht-primitiven Typen sind Referenzen auf Objekte! (String ist nicht primitiv!)
+            \item '==' prüft auf Wert-Gleichheit, bei Objekten also auf Identität.
+            \item 'equals(Object o)' prüft auf inhaltliche Objektgleichheit und sollte für eigene Klassen immer implementiert werden, sofern Vergleiche nötig werden.
+            \item Referenzdatentypen werden immer mit 'null' initialisiert.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Referenz}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/references/src/equals.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Referenz}
+    \begin{block}{Beispiel mit Objekten}
+        \lstinputlisting[basicstyle=\small]{../modules/references/src/point-reference.java}
+        Was wird ausgegeben und warum? \textit{(Hinweis: Point.equals == true $\iff$ beide Koordinaten identisch)}
+    \end{block}
+
+    \begin{block}{Lösung \dots}
+
+        \pause
+
+        false, true, true, false
+    \end{block}
+\end{frame}
+
+\begin{frame}{Referenz}
+    \begin{block}{.toString, .equals, .hashCode und .compareTo}
+        \begin{itemize}
+            \item Nach Möglichkeit all diese implementieren
+            \item Wird \texttt{.equals()} überschreiben, auf alle Fälle auch \texttt{.hashCode()}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{.hashCode()}
+        \lstinputlisting[basicstyle=\small]{../modules/references/src/hash-code.java}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Arrays kopieren}
+
+\begin{frame}{Shallow Copy vs. Deep Copy}
+    \begin{block}{Betrachte folgende Methode:}
+        \lstinputlisting[basicstyle=\small]{../modules/references/src/shallow-copy.java}
+        Was macht diese Methode?
+    \end{block}
+\end{frame}
+
+\begin{frame}{Shallow Copy vs. Deep Copy}
+    \vspace*{-2pt}
+
+    \begin{block}{Betrachte nun folgende Methode:}
+        \lstinputlisting[basicstyle=\small]{../modules/references/src/deep-copy.java}
+        Was ist zu beachten, wenn die Arrayelemente nun vom Typ Point sind?
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Aufgabe}
+        Schreibe eine Methode \textbf{public static Point[] deepCopy(Point[] a)}, die eine Kopie des Arrays a als Rückgabewert hat und dabei auch alle im Array a enthaltenen Objekte kopiert.
+    \end{exampleblock}
+
+    \vspace*{-2pt}
+\end{frame}

@@ -1,0 +1,129 @@
+\graphicspath{{../modules/java-setup/img/}}
+
+\section{Java}
+
+\subsection{Installation}
+
+\begin{frame}{Installation Java}
+    \begin{block}{JDK oder OpenJDK}
+        Beides ist für unsere Zwecke OK. OpenJDK ist seit 2006 offizieller freier Nachfolger des JDK.
+    \end{block}
+
+    \begin{block}{Mac OS}
+        Bereits mit Betriebssystem installiert
+    \end{block}
+
+    \begin{block}{Linux}
+        Installation über Paketverwaltung
+    \end{block}
+
+    \begin{block}{Windows}
+        \begin{itemize}
+            \item Download \href{https://adoptopenjdk.net}{OpenJDK} (Alternativ: \href{https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html}{Java SE Development Kit 11})
+            \item evtl. Umgebungsvariable (PATH) ergänzen - oder immer lange Pfade tippen \\
+                  \textit{z.B C:\textbackslash Program Files\textbackslash Java\textbackslash jdk-11\textbackslash bin}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{JDK}
+
+\begin{frame}{JDK}
+    \setbeamercovered{transparent}
+    \begin{block}{Der Java Compiler - \textit{javac}}
+        \begin{itemize}
+            \item Übersetzt den Java-Sourcecode (*.java) in Java-Bytecode (*.class)
+            \item Fehler-Report bei syntaktisch inkorrekten Java-Klassen
+            \item Kommandozeilenbefehl: \textit{javac Klassenname.java}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Der Java Loader - \textit{java}}
+        \begin{itemize}
+            \item Führt den durch javac generierten Bytecode aus
+            \item Benötigt sog. \textit{main}-Methode
+            \item Kommandozeilenbefehl: \textit{java Klassenname}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Der Java Dokumentation Generator - \textit{javadoc}}
+        Aus den Kommentaren im Java-Sourcecode wird automatisch eine Dokumentation generiert.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Java-Shell (JShell)}
+    \begin{block}{Die Java-Shell - \textit{jshell}}
+        \begin{itemize}
+            \item Seit Java 9
+            \item Ist ein (mächtiger) Kommandointerpreter
+            \item Read-Eval-Print-Loop
+            \item Kommandozeilenbefehl: \textit{jshell}
+            \item Gut, um schnell etwas zu testen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{JDK - Was passiert hier?}
+    \begin{figure}
+        \includegraphics[scale=0.4]{jdk-1.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{JDK - Was passiert hier?}
+    \begin{figure}
+        \includegraphics[scale=0.4]{jdk-2.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{JDK - Was passiert hier?}
+    \begin{figure}
+        \includegraphics[scale=0.4]{jdk-3.png}
+    \end{figure}
+\end{frame}
+
+\subsection{Sourcecode erstellen}
+
+\begin{frame}{Java-Sourcecode erstellen}
+    \begin{block}{Editor}
+        \begin{itemize}
+            \item Java-Sourcecode schreibt man mit einem Editor. Zum Beispiel:
+                  \begin{tabular}{ll}
+                      Windows: & Notepad++, Notepad           \\
+                      Linux:   & vi, vim, neovim, emacs, nano \\
+                      Mac:     & TextEdit, SimpleText         \\
+                  \end{tabular}
+
+                  \pause
+
+            \item Warum keine Programme wie Word, Writer, \dots ?
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Integrierte Entwicklungsumgebung (IDE)}
+        IDEs wie \textbf{IntelliJ IDEA}, Eclipse, (Visual Studio Code,) \dots
+
+        \pause
+
+        \begin{itemize}
+            \item können (gerne) genutzt werden
+            \item werden von mir erst später unterstützt
+            \item \textit{\textbf{Im eigenen Interesse: Schreibt die ersten Übungsaufgaben im Texteditor!}}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Quelltext erstellen - LIVE}
+
+\begin{frame}{Eclipse und Java-Quelltext erstellen - LIVE}
+    \begin{center}
+        \begin{Huge}
+            Hallo Welt!
+        \end{Huge}
+    \end{center}
+\end{frame}

@@ -1,0 +1,153 @@
+\graphicspath{{../modules/recursion/img/}}
+
+\section{Rekursion}
+
+\begin{frame}{Rekursion}
+
+    \pause
+
+    \begin{block}{Divide and Conquer}
+        'divide and conquer' - 'Teile und Herrsche' ist ein wichtiges Grundprinzip der Algorithmik:
+
+        \pause
+
+        \begin{itemize}
+            \item Teile ein Problem in mehrere Teilprobleme, um es zu lösen
+
+                  \pause
+
+            \item Löse jedes einzelne (kleinere) Teilproblem
+
+                  \pause
+
+            \item Füge die einzelnen (kleineren) Teillösungen zur Gesamtlösung zusammen
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Rekursionsprinzip}
+        \textit{Man führe das gleiche Berechnungsmuster immer wieder mit einfacheren, bzw. kleineren Eingabedaten aus, bis man zu einer trivialen Eingabe gelangt.} \\
+        \textbf{Realisierung:} Methoden rufen sich direkt oder indirekt selbst auf \\
+        \textbf{Rekursion} ist die Standardimplementierung von Divide and Conquer
+    \end{block}
+\end{frame}
+
+\subsection{Definition}
+
+\begin{frame}{Rekursive Methoden}
+
+    \pause
+
+    \begin{block}{Definition}
+        \begin{itemize}
+            \item Eine Methode f heißt \textbf{(direkt) rekursiv}, wenn im Rumpf von f Aufrufe von f vorkommen.
+
+                  \pause
+
+            \item Die Methode f heißt \textbf{indirekt rekursiv}, wenn im Rumpf von f eine Methode g aufgerufen wird, die ihrerseits direkt oder indirekt auf Aufrufe von f führt.
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Merke}
+        \begin{itemize}
+            \item Bei jedem rekursiven Aufruf wird eine \textbf{neue Instanz}\footnote{De facto heißt das ein neuer Stackframe usw...} der jeweiligen Methode gestartet. \\
+            $\Rightarrow$ Jede Instanz hat ihre eigenen lokalen Variablen und Parameter, welche 'von außen' nicht sichtbar sind.
+            \item Wenn die aufgerufene Untermethode terminiert, wird in der aufrufenden Methode weiter gemacht!
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Rekursion - Obligatorisches Meme}
+    \begin{center}
+        \includegraphics[scale=0.2]{recursion.png} \\
+        \begin{flushright}
+            \begin{tiny}
+                \textit{[Quelle: https://www.smbc-comics.com/comic/recursion - Recursion]}
+            \end{tiny}
+        \end{flushright}
+    \end{center}
+\end{frame}
+
+\subsection{Beispiel: Fakultät}
+
+\begin{frame}{Beispiel: Fakultät}
+    \begin{exampleblock}{Fakultät}
+        Die Fakultätsfunktion n! berechnet das Produkt der Zahlen 1, 2, \dots , n. Rekursiv lässt sich n! daher so berechnen:
+        \[
+            n! = \begin{cases}
+                1               & ,\text{falls } n = 0 \\
+                n \cdot(n - 1)! & ,\text{falls } n > 0
+            \end{cases}
+        \]
+        \vspace*{-0.35em}
+        In Java:% (live!)
+
+        \pause
+
+        \lstinputlisting[basicstyle=\small]{../modules/recursion/src/factorial.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Beispiel: Fakultät - was passiert}
+    Wie sieht das nun aus, wenn wir fac(4) aufrufen?
+    \\ \ \\
+    \begin{center}
+        \texttt{\small \setlength{\tabcolsep}{0.2em}
+            \begin{tabular}{lr}
+                \only<1->{fac(4)\\}
+                \only<2->{= ( \textbf{if} ({\color<3->{green}4>0}) \{ {\color<3>{red}4*fac(4-1)} \} \textbf{else} \{ 1 \} )       & // Einsetzen\\}
+                \only<3->{= {\color<3>{red}4*fac(3)}                                                                              & // Auswerten\\}
+                \only<4->{= 4*( \textbf{if} ({\color<5->{green}3>0}) \{ {\color<5>{red}3*fac(3-1)} \} \textbf{else} \{ 1 \} )     & // Einsetzen\\}
+                \only<5->{= 4*{\color<5>{red}3*fac(2)}                                                                            & // Auswerten\\}
+                \only<6->{= 4*3*( \textbf{if} ({\color<7->{green}2>0}) \{ 2*fac(2-1) \} \textbf{else} \{ 1 \} )                   & // Einsetzen\\}
+                \only<7->{= 4*3*{\color<7>{red}2*fac(1)}                                                                          & // Auswerten\\}
+                \only<8->{= 4*3*2*( \textbf{if} ({\color<9->{green}1>0}) \{ {\color<9>{red}1*fac(1-1)} \} \textbf{else} \{ 1 \} ) & // Einsetzen\\}
+                \only<9->{= 4*3*2*{\color<9>{red}1*fac(0)}                                                                        & // Auswerten\\}
+                \only<10->{= 4*3*2*1*( \textbf{if} ({\color<11->{red}0>0}) \{ 0*fac(0-1) \} \textbf{else} \{ 1 \} )               & // Einsetzen\\}
+                \only<11->{= 4*3*2*1*{\color<11>{red}1}                                                                           & // Auswerten\\}
+                \only<12->{= 24                                                                                                   & }
+            \end{tabular}
+        }
+    \end{center}
+\end{frame}
+
+\subsection{Beispiel: Quicksort}
+
+\begin{frame}{Beispiel: Quicksort - rekursives Sortieren}
+    \begin{block}{Lösungsmethode}
+        Wir können Quicksort wunderbar rekursiv lösen, indem wir \textit{Divide and Conquer} umsetzen \dots
+
+        \pause
+
+        \begin{itemize}
+            \item Wähle beliebiges Pivot-Element p und sortiere das Array in zwei Teilen
+
+                  \begin{itemize}
+                      \pause
+                      \item Links Elemente <= p
+                      \item Rechts Elemente >= p
+                      \item Wenn man das im Array selbst tut, steht p anschließend an der richtigen Stelle.
+                  \end{itemize}
+
+                  \pause
+
+            \item Verfahre rekursiv mit dem linken und rechten Teil
+
+                  \pause
+
+            \item Gibt es nur noch elementare Blöcke, so ist das Array sortiert
+
+                  \pause
+
+            \item Der ganze Sortieraufwand steckt also in der Zerlegung in kleinere Teilprobleme (und nicht im Vereinen der Lösungen)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Quicksort - Implementierung}
+    \vspace*{-0.55em}
+    \lstinputlisting[basicstyle=\scriptsize]{../modules/recursion/src/quicksort.java}
+    % Trick latex into thinking we ended properly
+    \vspace*{-0.55em}
+\end{frame}

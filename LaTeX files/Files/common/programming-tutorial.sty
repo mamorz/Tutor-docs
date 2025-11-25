@@ -1,0 +1,154 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{programming-tutorial}[WS 2021]
+
+
+%   ____ _                             _   _
+%  / ___| | __ _ ___ ___    ___  _ __ | |_(_) ___  _ __  ___
+% | |   | |/ _` / __/ __|  / _ \| '_ \| __| |/ _ \| '_ \/ __|
+% | |___| | (_| \__ \__ \ | (_) | |_) | |_| | (_) | | | \__ \
+%  \____|_|\__,_|___/___/  \___/| .__/ \__|_|\___/|_| |_|___/
+%                               |_|
+\ProcessOptions\relax
+
+
+%  ____            _
+% |  _ \ __ _  ___| | ____ _  __ _  ___  ___
+% | |_) / _` |/ __| |/ / _` |/ _` |/ _ \/ __|
+% |  __/ (_| | (__|   < (_| | (_| |  __/\__ \
+% |_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
+%                            |___/
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{xcolor}
+\RequirePackage{ulem}
+\RequirePackage{listings}
+\RequirePackage{calc}
+\RequirePackage{tikz}
+\RequirePackage{etoolbox}
+\RequirePackage{csquotes}
+\RequirePackage{multicol}
+\RequirePackage{picins}
+\RequirePackage{diagbox}
+\RequirePackage[ngerman]{babel}
+\RequirePackage{hyperref}
+\RequirePackage{qrcode}
+
+% TIKZ
+\usetikzlibrary{fit}
+\usetikzlibrary{overlay-beamer-styles}
+
+
+%   ____      _
+%  / ___|___ | | ___  _   _ _ __
+% | |   / _ \| |/ _ \| | | | '__|
+% | |__| (_) | | (_) | |_| | |
+%  \____\___/|_|\___/ \__,_|_|
+%
+\definecolor{dim}{rgb}{0.55, 0.57, 0.67}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{commentcolor}{HTML}{626262}
+\definecolor{stringcolor}{HTML}{17c6a3}
+\definecolor{keywordcolor}{HTML}{dd2867}
+\definecolor{classcolor}{HTML}{1290c3}
+\definecolor{numbercolor}{HTML}{6897bb}
+
+
+%  ____
+% | __ )  ___  __ _ _ __ ___   ___ _ __
+% |  _ \ / _ \/ _` | '_ ` _ \ / _ \ '__|
+% | |_) |  __/ (_| | | | | | |  __/ |
+% |____/ \___|\__,_|_| |_| |_|\___|_|
+
+% Blue Hyperlinks
+\hypersetup{
+    colorlinks = true,
+    linkcolor = {royalblue},
+    urlcolor = {royalblue}
+}
+
+
+%  _     _     _   _
+% | |   (_)___| |_(_)_ __   __ _ ___
+% | |   | / __| __| | '_ \ / _` / __|
+% | |___| \__ \ |_| | | | | (_| \__ \
+% |_____|_|___/\__|_|_| |_|\__, |___/
+%                          |___/
+\lstset{%
+  language=Java,
+  %backgroundcolor=\color{white},     % choose the background color
+  basicstyle=\footnotesize,           % size of fonts used for the code
+  numberstyle=\color{numbercolor},    % number style
+  %breaklines=true,                    % automatic line breaking only at whitespace
+  captionpos=b,                       % sets the caption-position to bottom
+  commentstyle=\color{commentcolor},  % comment style
+  escapeinside={\%*}{*)},             % if you want to add LaTeX within your code
+  keywordstyle=\color{keywordcolor},  % keyword style
+  stringstyle=\color{stringcolor},    % string literal style
+  moredelim=[is][\color{classcolor}]{@@c}{@@}, % highlight classes manually
+}
+
+%   ____                                          _
+%  / ___|___  _ __ ___  _ __ ___   __ _ _ __   __| |___
+% | |   / _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` / __|
+% | |__| (_) | | | | | | | | | | | (_| | | | | (_| \__ \
+%  \____\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|___/
+%
+\newcommand{\includemodule}[1]{%
+    \input{../modules/#1/#1}%
+}
+
+\newcounter{includeIfPageCounter}
+\newcommand{\includeIf}[3]{%
+    \setcounter{includeIfPageCounter}{#1 - 1}%
+    \only<1-\theincludeIfPageCounter>{#2}%
+    \only<#1->{#3}%
+}
+
+% [background.jpg]{date}{0.42}{xkcd.png}{1337}
+\newcommand{\includexkcd}[5][]{%
+    \edef\background{{#1}}%
+    \edef\nextdate{{#2}}%
+    \begin{frame}%
+        \expandafter\notblank\background{\tikz[remember picture,overlay] \node[opacity=0.3,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{../modules/end-xkcd/img/#1}}; \clearpage}{}%
+        \begin{center}%
+            \begin{large}%
+                \expandafter\notblank\nextdate{Bis zum nächsten Tutorium am #2}{Vielen Dank für eure Aufmerksamkeit!} \\ \ \\%
+            \end{large}%
+            \includegraphics[scale=#3]{../modules/end-xkcd/img/#4} \\%
+            \begin{flushright}%
+                \begin{tiny}%
+                    \textit{[Quelle: http://xkcd.com/#5/]}%
+                \end{tiny}%
+            \end{flushright}%
+        \end{center}%
+    \end{frame}%
+}
+
+%Item mit Pfeil
+\newcommand{\aitem}{%
+\item[$\rightarrow$]
+}
+
+%   ____ ___  __  __ __  __  ___  _   _
+%  / ___/ _ \|  \/  |  \/  |/ _ \| \ | |
+% | |  | | | | |\/| | |\/| | | | |  \| |
+% | |__| |_| | |  | | |  | | |_| | |\  |
+%  \____\___/|_|  |_|_|  |_|\___/|_| \_|
+%
+%  __  __ _____ _____  _    ____    _  _____  _
+% |  \/  | ____|_   _|/ \  |  _ \  / \|_   _|/ \
+% | |\/| |  _|   | | / _ \ | | | |/ _ \ | | / _ \
+% | |  | | |___  | |/ ___ \| |_| / ___ \| |/ ___ \
+% |_|  |_|_____| |_/_/   \_\____/_/   \_\_/_/   \_\
+%
+
+%% Titelbild
+\titleimage{bauplan_2020_sdq}
+
+%% Gruppenname
+\groupname{Software Design and Quality}
+\institute{IPD Reussner}
+
+\grouplogo{}
+
+\author{Clemens Dauterman, nach Folien von Aurelia Hüll}

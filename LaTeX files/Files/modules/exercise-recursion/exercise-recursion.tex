@@ -1,0 +1,66 @@
+\graphicspath{{../modules/exercise-recursion/img/}}
+
+\section{Aufgaben: Rekursion}
+
+\subsection{Aufgabe 1 - Fibonacci}
+
+\begin{frame}{Aufgabe 1 - Fibonacci}
+    Fibonacci-Folge\footnote{\url{http://de.wikipedia.org/wiki/Fibonacci-Folge}}:
+    \\ \ \\
+    \[
+        f(n) =
+        \begin{cases}
+            n             & \text{ falls } n=0 \text{ oder } n=1 \\
+            f(n-1)+f(n-2) & \text{ falls } n >= 2
+        \end{cases}
+    \]
+\end{frame}
+
+\subsection{Aufgabe 2 - Ackermann}
+
+\begin{frame}{Aufgabe 2 - Ackermann}
+    Ackermann-Funktion\footnote{\url{http://de.wikipedia.org/wiki/Ackermannfunktion}}:
+    \\ \ \\
+    \[
+        A(m,n) =
+        \begin{cases}
+            n+1             & \text{ falls } m=0                    \\
+            A(m-1,1)        & \text{ falls } m>0 \text{ und } n=0   \\
+            A(m-1,A(m,n-1)) & \text{ falls } m>0 \text{ und } n > 0
+        \end{cases}
+    \]
+\end{frame}
+
+\subsection{Aufgabe 3 - Aufrufbäume}
+
+\begin{frame}{Aufgabe 3 - Aufrufbäume}
+    Zeichnen sie nun jeweils einen Aufrufbaum für:
+    \\ \ \\
+
+    \begin{itemize}
+        \item f(5)
+        \item A(1,2)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Aufgabe 3 - Aufrufbäume}
+    \begin{block}{Aufrufbäume}
+        \begin{minipage}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.35]{fibonacci.png}
+            \end{center}
+        \end{minipage}% necessary percent sign for side-by-side content
+        \begin{minipage}{0.5\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.25]{ackermann.png}
+            \end{center}
+        \end{minipage}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Beispiellösung}
+    \vspace*{-0.55em}
+    \lstinputlisting[basicstyle=\scriptsize]{../modules/exercise-recursion/src/solution.java}
+    % Trick latex into thinking we ended properly
+    \vspace*{-0.55em}
+\end{frame}

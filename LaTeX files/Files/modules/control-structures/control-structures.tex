@@ -1,0 +1,334 @@
+\graphicspath{{../modules/control-structures/img/}}
+
+\section{Kontrollstrukturen}
+
+\subsection{Verzweigungen}
+
+\begin{frame}[fragile]{Verzweigungen}
+    \begin{block}{if}
+        \begin{itemize}
+            \item Häufig soll ein Teil des Programmes nicht immer, sondern nur manchmal ausgeführt werden
+            \item \texttt{if} erlaubt es, die Ausführung basierend auf Bedingungen zu steuern
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Ein Spiel für Ältere}
+        \begin{lstlisting}
+int age = userAge;
+if(age < 16) {
+    System.out.println("Too young :(");
+} else {
+    System.out.println("Alright!");
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen}
+    \begin{block}{If-Kontrollflussgraph}
+        \scalebox{0.8}{%
+            \input{../modules/control-structures/src/if.latex}
+        }
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen}
+    \begin{exampleblock}{Ein Spiel für Ältere}
+        \scalebox{0.8}{%
+            \input{../modules/control-structures/src/if-game.latex}
+        }
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen}
+    \begin{block}{\texttt{else if}}
+        \begin{itemize}
+            \item Neben \texttt{if} und \texttt{else} gibt es noch \texttt{else if}
+            \item Kann wie ein geschachteltes \texttt{else} -> \texttt{if} angesehen werden
+            \item Nur \textbf{ein} Block des ifs wird betreten
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{\texttt{else if}}
+        \begin{lstlisting}[showstringspaces=false]
+int age = userAge;
+if(age < 13) {
+    System.out.println("Have a look at this 'outside'!");
+} else if(age < 16) {
+    System.out.println("Too young :(");
+} else {
+    System.out.println("Alright!");
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Aufgaben zu if}
+    \begin{block}{Altersabfrage}
+        \small
+        Für eine Spielefirma soll ein totsicheres System zum Erkennen minderjähriger Nutzer entwickelt werden.
+        Sie haben bereits ein Fenster implementiert, dass den Nutzer nach dem Alter fragt und jede Eingabe zwischen 0 und 13 ablehnt.
+        \\ \ \\
+        Nun ist den Managern jedoch zu Ohren gekommen,
+        dass viele Spieler einfach \emph{irgendeine} riesige Zahl eintragen, was sie nun verhindern müssen.
+        \\ \ \\
+        Ihr Programm bekommt als Eingabe einen \texttt{int alter} und soll
+        \texttt{System.out.println} für Ausgaben nutzen.
+
+        \begin{itemize}
+            \item Schreiben Sie ein Programm, dass jedes Alter größer als 127 ablehnt.
+            \item Erweitern Sie das Programm, sodass für das Alter 1337 „Nicht schlecht“ ausgegeben wird.
+            \item Passen Sie ihre erste Bedingung so an, dass auch Alter < 0 abgelehnt werden.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Switch}
+    \begin{block}{Motivation}
+        \begin{itemize}
+            \item Lange \texttt{if} - \texttt{else if} Ketten werden schnell unübersichtlich
+            \item Wenn mehrere Werte erlaubt sind, werden die Bedingungen schnell groß
+            \item Lösung? Switch!
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Switch}
+    \begin{block}{Aufbau}
+        \begin{lstlisting}
+int x = 5;
+switch(x) {
+case 1: // "falle durch" zum naechsten
+case 2: // "falle durch" zum naechsten
+// ...
+case 5:
+    // Behandle 5 und alle, die "durchgefallen" sind (1,2,...)
+    break; // verlasse den Fall. Stoppe Durchfallen
+case 6:
+    // Behandle NUR die 6, da nichts darueber durchfaellt
+    break;
+default:
+    // Wird aufgerufen, falls kein anderer Fall zutrifft
+    break;
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Switch}
+    \begin{exampleblock}{Beispiel}
+        \vspace*{-0.5em}
+        \lstinputlisting{../modules/control-structures/src/switch.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Switch}
+    \begin{block}{Beschränkungen}
+        \begin{itemize}
+            \item Funktioniert nur mit Ganzzahlen, \texttt{String} und Enums
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Fallthrough beachten}
+        \begin{itemize}
+            \item Das Durchfallen in darunterliegende Fälle ist oft ein Programmierfehler \\
+                  $\Rightarrow$ Aufpassen und \texttt{break} nicht vergessen!
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\setbeamercovered{transparent}
+
+\begin{frame}[fragile]{Conditional Operator \texttt{? :}}
+    \begin{block}{Motivation}
+        \begin{itemize}
+            \item \begin{lstlisting}
+int x;
+if(bedingung) {
+    x = 200;
+} else {
+    x = 500;
+}
+            \end{lstlisting}
+            \item ist relativ lang und verschleiert damit die Logik
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Auch bekannt als „ternary Operator“
+            \item Aufbau:\ \ \texttt{Bedingung ? <falls wahr> : <falls falsch>}\\
+                  Dabei ist die Bedingung ein \texttt{boolean} und \texttt{<falls wahr/falsch>} sind Ausdrücke.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Conditional Operator \texttt{? :}}
+    \begin{exampleblock}{Vorheriges Beispiel}
+        \begin{lstlisting}
+int x;
+if(bedingung) {
+    x = 200;
+} else {
+    x = 500;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+    \begin{exampleblock}{Mit dem Conditional Operator}
+        \begin{lstlisting}
+int x = z ? 200 : 500;
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Conditional Operator \texttt{? :}}
+    \begin{block}{Wann benutzt man ihn?}
+        \begin{itemize}
+            \item Wenn die Bedingung kurz ist
+            \item Wenn man in dem if nur eine Variable setzt
+            \item Als Rückgabe-Ausdruck in Methoden
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Wann benutzt man ihn nicht?}
+        \begin{itemize}
+            \item Wenn die Bedingung zu lang ist
+            \item Wenn man ihn verschachtelt: \\
+                  \begin{lstlisting}
+int x = z ? y ? 20 : 10 : 5;
+                 \end{lstlisting}
+            \item \textbf{Sehr vorsichtig mit diesem Operator sein!}
+            \item Checkstyle sagt wahrscheinlich nein
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\setbeamercovered{invisible}
+
+\subsection{Schleifen}
+
+\begin{frame}{Schleifen}
+    \begin{block}{Wozu?}
+        Mit Schleifen kann Programmcode wiederholt ausgeführt werden. \\
+        Java kennt folgende vier Schleifentypen:
+
+        \begin{itemize}
+            \item while
+            \item do \dots while
+            \item for
+            \item for-each
+        \end{itemize}
+
+        Grundsätzlich kann jeder Schleifentyp in jeden anderen überführt werden.
+    \end{block}
+\end{frame}
+
+\begin{frame}{while}
+    \begin{block}{while}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/while.java}
+    \end{block}
+
+    \begin{block}{Hinweise}
+        \begin{itemize}
+            \item Initialisierung notwendiger Variablen ist Aufgabe des Entwicklers
+            \item Bedingung wird \textbf{vor} jedem Schleifendurchlauf geprüft
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{while - Beispiel}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/while-example.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{do \dots while}
+    \begin{block}{do \dots while}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/do-while.java}
+    \end{block}
+
+    \begin{block}{Hinweise}
+        \begin{itemize}
+            \item Bedingung wird \textbf{nach} jedem Schleifendurchlauf geprüft
+            \item Schleife wird mindestens einmal ausgeführt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{do \dots while - Beispiel}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/do-while-example.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[scale=0.28]{while-do-while.jpg} \\
+
+        \begin{flushright}
+            \begin{tiny}
+                \textit{[Quelle: https://m.kd-tree.com/hash/8849bbaa45fa35480b92d4dd809e2834.jpg]}
+            \end{tiny}
+        \end{flushright}
+    \end{center}
+\end{frame}
+
+\begin{frame}{for}
+    \begin{block}{for}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/for.java}
+    \end{block}
+
+    \begin{block}{Hinweise}
+        \begin{itemize}
+            \item Initialisierung wird nur einmalig am Anfang ausgeführt
+            \item Bedingung wird \textbf{vor} jedem Schleifendurchlauf geprüft
+            \item Schritt wird \textbf{nach} jedem Schleifendurchlauf ausgeführt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{for - Beispiel}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/for-example.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{for-each (enhanced for loop)}
+    \begin{block}{for-each}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/for-each.java}
+    \end{block}
+
+    \begin{block}{Hinweise}
+        \begin{itemize}
+            \item Keine Zählvariable mehr
+            \item Funktioniert nur mit iterierbaren Datenstrukturen, bspw. Arrays, Listen, \dots
+            \item Funktioniert mit enums über die \texttt{<Enum>[] values()} Methode
+                  (z.B. \texttt{DayOfWeek.values()})
+            \item Laufvariable enthält immer das aktuelle Objekt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{for-each - Beispiel}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/control-structures/src/for-each-example.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Abbruchanweisungen}
+    \begin{alertblock}{Hinweise}
+        \begin{itemize}
+            \item Schleifen können abgebrochen werden, bevor alle Schleifendurchläufe abgearbeitet sind
+            \item \texttt{break} veranlasst das sofortige Verlassen der Schleife
+            \item \texttt{continue} setzt die Schleife mit dem nächsten Durchgang fort
+            \item Der Lesbarkeit und Nachvollziehbarkeit willen \textbf{sehr sparsam} verwenden!
+        \end{itemize}
+    \end{alertblock}
+\end{frame}

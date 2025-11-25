@@ -1,0 +1,137 @@
+\section{Generics}
+
+\begin{frame}{Generics}
+    \begin{block}{Die Idee dahinter}
+        Nur einmalige Realisierung eines Programmierkonzepts (z.B. Liste) und zwar unabhängig vom Typ, der den Basisdaten zugrunde liegt.
+    \end{block}
+
+    \begin{block}{Merke}
+        Generics abstrahieren vom zugrunde liegenden Basistyp. (Interface abstrahiert von der Implementierung.)
+    \end{block}
+\end{frame}
+
+\begin{frame}{Generics - Zum Nachdenken \dots}
+    \begin{block}{Problem bis Java 5 \dots}
+        Datenstrukturen waren prinzipiell offen für jeden Typ.
+
+        \begin{itemize}
+            \item beim Speichern wurden Objekte vom allg. Typ 'Object' entgegengenommen
+            \item Rückgabewerte waren ebenfalls vom Typ 'Object'
+        \end{itemize}
+
+        Eine Liste soll aber z.B. nur T-Objekte und keine X-, Y- oder Z-Objekte enthalten. Das kann mit dem allg. Typ 'Object' jedoch nicht verhindert werden.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Generics - Zum Nachdenken II \dots}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-1.java}
+
+        Der 'cast' in Zeile 3 ist notwendig, da Iterator nur Daten vom Typ 'Object' liefert.
+
+        \pause
+
+        \begin{itemize}
+            \item Warum kann hier ein Runtime Error auftreten, falls der Entwickler mit Integer falsch liegt?
+
+                  \pause
+
+            \item Wie könnte man das Problem vermeiden?
+
+                  \pause
+
+            \item Gefährlich, falls andere sie modifizieren können:
+                  \begin{lstlisting}[showstringspaces=false]
+List myIntList = new ArrayList();
+myIntList.add("Evil Incarnate, Inc."); // Schade :(
+                \end{lstlisting}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Generics - Zum Nachdenken III \dots}
+    \begin{exampleblock}{Beispiel zur Vermeidung}
+        \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-2.java}
+    \end{exampleblock}
+
+    \pause
+
+    \begin{block}{Seit Java 5 \dots}
+        Mit Java 5 nutzt die Collection-API sehr intensiv Generics. Daraus folgt bessere Typsicherheit (nur spezielle Objekte in der Datenstruktur), da angegeben werden kann, welche Typen in der Liste erlaubt sind
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Beispiel}
+        Was ist hier erlaubt
+
+        \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-3.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Generics - Typeinschränkung}
+    \begin{block}{Typeinschränkung möglich!}
+        Es ist möglich, den Typ des Parameters einzuschränken! \\
+
+        \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-8.java}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Generics und Vererbung}
+    \begin{block}{Subtypen}
+        \begin{itemize}
+            \item Ist dies möglich:
+
+                  \begin{lstlisting}
+List<@@cDog@@> dogs = new ArrayList<>();
+// Liste von Hunden ist-ein Liste von Tieren
+List<@@cAnimal@@> animals = dogs;
+                \end{lstlisting}
+
+                  \pause
+
+            \item \textbf{Nein!} Warum nicht?
+
+                  \pause
+
+                  \begin{lstlisting}
+List<@@cDog@@> dogs = new ArrayList<>();
+List<@@cAnimal@@> animals = dogs;
+animals.add(new @@cCat@@()); // Autsch :(
+                \end{lstlisting}
+
+            \item Was ist mit Arrays?
+
+                  \pause
+
+                  Da geht das! \textbf{Aufpassen!}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Generics - Zusammenfassung}
+    \begin{block}{Syntax}
+        \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-4.java}
+        \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-5.java}
+    \end{block}
+
+    \begin{exampleblock}{Beispiel}
+        \begin{itemize}
+            \item Klassendeklaration:
+                  \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-6.java}
+
+                  \pause
+
+            \item Verwendung:
+                  \lstinputlisting[basicstyle=\small]{../modules/generic/src/generic-7.java}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Generics - Zusammenfassung}
+    \begin{alertblock}{Wichtig!}
+        Die Typ-Parameter dürfen NUR mit Referenz-Datentypen instantiiert werden!
+        \\ \ \\
+        Primitive Datentypen sind also NICHT erlaubt!
+    \end{alertblock}
+\end{frame}

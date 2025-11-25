@@ -1,0 +1,174 @@
+\section{Parsen}
+
+\begin{frame}{Parsen}
+    \begin{block}{Regex (Regulärer Ausdruck)}
+        \begin{itemize}
+            \item Beschreibung der „Form“ einer Zeichenkette
+            \item Kann natürlich nur reguläre Sprachen beschreiben
+            \item \url{https://regex101.com/} - RegEx Debugging
+            \item \url{https://regexper.com/} - Pretty Railroad diagrams
+            \item \url{https://regexr.com/} - Gute Gesamtübersicht
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Beispiel}
+        \begin{itemize}
+            \item KIT-Email: \texttt{.+@[a-z]+\textbackslash.kit\textbackslash.edu}
+            \item Ganzzahliger Taschenrechner: \texttt{[0-9]+[+-*/][0-9]+}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Parsen}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Setzt sich aus verschiedenen Ausdrücken zusammen
+            \item Wichtige Ausdrücke:
+                  \begin{itemize}
+                      \item \texttt{.} Ein Zeichen (beliebig, nicht Newline)
+                      \item \texttt{\textbackslash} Escape (Sonderzeichen)
+                      \item \texttt{[abc]} a oder b oder c
+                      \item \texttt{a|[bc]} a oder (b oder c)
+                      \item \texttt{a*} Beliebig viele a
+                      \item \texttt{a+} Mindestens ein a
+                      \item \texttt{[0-9]} Eine Zahl von 0 bis 9
+                      \item \texttt{[4-6]\{0,1\}} Eine oder keine Zahl von 4 bis 6
+                      \item \texttt{[abc]|([2-8][0-9])} Gewohnte Klammerung
+                      \item \dots
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Parsen}
+    \begin{exampleblock}{Java}
+        \begin{lstlisting}
+final String REGEX = ".+@[a-z]+\\.kit\\.edu";
+System.out.println("bob@xkcd.com".matches(REGEX)); // false
+System.out.println("bob@student.kit.edu".matches(REGEX)); // true
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Parsen}
+    \begin{block}{Aufgabe 1}
+        Überprüfe ob eine URL die Form \texttt{http://www.<URL>.example}, mit <URL> bestehend aus Groß- und Kleinbuchstaben, Bindestriche und Punkten.
+    \end{block}
+%TODO: uncomment this if you are not using this module while insight
+    %\pause
+
+    %\begin{exampleblock}{Lösung 1}
+    %    \begin{lstlisting}
+%final String URL_REGEX = "http:\/\/www\\.[a-zA-Z.-]+\\.example";
+ %           \end{lstlisting}
+%    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Parsen}
+    \begin{block}{Aufgabe 2}
+        Überprüfe ob eine gegebene Koordinate die Form eines numerisches Wertes von -99 bis 99 in runden Klammer hat, ohne führende Nullen und exklusive -0. Bsp: \texttt{(-42)}.
+    \end{block}
+
+%    \pause
+
+%    \begin{exampleblock}{Lösung 2}
+%        \begin{lstlisting}
+%final String COORDINATE_REGEX = "\((0|-?[1-9][0-9]{0,1})\)";
+%            \end{lstlisting}
+%    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Die einfachste Art von Parser: Recursive Descent}
+    \begin{block}{Zentrale Beobachtung}
+        \begin{itemize}
+            \item Nehmen wir eure Aufgabe 4. Die Datei besteht aus
+                  \begin{itemize}
+                      \item Place Instruktionen
+
+                            \begin{itemize}
+                                \item Typ
+                                \item ";"
+                                \item id
+                                \item ";"
+                                \item Gewicht
+                                \item ";"
+                                \item Stapelnummer
+                            \end{itemize}
+
+                      \item "\-\-"
+                      \item Move Instruktionen
+
+                            \begin{itemize}
+                                \item Von
+                                \item ";"
+                                \item Zu
+                            \end{itemize}
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Und weiter!}
+    \begin{block}{Aufteilung}
+        \begin{itemize}
+            \item Gewicht
+                  \begin{itemize}
+                      \item Zahl
+                      \item "kg"
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Recursive Descent}
+    \begin{block}{Zentrale Beobachtung}
+        \begin{itemize}
+            \item Jedes Element besteht aus weiteren (einfacheren) Elementen, bis man bei einer untersten elementaren Ebene angelangt
+            \item Dies ist in Java über Rekursion lösbar:
+
+                  \begin{lstlisting}
+public InputFile parseInputFile() throws ParseException {
+    List<PlaceInstruction> placeInstructions = parsePlaceInstructions();
+
+    parseSeparator();
+    stringReader.assertRead(System.lineSeparator());
+
+    List<MoveInstruction> moveInstructions = parseMoveInstructions();
+
+    return new InputFile(placeInstructions, moveInstructions);
+}
+        \end{lstlisting}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{\texttt{java.io.StreamTokenizer}}
+    \begin{block}{Was ist da?}
+        \begin{itemize}
+            \item Wandelt einen Eingabestream in eine Folge von Tokens um
+            \item Nutzlich um Parsen zu automatisieren
+            \item Typischerweise ruft man \lstinline{nextToken()} auf bis man ein \lstinline{TT_EOF} liest, der das Ende markiert
+            \item Aus diesen Tokens baut man dann oft einen Syntaxbaum 
+        \end{itemize}
+    \end{block}
+    \begin{block}{Ein paar Links}
+        \begin{itemize}
+            \item \url {https://docs.oracle.com/javase/10/docs/api/java/io/StreamTokenizer.html}
+            \item \url{https://www.baeldung.com/java-streamtokenizer}
+        \end{itemize}
+    \end{block}
+\end{frame}
+ 
+\begin{frame}{Aufgabe um euch während der Einsicht zu beschäftigen :D}
+    \begin{block}{Aufgabe}
+        Implementiert einen linksrekursiven Parser für mathematische Ausdrücke.
+        Verwendet folgende Grammatik:\\
+        \texttt{Expr} $\rightarrow$ \texttt{Term RExpr}\\
+        \texttt{RExpr} $\rightarrow$ \texttt{+ Expr | - Expr | }$\epsilon$\\
+        \texttt{Term} $\rightarrow$ \texttt{Fact RTerm}\\
+        \texttt{RTerm} $\rightarrow$ \texttt{* Term | / Term | }$\epsilon$\\
+        \texttt{Fact} $\rightarrow$ \texttt{( Expr ) | } $x\in\mathbb{N}_0$\\
+        Ihr könnt den \lstinline{StreamTokenizer} verwenden, müsst es aber nicht. Es ist dieses Tutorium leider keine Zeit
+        für eine gute Erklärung, aber es gibt sehr viel gutes Material online.
+    \end{block}
+\end{frame}

@@ -1,0 +1,13 @@
+Infinity
+Infinity
+true
+-Infinity
+-Infinity
+true
+NaN
+NaN
+false
+false
+true
+false
+true

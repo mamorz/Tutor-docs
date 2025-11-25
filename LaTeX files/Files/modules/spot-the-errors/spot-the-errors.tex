@@ -1,0 +1,31 @@
+\graphicspath{{../modules/spot-the-errors}}
+
+\section{Lustige Aufgabe}
+\begin{frame}{Finde die Fehler}
+    \begin{center}
+        \includegraphics[scale=0.0335]{Infobaubanner_Druck2.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Die Fehler}
+    \begin{center}
+        \includegraphics[scale=0.0335]{Infobaubanner_Druck2_annotated.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Die Fehler}
+    \begin{block}{Was genau ist falsch?}
+        \begin{itemize}
+            \item Gar kein JavaDoc
+            \item Utility Klassen müssen \lstinline{public static final} sein
+            \item Deutscher code
+            \item Schlechter Bezeichner
+            \item \lstinline{ungewisseZukunft} ist anscheinend \lstinline{public}
+            \item Unnötige Komplexität (\lstinline{== true} Vergleich)
+            \item Magic Strings
+            \item System\#exit ist schlechter Stil
+            \item Stilistisch unschöne Klammersetzung
+            \item Und das alles auf 7 Zeilen!
+        \end{itemize}
+    \end{block}
+\end{frame}

@@ -1,0 +1,11 @@
+@startuml
+left to right direction
+(*) -->  if "[age < 16]" then
+--> "Too young :("
+--> "end"
+else
+--> "Alright!"
+--> "end"
+endif
+
+@enduml

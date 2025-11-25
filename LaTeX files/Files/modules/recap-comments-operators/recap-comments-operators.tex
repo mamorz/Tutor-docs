@@ -1,0 +1,161 @@
+\graphicspath{{../modules/recap-comments-operators/img/}}
+
+\section{Wiederholung}
+
+\begin{frame}{Was bisher geschah \dots}
+    \begin{block}{Bisherige Inhalte}
+        \begin{itemize}
+            \begin{multicols}{2}
+                \item Klassen
+                \item Objekte
+                \item Attribute
+                \item Variablen
+                \item Datentypen
+                \item enum
+                \item Methoden
+                \item Konstruktoren
+                \item main-Methode
+                \item Kontrollstrukturen
+                \begin{itemize}
+                    \item Bedingte Ausführung
+                    \item Schleifen
+                \end{itemize}
+            \end{multicols}
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Wer weiss es?}
+        In eigenen Worten, mit Beispiel?
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wiederholung}
+    \begin{exampleblock}{\texttt{static}}
+        \begin{itemize}
+            \item Was war nochmal gleich der Unterschied zwischen mit/ohne \texttt{static}?
+
+                  \pause
+
+            \item Wann \texttt{static} und wann nicht?
+
+                  \pause
+
+            \item Wie ist das bei Methoden?
+
+                  \pause
+
+                  \texttt{new Math().abs(-20)} oder \texttt{Math.abs(-20)}?
+        \end{itemize}
+    \end{exampleblock}
+
+    \pause
+
+    \begin{exampleblock}{Kommentare?}
+        \pause
+        \begin{itemize}
+            \item Zeilenkommentar: \texttt{// Ich bin ein Kommentar}
+            \item Blockkommentar: \texttt{/* Mehrere Zeilen möglich! */}
+            \item Javadoc: \texttt{/** Beschreibung einer Klasse, Methode, \dots */}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wiederholung}
+    \begin{block}{Kommentare - Hinweise}
+        \begin{itemize}
+            \item Knapp aber präzise
+            \item Keine offensichtlichen Banalitäten kommentieren, die direkt ersichtlich sind
+            \item Zum Verständnis des Programms beitragen -- nicht dieses unleserlich machen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung}
+    \begin{block}{Was ist das jeweilige Ergebnis?}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-comments-operators/src/expression-1a.java}
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Gefällts?}
+        Schön, so ganz ohne Leerzeichen, nicht?\\
+        Würdet Ihr solchen Code \sout{korrigieren} \textit{lesen} wollen?
+        \\ \ \\
+        \textit{(Just because you can doesn't mean you \textbf{should}.)}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Wiederholung}
+    \begin{block}{Was ist das jeweilige Ergebnis? \textit{(mit Hilfe)}}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-comments-operators/src/expression-1b.java}
+    \end{block}
+
+    \begin{exampleblock}{Ergebnis \dots}
+        \pause
+
+        i == -1215761 (Überlauf!)\\
+        b == true
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Wiederholung}
+    \begin{block}{Was ist das Ergebnis für \textit{j1, c1, j2, c2}?}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-comments-operators/src/expression-2.java}
+    \end{block}
+
+    \begin{exampleblock}{Ergebnis \dots}
+
+        \pause
+
+        \begin{minipage}{0.5\textwidth}
+            j1 = 0 \\
+            c1 = true \\
+            j2 = 4 \\
+            c2 = false
+        \end{minipage}% necessary percent sign for side-by-side content
+        \begin{minipage}{0.5\textwidth}
+            WARUM? \pause (Stichwort: Kurzauswertung)
+        \end{minipage}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Aber warum? Was ist mit Präzedenz??}
+    \begin{block}{Auswertung von Unterausdrücken}
+        Die Auswertung von Unterausdrücken ist unabhängig von der Präzedenz der
+        einzelnen Operatoren und wird meistens von links nach rechts evaluiert.
+        Dabei ist garantiert, dass beide Argumente von Operatoren vor diesen
+        ausgewertet werden (außer bei Kurzschlussauswertung).
+
+        \vspace{1em}
+
+        \begin{minipage}{0.4\textwidth}
+            \includegraphics[scale=0.3]{example-from-before.png}
+        \end{minipage}% necessary percent sign for side-by-side content
+        \begin{minipage}{0.6\textwidth}
+            Durch die von links nach rechts ablaufende Auswertung wird die Rechte Seite des \texttt{||} -- Operators nicht ausgewertet.
+        \end{minipage}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Wiederholung}
+    \begin{block}{Was ist das Ergebnis für \textit{s}?}
+        \lstinputlisting[basicstyle=\small]{../modules/recap-comments-operators/src/expression-3a.java}
+    \end{block}
+
+    \begin{exampleblock}{Ergebnis \dots}
+
+        \pause
+
+        'Test: 535'
+        \\ \ \\
+        WARUM? \\
+
+        \pause
+
+        Präzedenz führt zu folgender Auswertung:
+
+        \lstinputlisting[basicstyle=\small]{../modules/recap-comments-operators/src/expression-3b.java}
+
+        Was müssen wir tun, um 'Test: 40' zu erhalten?
+    \end{exampleblock}
+\end{frame}

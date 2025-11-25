@@ -1,0 +1,237 @@
+\section{Vererbung}
+
+\setbeamercovered{transparent}
+
+\begin{frame}{Warnung!}
+    \begin{alertblock}{Warning - Warning - Warning}
+        Dieses Tutorium beinhaltet heute teils (sehr) schw\dots herausfordernde Inhalte!
+    \end{alertblock}
+\end{frame}
+
+\setbeamercovered{invisible}
+
+\begin{frame}{Was ist Vererbung? - Motivation}
+    \begin{block}{Biologie \dots}
+        \begin{itemize}
+            \item Hund, Pudel, Katze, Vogel, Road Runner, Kojote \\
+                  Findet ihr Oberbegriffe?
+
+                  \pause
+
+            \item Findet ihr gemeinsame Verhaltensweisen oder Eigenschaften?
+
+                  \pause
+
+            \item Unterscheiden sich die Verhaltensweisen vielleicht immer etwas?
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{\dots und die Informatiker}
+        \begin{itemize}
+            \item Findet ihr hier vielleicht Klassen (Mit Methoden!)?
+
+                  \pause
+
+            \item Haben diese Klassen Gemeinsamkeiten?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Was ist Vererbung? - Motivation}
+    \begin{block}{Und wo ist jetzt die Vererbung?}
+
+        \begin{itemize}
+            \item Manche Dinge kann jedes Lebewesen. Bewegen zum Beispiel. Hat man nun also eine Liste von Lebewesen, kann man sie alle zum Bewegen bringen -- ungeachtet ihrer Gattung oder Art
+            \item Dieses Konzept (Gemeinsamkeiten im Verhalten oder Eigenschaften) liegt der Vererbung zu Grunde.
+
+                  \pause
+
+            \item \begin{lstlisting}
+@@cAnimal@@ animal = new @@cDog@@();
+animal.moveTo(sierra);
+animal = new @@cBird@@();
+animal.moveTo(farSouth);
+                \end{lstlisting}
+
+        \end{itemize}
+
+    \end{block}
+\end{frame}
+
+\begin{frame}{Vererbung}
+    \vspace*{-4.5pt}
+
+    \begin{block}{Wozu Vererbung?}
+        Wir verwenden Vererbung für:
+
+        \begin{itemize}
+            \item Spezialisierungen (\texttt{moveTo} in einem Vogel macht nicht das gleiche wie in einem Hund!)
+
+                  \pause
+
+            \item Code-Wiederverwendung (\texttt{getAge} ist vielleicht überall gleich) \\
+
+                  \begin{itemize}
+                      \item Weniger Code-Redundanz $\rightarrow$ erhöhte Wartbarkeit
+                  \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Vererbung}
+    \begin{block}{Merke \dots}
+        \begin{itemize}
+            \item Modelliert \textit{ist-ein-Beziehungen} \\
+                  (ein Student ist ein Mensch, ein Mensch ist ein Säugetier, ein Säugetier ist ein Lebewesen)
+
+                  \pause
+
+            \item Kennzeichnung mittels „\texttt{extends}“
+
+                  \pause
+
+            \item Keine Mehrfachvererbung in Java (nur eine Oberklasse je Klasse)
+
+                  \pause
+
+            \item Jede Klasse erbt implizit von Object (equals, toString, hashcode, \dots) \\
+                  Dies ist wie das „Lebewesen“ in unserem Beispiel. Alles ist ein Lebewesen und in Java ist alles ein Objekt.
+
+                  \pause
+
+            \item „\texttt{final}“ verhindert Vererbung von der Klasse
+
+                \pause
+
+            \item Grundsätzlich gilt das \textbf{Liskov'sche Substitutionsprinzip}
+            \aitem Jede Instanz einer Subklasse sollte auch als Instanz einer Superklasse einsetzbar sein\\
+            Beispiel: Wenn nur ein Objekt der Klasse \texttt{Animal} gefordert ist, sollte insbesondere auch ein Objekt der Klasse \texttt{Dog} in dem Kontext funktionieren, da ein \texttt{Dog} ja ein \texttt{Animal} ist. 
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Überschreiben}
+
+\begin{frame}[fragile]{Vererbung - Überschreiben}
+    \begin{block}{Gut zu wissen \dots}
+        \begin{itemize}
+            \item Angenommen, der Standard für \texttt{moveTo} für Lebewesen ist Laufen.
+            \item Wie ändern wir \texttt{moveTo} in unserem Vogel, sodass er fliegt? Überschreiben!
+
+                  \begin{lstlisting}
+class @@cBird@@ {
+    // Hilfs-Marker fuer den Compiler
+    @@c@Override@@
+    // gleicher Name, Parameter und return type
+    public void moveTo(Location location) {
+        // Was es bei einem Aufruf machen soll
+        flyTo(location);
+    }
+}
+                \end{lstlisting}
+
+            \item Damit wird nun bei jedem Aufruf von \texttt{moveTo} \texttt{flyTo} aufgerufen
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Vererbung - Überschreiben}
+    \begin{block}{Gut zu wissen \dots}
+        \begin{itemize}
+            \item Will man Methodenverhalten von Oberklassen ändern, so kann man diese Methoden überschreiben
+
+                  \pause
+
+            \item Methodenname muss identisch zu dem in der Oberklasse sein
+
+                  \pause
+
+            \item Parameter müssen identisch zu denen in der Oberklasse sein
+
+                  \pause
+
+            \item Rückgabewert muss identisch zum Rückgabewert der Methode in der Oberklasse sein (gleich oder Subtyp)
+
+                  \pause
+
+            \item 'final' Methoden können nicht überschrieben werden
+
+                  \pause
+
+            \item \textit{@Override} stellt sicher, dass Überschreiben tatsächlich stattfindet (sonst Compilerfehler)
+
+                  \begin{itemize}
+                      \item Überschriebene Methoden am besten IMMER mit \textit{@Override} kennzeichnen
+                  \end{itemize}
+
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Vererbung - Überschreiben - Beispiele}
+    \vspace*{-3.4pt}
+
+    \lstinputlisting[basicstyle=\footnotesize]{../modules/inheritance/src/override.java}
+
+    \vspace*{-3.4pt}
+\end{frame}
+
+\subsection{Überladen}
+
+\begin{frame}{Überladen}
+    \begin{block}{Gut zu wissen \dots}
+        \begin{itemize}
+            \item Es kann mehrere Methoden mit gleichem Namen geben. Diese müssen sich aber in Art und/oder Anzahl ihrer Parameter unterscheiden
+
+                  \pause
+
+                  \begin{itemize}
+                      \item void doSomething(int a)
+                      \item void doSomething(int a, int b)
+                      \item void doSomething(int a, String b)
+                      \item void doSomething(int a, int b, double c)
+                      \item void doSomething(int a, long b)
+                  \end{itemize}
+
+            \item Dies gilt ebenso für Konstruktoren
+
+                  \pause
+
+            \item Dies hat \textbf{NICHTS} mit Vererbung zu tun!
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Überladen - Beispiele}
+    \lstinputlisting[basicstyle=\footnotesize]{../modules/inheritance/src/overload.java}
+\end{frame}
+
+\setbeamercovered{invisible}
+
+\begin{frame}{Überladen - Beispiele}
+    \begin{block}{Beispiele}
+        \begin{itemize}
+            \item Was gibt \texttt{anstrengend(2)} aus?
+
+                  \pause
+
+            \item Was gibt \texttt{anstrengend("Bobby Tables")} aus?
+
+                  \pause
+
+            \item Was gibt \texttt{anstrengend(2.5)} aus?
+
+                  \pause
+
+            \item Was gibt \texttt{anstrengend(2.5f)} aus?
+
+                  \pause
+
+            \item Was gibt \texttt{anstrengend(2L)} aus?
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\setbeamercovered{transparent}

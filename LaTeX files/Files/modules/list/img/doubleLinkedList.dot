@@ -1,0 +1,28 @@
+digraph dll {
+    graph[rankdir=LR truecolor=true bgcolor="#00000000"]
+    node[shape = Mrecord, fontsize=20];
+    edge[dir=both, arrowtail=dot]
+
+
+    node0[label = "<content> 420 | <next> *next | <prev> *previous"];
+    node1[label = "<content> 1 | <next> *next | <prev> *previous"];
+    node2[label = "<content> 42 | <next> *next | <prev> *previous"];
+    node3[label = "<content> 1337 | <next> *next | <prev> *previous"];
+    null1[label = "null" shape = none]
+    null2[label = "null" shape = none]
+
+
+
+    node0:next -> node1:next;
+    node0:prev -> null2;
+
+    node1:next -> node2:next;
+    node1:prev -> node0:prev;
+
+    node2:next -> node3:next;
+    node2:prev -> node1:prev;
+
+    node3:next -> null1;
+    node3:prev -> node2:prev;
+
+}

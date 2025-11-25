@@ -1,0 +1,162 @@
+\section{Streams und Optional}
+
+\begin{frame}{Warning}
+    \begin{alertblock}{!!!Achtung!!!}
+        \begin{center}
+            Der Stoff dieser Einheit ist nicht mehr Teil der Programmieren Vorlesung.
+            Außerdem sind die Themen ziemlich komplex. Setzt die Konzepte also mit Vorsicht und wenn ihr euch nicht 100\% sicher seid lieber gar nicht ein!
+        \end{center}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Optional<T>}
+    \begin{block}{Was und warum?}
+        \begin{itemize}
+            \item Container Objekt, das \underline{vielleicht} ein Objekt vom Typen T enthält
+            \item Ist dafür da um \texttt{null} Checks zu verhindern
+            \item Ist meist Rückgabetyp von Methoden
+            \item Beispiel: Eine API Abfrage gibt ein gültiges Ergebnis oder null zurück
+            \aitem Man könnte stattdessen \lstinline{Optional<Response>} zurück geben 
+            \item \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Optional.html}{Hier} ist die Dokumentation
+        \end{itemize}
+    \end{block}
+    \pause
+    Aber das klingt ja irgendwie nichtdeterministisch...
+    \pause
+    Ist es aber nicht!
+\end{frame}
+
+\begin{frame}{Optional<T>}
+    \begin{block}{Methoden von Optional}
+        \begin{itemize}
+            \item \lstinline{static Optional<T> empty()} Gibt ein neues leeres Optional zurück. Das ist quasi äquivalent zu \texttt{null}
+            \item \lstinline{static Optional<T> of(T value)} Erzeugt ein neues Optional wo \texttt{value} drin ist 
+            \item \lstinline{boolean isPresent()} Gibt \texttt{true} zurück wenn das Optional nicht leer ist
+            \item \lstinline{boolean isEmpty()} Gegenteil von \lstinline{isPresent()}
+            \item \lstinline{T get()} Gibt zurück was im Optional drin ist. Achtung: Diese Methode darf nicht benutzt werden ohne vorher zu checken ob etwas im Optional drin ist! Lieber nächste Methode verweden\dots
+            \item \lstinline{T orElseThrow()} Gibt den Wert im Optional zurück, falls was drin ist. Auch hier muss man vorher checken ob das der Fall ist.
+            \item \lstinline{void ifPresent(Consumer<? super T> action)} Führt das lambda aus falls das Optional nicht leer ist
+            \item Noch mehr sehr nützliche Methoden...
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Optional<T>}
+    \begin{exampleblock}{Ein Code Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/streams-and-optional/src/OptionalExample.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \setbeamercovered{transparent}
+    \begin{block}{Was ist ein Stream?}
+        \begin{itemize}
+            \item Eine Sequenz von Objekten des Typen des T
+            \item Unterstützt sequentielle und parallele (!) Operationen
+            \item Modifizieren dabei die Quelle nicht 
+            \item Lazy Evaluation: Operationen werden erst ausgeführt wenn das auch wirklich nötig ist
+            \item Kommt aus der funktionalen Programmierung
+            \item \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/Stream.html}{Dokumentation für java.util.stream.Stream}
+            \item \href{https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/stream/package-summary.html}{Dokumentation für java.util.stream}
+            \item Man fügt mehrere Stream Operaionen zu einer sogenannten \glqq Stream pipeline'' zusammen
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{block}{Stream pipelines}
+        Eine Stream pipeline besteht immer aus:
+        \begin{enumerate}
+            \item Einer Quelle
+            \aitem Erzeugt einen Stream 
+            \aitem Der Stream kann unendlich groß sein!
+            \item Null oder mehr Zwischenoperationen
+            \aitem Operiert auf dem Stream
+            \aitem Modifiziert den Originalen Stream dabei nicht
+            \aitem Werden nicht ausgeführt bis die Terminaloperation nicht ausgeführt wird
+            \item Einer Terminaloperation
+            \aitem Löst die Ausführung der Stream pipeline aus
+            \aitem Kann den Stream auf ein anderes neues Objekt transformieren 
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{block}{Quelle}
+        \begin{itemize}
+            \item Streams können sequentiell oder parallel sein
+            \item Vorsicht mit Parallelität, wenn die Quelle nicht für Parallelität ausgelegt ist kann sehr viel schief gehen
+            \item Collections zu Stream:
+            \aitem \lstinline{Collection.stream()} oder \lstinline{Collection.parallelStream()}
+            \item Array zu Stream:
+            \aitem \lstinline{Arrays.stream(array)}
+            \item Eine Range von Integern:
+            \aitem \lstinline{IntStream.range(int, int)} 
+            \item \texttt{Map<K,V>} zu Stream:
+            \aitem Ergibt keinen Sinn, da Map 2 Parameter hat. Das keySet oder die Werte zu einem Stream umzubauen ist allerdings kein Problem 
+            \item Die meisten wichtigen Sachen implementieren allerdings Collection
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{block}{Zwischenoperationen}
+        \begin{itemize}
+            \item Sehr viele!
+            \item Entweder stateful oder stateless
+            \aitem Eine pipeline mit euner unendlichen Quelle muss mindestens eine short-circuiting operation besitzen
+            \item stateful: Alle Elemente des streams müssen traversiert werden um die Operation auszuführen
+            \aitem Kann bei großen Streams zu sehr großem Speicheroverhead führen
+            \item stateless: Können lazy-evaluation, da sie nicht alle Elemente kennen müssen 
+            \item short-circuiting: Erzeugt einen Endlichen Stream aus einem unendlichen
+            \item Operieren auf parallelen Streams ggf. Parallel
+            \aitem Parallelisiert nur Quellen, die dafür ausgelegt sind z.B. \texttt{ConcurrentHashMap} 
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{block}{Beispiele für Zwischenoperationen}
+        \begin{itemize}        
+        \item \lstinline{filter(Predicate<? super T> predicate)} filtert alles aus dem Strem raus, was nicht dem Prädikat matcht. Ein Prädikat ist eine unäre Boolean-wertige Funktion, bildet also eim Objekt auf ein boolean ab. (stateless)
+        \item \lstinline{map(Function<? super T,? extends R> mapper)} Wendet die Fukktion auf jedes Element an, bildet also jedes T auf ein R ab (stateless)
+        \item \lstinline{distinct()} Filtert doppelte Elemente aus dem Stream raus (stateful)
+        \item \lstinline{sorted(Comparator<? super T> comparator)} Sortiert den Stream nah dem comparator (stateful)
+        \item \lstinline{peek(Consumer<? super T> action)} Gibt einen Stream mit den aktuel vorhandenen Elementen zurück und führt action auf diesen Elementen aus (stateless)
+        \item \lstinline{limit(long size)} Nimmt die ersten size Elemente vom Stream und wirft den Rest weg (stateful, short-circuiting)
+        \item \lstinline{skip(long n)} Überspringt die ersten n Elemente des Streams (stateful)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{block}{Beispiele für Terminaloperationen I}
+        \begin{itemize}
+            \item \lstinline{forEach(Consumer<? super T> action)} Führt action für alle Elemente des Streams aus
+            \item \lstinline{toArray(): Object[]} Wandelt den Stream in ein Array von Objekten um
+            \item \lstinline{reduce(T identity, BinaryOperator<T> accumulator)} Reduziert die Objekte des Streams auf ein Objekt indem es die Funktion anwendet
+            \aitem Beispiel, Summe über ein Array: \lstinline{Integer sum = integers.reduce(0, (a, b) -> a + b);}
+            \item \lstinline{collect(Collector<? super T,A,R> collector)} Sammelt alle Stream Elemente anhand des Collectors ein. Oft wird \lstinline{Collectors.toList()} benutzt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{block}{Beispiele für Terminaloperationen II}
+        \begin{itemize}
+            \item \lstinline{min(Comperator<? super T> comperator)} und \lstinline{max(Comperator<? super T> comperator)} Gibt das minimale oder maximale Element des Streams verglichen anhand des Comperators zurück
+            \item \lstinline{count(): long} Gibt die Anzahl der Elemente im Stream zurück
+            \item \lstinline{anyMatch(Predicate<? super T> predicate)} Gibt \texttt{true} zurück gdw. irgendein Element im Stream dem Prädikat matcht
+            \item Analog gibt es \texttt{allMatch} und \texttt{noneMatch}
+            \item \lstinline{findFirst(): Optional<T>} Gibt das erste Element vom Stream zurück oder \texttt{Optional.empty()} wenn der Stream leer ist
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Stream<T>}
+    \begin{exampleblock}{Ein kleines Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/streams-and-optional/src/StreamExample.java}
+    \end{exampleblock}   
+\end{frame}

@@ -1,0 +1,74 @@
+\graphicspath{{../modules/exercise-interface/img/}}
+
+\section{Aufgaben: Schnittstellen}
+
+\subsection{Aufgabe 1}
+
+\begin{frame}{Aufgabe }
+    \begin{block}{Aufgabe 1 - Teil 1}
+        Für einen Nährwertrechner sei folgendes Interface gegeben:
+
+        \lstinputlisting[basicstyle=\small]{../modules/exercise-interface/src/task1.java}
+
+        Überlegen Sie sich einige Klassen, die dieses Interface implementieren könnten. \\
+        Wie müsste die Implementierung dieser Klassen aussehen?
+    \end{block}
+\end{frame}
+
+\begin{frame}{Aufgabe 1 - Teil 1}
+    \begin{exampleblock}{Lösungsvorschlag}
+        \lstinputlisting[basicstyle=\scriptsize]{../modules/exercise-interface/src/task2.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Aufgabe 1 - Teil 2}
+    \begin{block}{Aufgabe 1 - Teil 2}
+        Warum ist es für diesen Zweck sinnvoll, ein Interface einzusetzen? Wäre die Umsetzung auch mittels Vererbung möglich?
+    \end{block}
+\end{frame}
+
+\begin{frame}{Aufgabe 1 - Teil 2}
+    \vspace*{-1pt}
+
+    \begin{block}{mögliche Erklärung}
+        Die entsprechenden Klassen sollen dieselbe Schnittstelle (die durch das Interface implementierten Methoden) zur Verfügung stellen.
+        \\ \ \\
+
+        \pause
+
+        Dies mittels Vererbung zu realisieren ist jedoch nicht sinnvoll bzw. möglich, da sich die essbaren Objekte (z.B. 'Schweinesteak' und 'Paprika') grundlegend unterscheiden können und Mehrfachvererbung in Java nicht möglich ist. \\ \ \\
+
+        \pause
+
+        Vergleiche hierzu die Vererbungshierarchie in Abbildung 1: \\
+        Schwein und Paprika sind essbar, während dies für Kreuzotter und Efeu nicht der Fall ist (zumindest gemeinhin nicht öfters als einmal). Da Java keine Mehrfachvererbung unterstützt, ist es somit nicht möglich, 'Schwein' und 'Paprika' mittels einer gemeinsamen Oberklasse als essbar zu kennzeichnen.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Aufgabe 1 - Teil 2}
+    \begin{center}
+        \includegraphics[scale=0.275]{living-beings.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Aufgabe 1 - Teil 3}
+    \begin{block}{Aufgabe 1 - Teil 3}
+        Erstelle Instanzen von verschiedenen Ausprägungen des Interfaces, speichere sie in einem gemeinsamen Array und gebe für alle das \texttt{Fett} aus.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Aufgabe 1 - Teil 3}
+    \begin{exampleblock}{Mögliche Lösung}
+        \lstinputlisting[basicstyle=\small]{../modules/exercise-interface/src/task3.java}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Aufgabe 2}
+
+\begin{frame}{Aufgabe 2}
+    \begin{block}{Aufgabenstellung}
+        Betrachten Sie die Java-API des Interfaces \href{http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html}{\textit{java.lang.Comparable}}. Implementieren Sie dieses Interface für die Klasse Point und machen Sie somit die Punkte vergleichbar:
+
+        \lstinputlisting[basicstyle=\small]{../modules/exercise-interface/src/task4.java}
+    \end{block}
+\end{frame}

@@ -1,0 +1,121 @@
+\graphicspath{{../modules/list/img/}}
+\subsection{Listen}
+
+\begin{frame}{Listen}
+        \setbeamercovered{invisible}
+    \begin{block}{Arten}
+        meistens:
+        \begin{itemize}
+            \item Single linked List 
+            \item Double linked List
+            \item Array List (hier nicht erklärt)
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Aufbau}
+        \begin{itemize}
+            \item Es gibt verschiedene \lstinline{ListElement}s, die sich gegenseitig referenzieren
+            \item Durch diese rekursiven Referenzen lassen sich komplexe Datenstrukturen bauen
+            \item Jedes \lstinline{ListElement} hält die zu speichernden Daten und eine oder mehrere Referenzen auf andere Listenelemente
+            \item Wie genau diese Elemente Aufgebaut sind hängt von Implemnentierung und konkreter Datenstruktur ab
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Single Linked List}
+    \begin{block}{Beispielimplementierung für ein Element}
+        \lstinputlisting[basicstyle=\small]{../modules/list/src/SingleLinkedList.java}
+    \end{block}
+
+    \begin{block}{Schaubild}
+        \begin{center}
+            \includegraphics[scale=0.4]{linkedList}
+        \end{center}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}{Double Linked List}
+    \begin{block}{Beispielimplementierung für ein Element}
+        \lstinputlisting[basicstyle=\small]{../modules/list/src/DoubleLinkedList.java}
+    \end{block}
+
+    \begin{center}
+        \includegraphics[scale=0.4]{doubleLinkedList}
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Binäre Bäume}
+    \setbeamercovered{invisible}
+    \begin{block}{Eigenschaften}
+        \begin{itemize}
+            \item Speichern pro Element ein Datum (Singular von Daten)
+            \item Haben einen linken und einen rechten Teilbaum
+            \item Auf der Folie zu Aufrufbäumen haben wir schon Binärbäume gesehen
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Frage}
+        Wie könnte man sowas implementieren?
+    \end{exampleblock}
+    
+\end{frame}
+
+
+
+\subsection{Iteratoren}
+
+\begin{frame}{Iteratoren}
+    \begin{block}{Problemstellung}
+        \begin{itemize}
+            \item Viele Arten von Sammlungen und Mengen
+            \item Verschieden aufgebaut und implementiert
+            \item Unterschiedliche Schnittstellen (z.B. für Elementzugriff)
+        \end{itemize}
+
+        Gesucht wird ein einheitlicher Weg, über alle Elemente zu iterieren $\Rightarrow$ Iterator-Objekte
+    \end{block}
+
+    \pause
+
+    \begin{block}{Methoden}
+        Sammlungen bieten Methode zur Erzeugung eines Iterators an: \texttt{sammlung.iterator()} Iteratoren bieten die folgenden Methoden an:
+
+        \begin{itemize}
+            \item \texttt{hasNext()}: true, wenn es nächstes Element gibt, false sonst
+            \item \texttt{next()}: gib das aktuelle Element zurück und bewege zum nächsten
+            \item \texttt{remove()}: entferne aktuelles Element aus der Sammlung
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Iteratoren}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/list/src/iterator.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Listen-API}
+    \begin{block}{Was bietet mir die API?}
+        \begin{itemize}
+            \item Queue: \textit{java.util.LinkedList<E>}
+            \item Stack: \textit{java.util.Stack<E>}
+            \item PriorityQueue: \textit{java.util.PriorityQueue<E>} (ginge aber auch mit \textit{LinkedList})
+        \end{itemize}
+    \end{block}
+
+    \setbeamercovered{invisible}
+
+    \begin{block}{Was ist <E>?}
+
+        \pause
+
+        Mit <E> ist der Datentyp der (z.B.) Liste generisch. \\
+        Die gleiche Listenimplementation kann also mit verschiedensten Datentypen umgehen, OHNE dass jedesmal eine komplett neue Listenimplementation erstellt werden muss.
+    \end{block}
+\end{frame}

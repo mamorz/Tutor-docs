@@ -1,0 +1,70 @@
+\graphicspath{{../modules/junit/img/}}
+
+\section{JUnit}
+
+\begin{frame}
+    \begin{block}{JUnit?}
+        \begin{itemize}
+            \item Ist ein Framework zum Schreiben von Tests
+            \item Komponententest für viele Spachen: PyUnit, CUnit, \dots
+            \item Umfassende Beschäftigung in Softwaretechnik I
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{JUnit}
+    \begin{block}{Verwendung von JUnit}
+        \begin{itemize}
+            \item für jede Klasse, die ihr testen möchtet, erstellt ihr eine Testklasse
+            \item diese enthält Testfälle (Methoden)
+            \item Testfälle werden durch Annotationen (\textit{@Test}) beschrieben
+            \item das Testergebnis wird über Asserstions bestimmt
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{JUnit}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}
+import static org.junit.Assert.*;
+import org.junit.*;
+public class @@cMatrixTest@@ {
+    private @@cMatrix@@ matrix;
+
+    @Before
+    public void setUp() {
+        double[][] array = new double[][] {{1,2,3}, {4,5,6}};
+        this.matrix = new @@cMatrix@@(array);
+    }
+    @Test
+    public void rowsTest() {
+        assertEquals(2, matrix.rows());
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{JUnit - Assertions}
+    \includegraphics[scale=0.65]{assert.png}
+\end{frame}
+
+\begin{frame}{JUnit - Annotationen}
+    \includegraphics[scale=0.65]{annotation.png}
+\end{frame}
+
+\begin{frame}{JUnit}
+    \begin{block}{Test Driven Developement}
+        (Oder auch hochladen bis Artemis glücklich ist :'D)
+
+        \begin{center}
+            \includegraphics[scale=0.18]{tdd.png} \\
+        \end{center}
+
+        \begin{flushright}
+            \begin{tiny}
+                \textit{[Quelle: https://marsner.com/wp-content/uploads/test-driven-development-TDD.png - TDD]}
+            \end{tiny}
+        \end{flushright}
+    \end{block}
+\end{frame}

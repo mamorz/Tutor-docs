@@ -1,0 +1,50 @@
+\section{enum}
+
+\begin{frame}{\textit{enum}}
+    \begin{block}{enum}
+        \begin{itemize}
+            \item Mit Datentyp \textit{enum} erstellt man eine neue Klasse und erweitert implizit \textit{java.lang.Enum}
+            \item Vereinfacht Code erheblich - siehe Beispiel \dots
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Früher (vor Java 5.0)}
+        \lstinputlisting[basicstyle=\small]{../modules/enum/src/old.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\textit{enum}}
+    \begin{exampleblock}{Heute (ab Java 5.0)}
+        \lstinputlisting[basicstyle=\small]{../modules/enum/src/new.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{enum}
+    \begin{block}{Wozu?}
+        \begin{itemize}
+            \item selectedBandMember kann immer nur gültige Werte ("JERRY", "BOBBY", "PHIL") enthalten
+            \item Die zugewiesenen Ziffern entfallen und damit auch eine Fehlerquelle
+
+                  \pause
+
+            \item Speichert folglich \textbf{Aufzählungen}
+            \item Behandeln wie eine eigene Klasse (\dots besitzt auch alle Funktionen!)
+            \item Die Elemente sind Konstanten (Namenskonvention beachten)
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Weitere Ideen für einen \textit{enum}?}
+
+        \pause
+
+        \begin{itemize}
+            \item enum Weekday \{MONDAY, TUESDAY, \dots \}
+            \item enum Weather \{SUNNY, CLOUDY, \dots \}
+        \end{itemize}
+
+    \end{block}
+\end{frame}

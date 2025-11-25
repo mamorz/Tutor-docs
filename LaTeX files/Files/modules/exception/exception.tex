@@ -1,0 +1,365 @@
+\graphicspath{{../modules/exception/img/}}
+
+\section{Exceptions}
+
+\begin{frame}{Exceptions}
+    \begin{huge}
+        \begin{center}
+            If anything can go wrong, it will. \\
+            - Murphy's Law
+        \end{center}
+    \end{huge}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{exampleblock}{Beispiel - GOTO-Zeitalter}
+        \begin{minipage}{0.5\textwidth}
+            \lstinputlisting[basicstyle=\tiny]{../modules/exception/src/goto-1.java}
+        \end{minipage}% necessary percent sign for side-by-side content
+        \begin{minipage}{0.5\textwidth}
+            Naja \dots
+
+            \begin{itemize}
+                \item Schleife durch goto
+                \item Fehlerbehandlung am Ende
+                \item Schleifenbedingung mitten in Schleifen
+                \item Komplizierter Kontrollfluss
+            \end{itemize}
+        \end{minipage}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{exampleblock}{Beispiel - ohne GOTO}
+        \begin{minipage}{0.5\textwidth}
+            \lstinputlisting[basicstyle=\tiny]{../modules/exception/src/goto-2.java}
+        \end{minipage}% necessary percent sign for side-by-side content
+        \begin{minipage}{0.5\textwidth}
+            Naja \dots
+
+            \begin{itemize}
+                \item Schleifenbedingung mitten in Schleifen
+                \item Zahllose if-Abfragen
+                \item Komplizierter Kontrollfluss
+                \item kaum besser als vorher
+                \item gotos sind böse und man sollte sie \textbf{nie} benutzen (\href{https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf}{Goto considered harmful})
+            \end{itemize}
+        \end{minipage}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Typische (lokale) Fehlerbehandlung}
+        \lstinputlisting[basicstyle=\small]{../modules/exception/src/local.java}
+
+        Probleme:
+
+        \pause
+
+        \begin{itemize}
+            \item Vermischung von Programmlogik und Fehlerbehandlung
+            \item Fehlerausgaben im Programm verstreut
+            \item Keine Trennung von Algorithmus und Benutzerinteraktion
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Exception}
+        \begin{itemize}
+            \item eine \textit{Ausnahme}
+            \item Zur Laufzeit des Programms
+            \item Zur Unterbrechung des normalen Kontrollflusses
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Verwendung einer Exception}
+        \begin{itemize}
+            \item Ein \textit{Problem} tritt auf
+            \item Normales Fortfahren nicht möglich
+            \item Lokale Reaktion darauf nicht sinnvoll/möglich
+            \item Behandlung des Problems \textit{an anderer Stelle} nötig
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Exceptions in Java}
+        Ausnahme in Java
+
+        \begin{itemize}
+            \item echtes Objekt (Methoden, Attribute, \dots)
+            \item Erzeugung mit \texttt{new}
+            \item Auslösen mit \texttt{throw}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/exception/src/throw-1.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{exampleblock}{Auszug aus der Exceptionhierarchie}
+        \begin{center}
+            \includegraphics[scale=0.34]{hierarchy.png}
+        \end{center}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Exceptions in Java}
+        \begin{itemize}
+            \item Typ (Klasse) der Ausnahme/Exception
+            \item Von Klasse \texttt{Exception} abgeleitet
+            \item Mindestens zwei Konstruktoren: \texttt{Default} \& mit \texttt{String}-Parameter (mit zusätzlichen Informationen)
+            \item Methoden: \texttt{getMessage()} \& \texttt{printStackTrace()}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Error}
+        \begin{itemize}
+            \item Neben \texttt{Exception} existiert \texttt{Error}
+            \item Schwerwiegende Fehler
+            \item Keine sinnvolle Behandlung möglich
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Ausnahmebehandlung in Java}
+        \lstinputlisting[basicstyle=\small]{../modules/exception/src/try-catch-1.java}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Fall-through, die Zweite}
+        \begin{itemize}
+            \item Java ruft den \emph{\textbf{ersten}} passenden catch Block auf!
+            \item Alle weiteren werden \emph{ignoriert}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/exception/src/try-catch-2.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Exception Handler}
+        \begin{itemize}
+            \item Behandlung einer Ausnahme
+            \item an einer Stelle
+            \item irgendwo im Aufrufstack
+            \item getrennt von normalen Programmcode
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Catch or specify}
+        Jede ausgelöste geprüfte (checked) Exception muss
+
+        \begin{itemize}
+            \item behandelt (Exception Handler) oder
+            \item deklariert (\texttt{throws})
+        \end{itemize}
+
+        werden.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Deklaration von Ausnahmen}
+        \begin{itemize}
+            \item Deklaration im Methodenkopf: \texttt{private String readFile(String filename) \textbf{throws} IOException, FileNotFoundException \{\}}
+
+                  \pause
+
+            \item Aufrufer muss sich um Exception kümmern
+            \item \texttt{throws} ist Teil der Signatur (Vorsicht beim Überschreiben) \\
+                  Exceptions können in überschriebenen Methoden weggelassen werden, aber nicht hinzukommen.
+            \item Nicht deklarationspflichtig sind \texttt{RuntimeException} \& \texttt{Error} (sowie deren Unterklassen)
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \textit{Anmerkung: Da \texttt{IOException} Oberklasse von \texttt{FileNotFoundException} ist, müsste letzteres nicht extra deklariert werden. Dokumentationszwecke!}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Ort der Behandlung}
+        Finden der passenden Ausnahmebehandlung:
+
+        \begin{itemize}
+            \item Suche im Aufrufstack nach umgebenden \texttt{try-catch}-Blöcken, gehe zu erstem passenden \texttt{catch}-Block
+            \item Nach der Behandlung: Fortsetzung am Ende des \texttt{try-catch}-Block
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Error}
+        (Katastrophale) Probleme, die eigentlich nicht auftreten dürfen. Speicher voll, Illegaler Byte-Code, JVM-Fehler, \dots
+    \end{block}
+
+    \pause
+
+    \begin{block}{\texttt{RuntimeException}}
+        Durch \textit{fremde} Fehler erzeugte Probleme. Falsche Benutzung einer Klasse, Programmierfehler.
+    \end{block}
+
+    \pause
+
+    \begin{block}{Geprüfte Exception (\emph{checked Exception})}
+        Vorhersehbare und behandelbare Fehler. Datei nicht vorhanden, Festplatte voll, Fehler beim Parsen, \dots
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Behandlung?}
+        \begin{itemize}
+            \item \textbf{Error und Unterklassen:} Nein, nicht sinnvoll behandelbar
+            \item \textbf{Exception:} Nein, viel zu allgemein
+            \item \textbf{RuntimeException:} Prinzipiell Nein
+            \item \textbf{Unterklassen dessen:} Programmierfehler beheben! (Ausnahme: \texttt{NumberFormatException})
+            \item \textbf{Andere:} Ja, wenn sinnvoll behandelbar
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Werfen?}
+        \begin{itemize}
+            \item \textbf{Error:} Ja, ggf. mit eigener Unterklasse
+            \item \textbf{Exception:} Niemals, nur als eigene Unterklasse
+            \item \textbf{RuntimeException:} Ja, eigene (semantisch passende) Unterklasse
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{exampleblock}{Beispiel}
+        \lstinputlisting[basicstyle=\small]{../modules/exception/src/throw-2.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Eigene Exceptions}
+        \begin{itemize}
+            \item Ableiten einer eigenen Unterklasse von Exception oder RuntimeException
+            \item Implementierung der zwei Standard-Konstruktoren
+            \item Definition einer eigenen, sinnvollen Exception-Hierarchie (bei Bedarf)
+            \item Verwendung von vorhandenen Exceptions nur für dafür vorgesehene Zwecke (Javadoc anschauen)
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Beispiele in der Java-API}
+        \begin{itemize}
+            \item \texttt{IllegalArgumentException}
+            \item \texttt{IllegalStateException}
+            \item \texttt{UnsupportedOperationException}
+            \item \texttt{NullPointerException}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Verwendung}
+        Exceptions sollen \dots
+        \begin{itemize}
+            \item zur Vereinfachung dienen
+            \item die absolute Ausnahme darstellen
+            \item mittels \texttt{@throws} im Javadoc beschrieben werden
+            \item NICHT den normalen Kontrollfluss steuern
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{alertblock}{Böse!}
+        \lstinputlisting[basicstyle=\small]{../modules/exception/src/catch-exception.java}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{alertblock}{Verboten!}
+        \begin{itemize}
+            \item \texttt{try}-Block um das ganze Programm
+            \item Leerer \texttt{catch}-Block
+            \item Explizites Fangen des Typs \texttt{Exception}
+            \item Explizites Fangen des Typs \texttt{Throwable}
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Frühe Fehlererkennung}
+        \begin{itemize}
+            \item Kleinerer Suchbereich beim Debugging
+            \item Abbruch/Fehlermeldung bei inkonsistentem Programmzustand
+            \item Häufig: \texttt{null} oder negative Zahlen
+            \item Defensive Programmierung
+            \item Zusätzliche Abfragen im Programmtext
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions - Zusammenfassung}
+    \begin{block}{Ausnahmen}
+        \begin{itemize}
+            \item werden ausgelöst (\texttt{throw}) und behandelt (\texttt{try-catch}) oder deklariert (\texttt{throws})
+            \item sollen die Ausnahme bleiben
+            \item trennen sauber Programmlogik und Fehlerbehandlung
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Fehlererkennung}
+        \begin{itemize}
+            \item so früh wie möglich
+            \item defensiv
+            \item mittels \texttt{assert} (gleich) oder \texttt{if} \& Exceptions
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{Aufgabe}
+        Schreiben Sie eine eigene Exception \texttt{InputException}, die bei falschen Benutzereingaben geworfen werden soll. Dazu erbt sie von der Exception \texttt{IllegalArgumentException}.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{exampleblock}{Mögliche Lösung - Teil 1}
+        \lstinputlisting[basicstyle=\tiny]{../modules/exception/src/input-exception-1.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{exampleblock}{Mögliche Lösung - Teil 2}
+        \lstinputlisting[basicstyle=\tiny]{../modules/exception/src/input-exception-2.java}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exceptions}
+    \begin{block}{„Hausaufgabe“}
+        \begin{itemize}
+            \item geprüfte/ungeprüfte Ausnahmen
+            \item \texttt{finally}
+            \item Rethrows
+            \item Wann Exception, wann assert?
+            \item serialVersionUID
+        \end{itemize}
+    \end{block}
+\end{frame}

@@ -1,0 +1,69 @@
+\graphicspath{{../modules/command-system/img/}}
+\section{Commands}
+
+\begin{frame}{Ein kleines Musterlösungssystem}
+    \begin{block}{Siehe}
+        \texttt{SimpleCommandSystem.java}\\
+        $\rightarrow$ Einfache Lösung\\
+        $\rightarrow$ Wird sehr schnell unübersichtlich bei vielen Commands
+    \end{block}
+\end{frame}
+
+\begin{frame}{Das ''offizielle'' Command System}
+    \setbeamercovered{invisible}
+    \begin{block}{Was ist das?}
+        \begin{itemize}
+            \item Eines der \textit{twenty-three well-known gang of four design patterns}
+            \item Mehr zu diesen Entwurfsmustern in SWT I
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Vorteile}
+        \begin{itemize}
+            \item Sorgt für gute Struktur und Schafft Übersichtlichkeit
+            \item Man kann Befehlsausführungen verwalten und so sehr leicht eine undo Funktion implementieren
+            \item Separiert Behfehlsstruktur vom Rest der Programmlogik
+            \aitem Neue commands können leicht ergänzt werden
+            \aitem Lose Kopplung von Befehlen zum Rest des Programmes
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Das ''offizielle'' Command System}
+    \begin{block}{Bestandteile}
+        \begin{itemize}
+            \item Ein \textit{Command} Interface
+            \begin{itemize}
+                \item Hat eine \lstinline{execute()} Methode
+                \item Hat idr. Eine Methode zum Namen erhalten
+            \end{itemize}
+            \item Eine konkrete Klasse pro Command
+            \begin{itemize}
+                \item Implementiert das Command Interface
+                \item Implementiert alle Methoden aus dem Interface auf passende Weise
+                \item Hält Referenz auf die nötige(n) Receiver Klasse(n) um Methoden auf diesen Aufrufen zu können
+            \end{itemize}
+            \item Eine \textit{Caller} Klasse
+            \begin{itemize}
+                \item Ruft den passenden Command auf
+                \item Kennt die konkreten Command Klassen nicht, nur das Interface
+                \item Hält idr. eine Listee oder ähnliches aller möglichen Commands
+            \end{itemize}
+            \item Eine oder mehrere \textit{Receiver} Klasse(n)
+            \begin{itemize}
+                \item Die Klasse an der tatsächlich etwas geändert wird
+                \item Bei einem Spiel könnte das zum Beispiel die Spiel Klasse sein um die nächste Runde einzuleiten
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \includegraphics[scale=0.7]{command_system_uml.jpg}    
+    \end{center}
+    \footnotesize By Vanderjoe - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=62530466
+\end{frame}
+

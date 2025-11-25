@@ -1,0 +1,101 @@
+\section{Variablen}
+
+\begin{frame}{Variablen}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Eine \textbf{Variable} ist ein „Platzhalter“ für Werte eines Datentyps
+            \item Name für einen Speicherplatz
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Deklaration}
+        \begin{itemize}
+            \item Notwendig vor der Verwendung
+            \item Schema: \textit{Typ Name;}
+            \item Beispiel: \textit{int student;}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Zuweisung}
+        \begin{itemize}
+            \item Setzen, bzw. ändern, eines Wertes
+            \item Schema: \textit{Name = Wert;}
+            \item Beispiel: \textit{student = 1337;}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Variablen}
+    \begin{block}{Initialisierung}
+        \begin{itemize}
+            \item Kombination aus Deklaration und Zuweisung
+            \item Schema: \textit{Typ Name = Wert;}
+            \item Beispiel: \textit{int student = 1337;}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Verwendung}
+        \begin{itemize}
+            \item Global: Attribute in Klassen (Zugriff mittels \textit{Objekt.Attribut})
+            \item Lokal: innerhalb von Methoden
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Variablen}
+    \begin{block}{\textit{null}}
+        \begin{itemize}
+            \item Spezieller Wert für „kein Objekt“
+            \item Kennzeichnet nicht initialisierte (komplexe) Referenzvariablen
+            \item \textit{NullPointerException} bei fälschlichem Zugriff
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Konstanten}
+
+\begin{frame}{Konstanten}
+    \begin{block}{Allgemein}
+        \begin{itemize}
+            \item Analog zu Variablen
+            \item \dots jedoch später nicht veränderbar.
+
+                  \pause
+
+            \item daher auch das Schlüsselwort \textit{final}
+        \end{itemize}
+    \end{block}
+
+    \pause
+
+    \begin{block}{Lokale Konstanten}
+        \begin{itemize}
+            \item Schema: \textit{final Typ Name = Wert;}
+            \item Beispiel: \textit{final boolean marvin = false;}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Konstanten}
+    \begin{block}{Globale Konstanten}
+        \begin{itemize}
+            \item sogenannte Klassenkonstanten
+            \item Schema: \textit{static final Typ NAME = Wert;}
+            \item Beispiel: \textit{static final float LOVELY\_NUMBER = 3.14159265f;}
+
+                  \pause
+
+            \item Unterschied erkennbar zu normalen Variablen?
+
+                  \pause
+
+            \item \textbf{Großbuchstaben} und Trennung mit Unterstrich
+        \end{itemize}
+    \end{block}
+\end{frame}

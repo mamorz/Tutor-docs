@@ -1,0 +1,12 @@
+char charAt(int index);
+int length();
+String substring(int start, int end);
+String toString();
+String replace(char old, char newChar);
+char [] toCharArray();
+String valueOf(char []);
+String toLowerCase();
+String toUpperCase();
+String trim();
+String valueOf(int i);
+String concat(string);

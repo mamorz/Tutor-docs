@@ -1,11 +1,11 @@
-public class @@cCar@@ {
-    public @@cString@@ name;
+public class Car {
+    public String name;
     public int year;
 
-    public @@cCar@@(@@cString@@ name) {
+    public Car(String name) {
         this.name = name;
     }
-    public @@cCar@@(@@cString@@ name, int year) {
+    public Car(String name, int year) {
         this.name = name;
         this.year = year;
     }

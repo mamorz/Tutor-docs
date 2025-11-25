@@ -1,9 +1,9 @@
-class @@cPoint@@ {
+class Point {
     int x;
     int y;
     ... so_much_to_do ...
-    @@c@Override@@
-    public @@cString@@ toString() {
+    @Override
+    public String toString() {
         return ("(" + x + ", " + y + ")");
     }
 }

@@ -1,0 +1,5 @@
+package paket;
+
+class Etwas {
+
+}

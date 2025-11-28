@@ -1,10 +1,11 @@
+
+
 import java.util.Scanner;
 
 public class BranchesAndLoopExercises {
 
     static void branchLoopExercise1() {
         Scanner scanner = new Scanner(System.in);
-
         int i = scanner.nextInt();
         /*
         Aufgabe:
@@ -70,4 +71,9 @@ public class BranchesAndLoopExercises {
 
     }
 
+
+    @Override
+    public String toString() {
+        return "Ich liebe Katzen";
+    }
 }

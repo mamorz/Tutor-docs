@@ -1,5 +1,0 @@
-package paket;
-
-class Etwas {
-
-}

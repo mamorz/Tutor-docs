@@ -100,5 +100,29 @@
     "start" : "13:00",
     "end" : "22:00",
     "pause" : "01:00"
+  }, {
+    "action" : "Tutroium und Folien",
+    "day" : 25,
+    "start" : "11:00",
+    "end" : "17:30",
+    "pause" : "02:30"
+  }, {
+    "action" : "Tutroium und Folien und Meetin",
+    "day" : 26,
+    "start" : "13:00",
+    "end" : "19:15",
+    "pause" : "02:15"
+  }, {
+    "action" : "Folienvorbereitung",
+    "day" : 28,
+    "start" : "12:15",
+    "end" : "21:00",
+    "pause" : "01:00"
+  }, {
+    "action" : "Folienvorbereitung",
+    "day" : 29,
+    "start" : "11:00",
+    "end" : "20:00",
+    "pause" : "01:00"
   } ]
 }

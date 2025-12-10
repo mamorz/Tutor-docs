@@ -1,0 +1,1010 @@
+{
+    "shortName": "config-ws2526",
+    "allowedExercises": [728],
+    "ratingGroups": [
+        {
+            "shortName": "task",
+            "displayName": "Aufgabenspezifisch",
+            "negativeLimit": 0,
+            "positiveLimit": 0,
+            "additionalDisplayNames": {
+                "en": "Task-Specific"
+            }
+        },
+        {
+            "shortName": "comment",
+            "displayName": "Custom Kommentare",
+            "negativeLimit": 0,
+            "positiveLimit": 0,
+            "additionalDisplayNames": {
+                "en": "Custom Comment"
+            }
+        },
+        {
+            "shortName": "modelling",
+            "displayName": "Methodik",
+            "negativeLimit": -4,
+            "positiveLimit": 0,
+            "additionalDisplayNames": {
+                "en": "Methodology"
+            }
+        }
+    ],
+    "mistakeTypes": [
+        {
+            "shortName": "custom",
+            "message": "",
+            "button": "Individueller Kommentar",
+            "penaltyRule": {
+                "shortName": "customPenalty"
+            },
+            "appliesTo": "comment",
+            "additionalButtonTexts": {
+                "en": "Custom Comment"
+            },
+            "autograderProblemTypes": [
+                "DEPRECATED_COLLECTION_USED",
+                "COLLECTION_IS_EMPTY_REIMPLEMENTED",
+                "STRING_IS_EMPTY_REIMPLEMENTED",
+                "PRIMITIVE_WRAPPER_INSTANTIATION",
+                "EXCEPTION_PRINT_STACK_TRACE",
+                "CUSTOM_EXCEPTION_INHERITS_RUNTIME_EXCEPTION",
+                "CUSTOM_EXCEPTION_INHERITS_ERROR",
+                "RUNTIME_EXCEPTION_CAUGHT",
+                "REASSIGNED_PARAMETER",
+                "OVERRIDE_ANNOTATION_MISSING",
+                "STRING_COMPARE_BY_REFERENCE",
+                "JAVADOC_UNEXPECTED_TAG",
+                "DO_NOT_USE_SYSTEM_EXIT",
+                "AVOID_INNER_CLASSES",
+                "AVOID_SHADOWING",
+                "MUTABLE_ENUM",
+                "USE_ENUM_COLLECTION",
+                "USE_DIFFERENT_VISIBILITY_PEDANTIC",
+                "AVOID_RECOMPILING_REGEX",
+                "ABSTRACT_CLASS_WITHOUT_ABSTRACT_METHOD",
+                "SHOULD_BE_INTERFACE",
+                "COMMON_REIMPLEMENTATION_MAX_MIN",
+                "REDUNDANT_MODIFIER_VISIBILITY_ENUM_CONSTRUCTOR",
+                "AVOID_STATIC_BLOCKS",
+                "REDUNDANT_ASSIGNMENT",
+                "METHOD_SHOULD_BE_STATIC_NOT_PUBLIC",
+                "IS_LETTER_OR_DIGIT"
+            ]
+        },
+        {
+            "shortName": "complexCode",
+            "message": "Sehr komplexe Codestelle; es fehlt ein erklärender Kommentar oder der Code sollte durch geeignete Hilfsmethoden strukturiert werden",
+            "button": "Schwieriger Code",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "penalty": 0.5,
+                "threshold": 1
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Difficult Code"
+            },
+            "additionalMessages": {
+                "en": "Very complex code location; an explanatory comment is missing or the code should be structured by suitable auxiliary methods"
+            },
+            "autograderProblemTypes": [
+                "FOR_WITH_MULTIPLE_VARIABLES",
+                "OPTIONAL_TRI_STATE",
+                "AVOID_LABELS",
+                "COMPLEX_REGEX"
+            ]
+        },
+        {
+            "shortName": "wrongLanguage",
+            "message": "Einheitliche Sprache für Kommentare/Ausgabe verwenden",
+            "button": "Einheitliche Sprache",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "penalty": 0.5,
+                "threshold": 1
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Uniform language"
+            },
+            "additionalMessages": {
+                "en": "Use consistent language for comments/output"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "jdTrivial",
+            "message": "JavaDoc beschreibt nur triviales und die Fehlerfälle/Seiteneffekte werden nicht beachtet",
+            "button": "JavaDoc Trivial",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "JavaDoc trivial"
+            },
+            "additionalMessages": {
+                "en": "JavaDoc describes only trivial and the error cases/side effects are not considered"
+            },
+            "autograderProblemTypes": [
+                "JAVADOC_STUB_DESCRIPTION",
+                "JAVADOC_STUB_PARAMETER_TAG",
+                "JAVADOC_STUB_RETURN_TAG",
+                "JAVADOC_STUB_THROWS_TAG",
+                "JAVADOC_MISSING_PARAMETER_TAG",
+                "JAVADOC_UNKNOWN_PARAMETER_TAG",
+                "JAVADOC_UNDOCUMENTED_THROWS"
+            ]
+        },
+        {
+            "shortName": "magicLiteral",
+            "message": "Literal wird nicht als Konstante ausgelagert",
+            "button": "Magic Literal",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Magic Literal"
+            },
+            "additionalMessages": {
+                "en": "Literal was not moved to constant"
+            },
+            "autograderProblemTypes": [
+                "MAGIC_LITERAL"
+            ],
+            "highlight": "none"
+        },
+        {
+            "shortName": "identifierNaming",
+            "message": "Schlechte Bezeichner/Methodennamen oder unnötige Abkürzungen",
+            "button": "Schlechte Bezeichner",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Bad identifiers"
+            },
+            "additionalMessages": {
+                "en": "Bad identifiers/method names or unnecessary abbreviations"
+            },
+            "autograderProblemTypes": [
+                "CONFUSING_IDENTIFIER"
+            ]
+        },
+        {
+            "shortName": "todo",
+            "message": "Code enthält auskommentierte Methoden, unnötige Ausagen, ...",
+            "button": "Kommentare",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Comments"
+            },
+            "additionalMessages": {
+                "en": "Code contains commented out methods, unnecessary statements, ..."
+            },
+            "autograderProblemTypes": [
+                "COMMENTED_OUT_CODE",
+                "TODO_COMMENT",
+                "UNNECESSARY_COMMENT"
+            ]
+        },
+        {
+            "shortName": "staticMethod",
+            "message": "Statische Hilfsmethode in Klasse sollte eigentlich Instanzmethode sein ODER nicht-private Instanzmethode sollte statisch sein",
+            "button": "Statische Methode",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "static method"
+            },
+            "additionalMessages": {
+                "en": "static helper method in class should actually be instance method OR non-private instance method should be static"
+            },
+            "autograderProblemTypes": [
+                "METHOD_SHOULD_BE_STATIC"
+            ]
+        },
+        {
+            "shortName": "publicPrivate",
+            "message": "Falsche Sichtbarkeit. Methode/Attribut sollte eigentlich eine andere Sichtbarkeit haben.",
+            "button": "Sichtbarkeit",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Visibility"
+            },
+            "additionalMessages": {
+                "en": "Wrong visibility. Method/attribute should actually have a different visibility."
+            },
+            "autograderProblemTypes": [
+                "USE_DIFFERENT_VISIBILITY",
+                "USE_DIFFERENT_VISIBILITY_PUBLIC_FIELD"
+            ]
+        },
+        {
+            "shortName": "getterSetter",
+            "message": "Kapselung verletzt, interne Datenstrukturen wie Collections, Arrays oder Maps sollen nicht von außerhalb der Klasse modifizierbar sein",
+            "button": "Datenkapselung",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Information hiding"
+            },
+            "additionalMessages": {
+                "en": "Encapsulation violated, internal data structures such as collections, arrays or maps should not be modifiable from outside the class"
+            },
+            "autograderProblemTypes": [
+                "LEAKED_COLLECTION_ASSIGN",
+                "LEAKED_COLLECTION_RETURN"
+            ]
+        },
+        {
+            "shortName": "codeCopyInheritance",
+            "message": "Code-Kopien, statt gemeinsame Funktionalität in Oberklasse",
+            "button": "Code Kopien Vererbung",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Code Copies Inheritance"
+            },
+            "additionalMessages": {
+                "en": "Code copies, instead of common functionality in superclass"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "codeCopyHelper",
+            "message": "Code-Kopien, statt gemeinsame Funktionalität in Hilfsmethode",
+            "button": "Code Kopien Hilfsmethode",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Code Copies Auxiliary method"
+            },
+            "additionalMessages": {
+                "en": "Code copies, instead of common functionality in auxiliary method"
+            },
+            "autograderProblemTypes": [
+                "DUPLICATE_CODE"
+            ]
+        },
+        {
+            "shortName": "wrongEnum",
+            "message": "Enum, wenn eigentlich Vererbung das richtige Mittel gewesen wäre",
+            "button": "Enum/Vererbung",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Enum/inheritance"
+            },
+            "additionalMessages": {
+                "en": "Enum, if actually Inheritance would have been the right remedy"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "uiIO",
+            "message": "Ausgaben auf Terminal sind nicht in einer UI-Klasse oder einem UI-Paket gekapselt, sondern in Domänenklassen verteilt",
+            "button": "IO/UI",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "IO/UI"
+            },
+            "additionalMessages": {
+                "en": "Outputs on terminal are not encapsulated in a UI class or a UI package, but distributed across domain classes"
+            },
+            "autograderProblemTypes": [
+                "UI_INPUT_SEPARATION",
+                "UI_OUTPUT_SEPARATION"
+            ]
+        },
+        {
+            "shortName": "objectConcrete",
+            "message": "Object statt konkrete Klasse verwendet",
+            "button": "Object",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Object"
+            },
+            "additionalMessages": {
+                "en": "Object used instead of concrete class"
+            },
+            "autograderProblemTypes": [
+                "OBJECT_DATATYPE"
+            ]
+        },
+        {
+            "shortName": "operationDomain",
+            "message": "Funktionalität ist nach Operationen aufgeteilt (d.h. bspw. Klasse für Finden, Ausgeben, Validieren von Entitäten aller verschiedenen Typen) statt Aufteilen in Domäne",
+            "button": "Operationen statt Domain",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Operations instead of Domain"
+            },
+            "additionalMessages": {
+                "en": "Functionality is split by operations (i.e. e.g. class for finding, outputting, validating entities of all different types) instead of splitting into domain"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "finalAttribute",
+            "message": "nicht-finale Attribute, die eigtl. final sein sollten",
+            "button": "Final",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Final"
+            },
+            "additionalMessages": {
+                "en": "non-final attributes which should be final"
+            },
+            "autograderProblemTypes": [
+                "FIELD_SHOULD_BE_FINAL"
+            ]
+        },
+        {
+            "shortName": "stringReference",
+            "message": "Objekte werden über Strings referenziert, anstatt über typisierte Java-Referenzen.",
+            "button": "Stringreferenzen",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "String references"
+            },
+            "additionalMessages": {
+                "en": "Objects are referenced using strings instead of typed Java references."
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "staticAttribute",
+            "message": "Statisches Attribut sollte Instanzattribut sein ODER Instanzattribut sollte statisches Attribut oder Konstante sein",
+            "button": "Statisches Attribut",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "static attribute"
+            },
+            "additionalMessages": {
+                "en": "static attribute should be instance attribute OR instance attribute should be static attribute or constant"
+            },
+            "autograderProblemTypes": [
+                "STATIC_FIELD_SHOULD_BE_INSTANCE",
+                "LOCAL_VARIABLE_SHOULD_BE_CONSTANT"
+            ]
+        },
+        {
+            "shortName": "exceptionControlFlow",
+            "message": "Exceptions werden für Kontrollfluss verwendet",
+            "button": "Exceptions Kontrollfluss",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Exceptions control flow"
+            },
+            "additionalMessages": {
+                "en": "Exceptions werden für Kontrollfluss verwendet"
+            },
+            "autograderProblemTypes": [
+                "EXCEPTION_CAUGHT_IN_SURROUNDING_BLOCK"
+            ]
+        },
+        {
+            "shortName": "tryCatch",
+            "message": "Try/catch Blöcke sind sehr groß und umfassen nicht nur die nötigen Konstrukte",
+            "button": "try/catch Blöcke",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "try/catch blocks"
+            },
+            "additionalMessages": {
+                "en": "Try/catch blocks are very large and include not only the necessary constructs"
+            },
+            "autograderProblemTypes": [
+                "TRY_CATCH_COMPLEXITY"
+            ]
+        },
+        {
+            "shortName": "javaAPI",
+            "message": "Es wurde Funktionalität (Datenstruktur/Algorithmus) selber entwickelt, die bereits durch die Java-API zur Verfügung gestellt wird; z.B. eigene Listen statt java.util.List.",
+            "button": "Features Reimplementiert (JavaAPI)",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Features Reimplemented (JavaAPI)"
+            },
+            "additionalMessages": {
+                "en": "Functionality (data structure/algorithm) was developed itself, which is already provided by the Java API; e.g. own lists instead of java.util.List."
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "wrongLoopType",
+            "message": "Nicht den geeignetsten Schleifentyp gewählt, z.B. While statt For oder For statt ForEach.",
+            "button": "Falscher Schleifentyp",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Incorrect loop type"
+            },
+            "additionalMessages": {
+                "en": "Not chosen the most appropriate loop type, e.g. While instead of For or For instead of ForEach."
+            },
+            "autograderProblemTypes": [
+                "FOR_CAN_BE_FOREACH",
+                "LOOP_SHOULD_BE_WHILE",
+                "LOOP_SHOULD_BE_DO_WHILE",
+                "LOOP_SHOULD_BE_FOR"
+            ]
+        },
+        {
+            "shortName": "enumForRange",
+            "message": "Enum für abgeschlossene Mengen",
+            "button": "Enum/Mengen",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Enum/Sets"
+            },
+            "additionalMessages": {
+                "en": "Enum for closed sets"
+            },
+            "autograderProblemTypes": [
+                "CLOSED_SET_OF_VALUES"
+            ]
+        },
+        {
+            "shortName": "interfaceAgainst",
+            "message": "Interface soll statt konkreter Klasse verwendet werden",
+            "button": "Interface",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Interface"
+            },
+            "additionalMessages": {
+                "en": "Interface should be used instead of concrete class"
+            },
+            "autograderProblemTypes": [
+                "CONCRETE_COLLECTION_AS_FIELD_OR_RETURN_VALUE"
+            ]
+        },
+        {
+            "shortName": "unnecessaryComplex",
+            "message": "Kleinere Code-Stelle (Teil einer Klasse) ist unnötig komplex",
+            "button": "unnötige Komplexität",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 3,
+                "penalty": 0.5,
+                "repetitions": 2
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "unnecessary complexity"
+            },
+            "additionalMessages": {
+                "en": "Smaller code location (part of a class) is unnecessarily complex"
+            },
+            "autograderProblemTypes": [
+                "UNUSED_DIAMOND_OPERATOR",
+                "EXPLICITLY_EXTENDS_OBJECT",
+                "REDUNDANT_IF_FOR_BOOLEAN",
+                "REDUNDANT_MODIFIER",
+                "REDUNDANT_VOID_RETURN",
+                "REDUNDANT_SELF_ASSIGNMENT",
+                "REDUNDANT_VARIABLE",
+                "OBJECTS_COMPARED_VIA_TO_STRING",
+                "REPEATED_MATH_OPERATION",
+                "REDUNDANT_NEGATION",
+                "UNMERGED_ELSE_IF",
+                "USE_OPERATOR_ASSIGNMENT",
+                "SHOULD_BE_ENUM_ATTRIBUTE",
+                "COMPARE_CHAR_VALUE",
+                "REDUNDANT_CATCH",
+                "REDUNDANT_UNINITIALIZED_VARIABLE",
+                "IMPORT_TYPES",
+                "REDUNDANT_BOOLEAN_EQUAL",
+                "MERGE_NESTED_IF",
+                "MULTIPLE_INLINE_STATEMENTS",
+                "UNNECESSARY_BOXING",
+                "COMMON_REIMPLEMENTATION_ARRAY_COPY",
+                "COMMON_REIMPLEMENTATION_STRING_REPEAT",
+                "USE_ENTRY_SET",
+                "CHAR_RANGE",
+                "FOR_LOOP_CAN_BE_INVOCATION",
+                "COMMON_REIMPLEMENTATION_ARRAYS_FILL",
+                "EXCEPTION_SHOULD_NEVER_BE_CAUGHT",
+                "MULTI_THREADING",
+                "BINARY_OPERATOR_ON_BOOLEAN",
+                "USE_ENUM_VALUES",
+                "TOO_MANY_EXCEPTIONS",
+                "AVOID_STRING_CONCAT",
+                "COMMON_REIMPLEMENTATION_SQRT",
+                "COMMON_REIMPLEMENTATION_HYPOT",
+                "IMPLEMENT_COMPARABLE",
+                "SIMPLIFY_ARRAYS_FILL",
+                "COMMON_REIMPLEMENTATION_ITERABLE_DUPLICATES",
+                "COLLECTIONS_N_COPIES",
+                "REDUNDANT_ELSE",
+                "SEQUENTIAL_ADD_ALL",
+                "USE_MODULO_OPERATOR",
+                "USE_ARRAYS_COPY_OF",
+                "SIMPLIFY_STRING_SUBSTRING",
+                "DUPLICATE_CATCH_BLOCK",
+                "DUPLICATE_IF_BLOCK",
+                "COMPOSITION_OVER_INHERITANCE",
+                "REDUNDANT_DEFAULT_CONSTRUCTOR"
+            ]
+        },
+        {
+            "shortName": "errorMessage",
+            "message": "Fehlermeldung zu unspezifisch, z.B. nur \"Error, Fehler\"",
+            "button": "Fehlermeldung",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Error message"
+            },
+            "additionalMessages": {
+                "en": "Error message too unspecific, e.g. only \"Error\""
+            },
+            "autograderProblemTypes": [
+                "EXCEPTION_WITHOUT_MESSAGE"
+            ]
+        },
+        {
+            "shortName": "package",
+            "message": "bessere Aufteilung in Pakete",
+            "button": "Pakete",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Packages"
+            },
+            "additionalMessages": {
+                "en": "better division into packages"
+            },
+            "autograderProblemTypes": [
+                "TOO_FEW_PACKAGES"
+            ]
+        },
+        {
+            "shortName": "utilityPrivate",
+            "message": "Utility-Klassen sollten einen privaten Konstruktor haben und final sein",
+            "button": "Utility",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Utility"
+            },
+            "additionalMessages": {
+                "en": "Utility classes should have a private constructor and be final"
+            },
+            "autograderProblemTypes": [
+                "UTILITY_CLASS_NOT_FINAL",
+                "UTILITY_CLASS_INVALID_CONSTRUCTOR"
+            ]
+        },
+        {
+            "shortName": "rawType",
+            "message": "RawTypes sollte nicht verwendet werden; stattdessen die Typen explizit angeben.",
+            "button": "RawType",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "RawType"
+            },
+            "additionalMessages": {
+                "en": "RawTypes should not be used; instead, specify the types explicitly."
+            },
+            "autograderProblemTypes": [
+                "DO_NOT_USE_RAW_TYPES"
+            ]
+        },
+        {
+            "shortName": "Cast",
+            "message": "Cast außerhalb equals-Methode",
+            "button": "Cast",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Cast"
+            },
+            "additionalMessages": {
+                "en": "Cast outside equals-method"
+            },
+            "autograderProblemTypes": [
+                "UNCHECKED_TYPE_CAST"
+            ]
+        },
+        {
+            "shortName": "meaninglessConstants",
+            "message": "Bedeutungslose Konstantenbezeichner wie ONE, TWO, THREE, ...",
+            "button": "Bedeutungslose Konstantenbezeichner",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Meaningless constants identifiers"
+            },
+            "additionalMessages": {
+                "en": "Meaningless constants identifiers like ONE, TWO, THREE, ..."
+            },
+            "autograderProblemTypes": [
+                "MEANINGLESS_CONSTANT_NAME",
+                "CONSTANT_NAME_CONTAINS_VALUE"
+            ]
+        },
+        {
+            "shortName": "emptyBlock",
+            "message": "Undokumentierter und unnötiger, leerer Block",
+            "button": "Leerer Block",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Empty block"
+            },
+            "additionalMessages": {
+                "en": "Undocumented and unnecessary empty block"
+            },
+            "autograderProblemTypes": [
+                "EMPTY_BLOCK",
+                "EMPTY_INTERFACE"
+            ]
+        },
+        {
+            "shortName": "unused",
+            "message": "Unbenutzte Variable oder Hilfsmethode",
+            "button": "Unbenutztes Element",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Unused element"
+            },
+            "additionalMessages": {
+                "en": "Unused variable or auxiliary method"
+            },
+            "autograderProblemTypes": [
+                "UNUSED_CODE_ELEMENT",
+                "UNUSED_CODE_ELEMENT_PRIVATE"
+            ]
+        },
+        {
+            "shortName": "constantClass",
+            "message": "Alle Konstanten des Programms sind in einer Konstanten-Klasse deklariert, die den Charakter einer Gott-Klasse hat",
+            "button": "Konstanten-Klasse",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Class of constants"
+            },
+            "additionalMessages": {
+                "en": "All constants of the program are declared in a constant class, which has the character of a god class"
+            },
+            "autograderProblemTypes": [
+                "DO_NOT_HAVE_CONSTANTS_CLASS"
+            ]
+        },
+        {
+            "shortName": "lineSeparator",
+            "message": "Systemabhängiger Zeilenumbruch verwendet, statt System.lineSeparator()",
+            "button": "Systemabhängiger Zeilenumbruch",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 0.5
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "System dependent line break"
+            },
+            "additionalMessages": {
+                "en": "System-dependent line break used instead of System.lineSeparator()"
+            },
+            "autograderProblemTypes": [
+                "SYSTEM_SPECIFIC_LINE_BREAK"
+            ]
+        },
+        {
+            "shortName": "unnecessaryUtility",
+            "message": "Utility-Klasse, wo Objektorientierung sinnvoller gewesen wäre ODER Objektorientierung die nicht notwendig gewesen wäre",
+            "button": "Utility vs. OO",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Utility vs. OO"
+            },
+            "additionalMessages": {
+                "en": "Utility class, where object orientation would have made more sense OR object orientation that is not necessary"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "onlyMainMethod",
+            "message": "Das gesamte Programm findet in der Main-Methode statt",
+            "button": "Nur Main-Methode",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 2.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Only main method"
+            },
+            "additionalMessages": {
+                "en": "The entire program takes place in the Main method"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "multipleConcerns",
+            "message": "Mehrere Anliegen (Concerns) wurden in einer Klasse behandelt, statt in mehreren Klassen aufgeteilt",
+            "button": "Mehrere Anliegen",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Multiple concerns"
+            },
+            "additionalMessages": {
+                "en": "Multiple concerns addressed in one class, rather than split into multiple classes"
+            },
+            "autograderProblemTypes": []
+        },
+        {
+            "shortName": "refusedBequest",
+            "message": "Unterklasse weigert sich, die Funktionalität der Oberklasse zu implementieren (leere Methode/return null)",
+            "button": "Abgelehnte Vererbung",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[3-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[4-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "Refused Inheritance"
+            },
+            "additionalMessages": {
+                "en": "Subclass refused to implement functionality of the superclass (empty method/return null)"
+            },
+            "autograderProblemTypes": [
+                "METHOD_USES_PLACEHOLDER_IMPLEMENTATION"
+            ]
+        },
+        {
+            "shortName": "instanceof",
+            "message": "instanceof außerhalb equals-Methode",
+            "button": "instanceof",
+            "penaltyRule": {
+                "shortName": "thresholdPenalty",
+                "threshold": 1,
+                "penalty": 1.0
+            },
+            "appliesTo": "modelling",
+            "enabledForExercises": "([Ss]heet[1-5].*)|(final0[12])",
+            "enabledPenaltyForExercises": "([Ss]heet[2-5].*)|(final0[12])",
+            "additionalButtonTexts": {
+                "en": "instanceof"
+            },
+            "additionalMessages": {
+                "en": "instanceof outside equals-method"
+            },
+            "autograderProblemTypes": [
+                "INSTANCEOF",
+                "INSTANCEOF_EMULATION"
+            ]
+        }
+    ]
+}

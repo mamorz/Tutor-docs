@@ -1,0 +1,98 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/kit-sdq/TimeSheetGenerator/master/examples/schemas/month.json",
+  "year" : 2025,
+  "month" : 12,
+  "pred_transfer" : "00:00",
+  "succ_transfer" : "00:00",
+  "entries" : [ {
+    "action" : "Tutorium und Folienvorbereiten",
+    "day" : 2,
+    "start" : "10:30",
+    "end" : "17:15",
+    "pause" : "01:00"
+  }, {
+    "action" : "Tutorium",
+    "day" : 3,
+    "start" : "17:15",
+    "end" : "19:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 5,
+    "start" : "16:00",
+    "end" : "20:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 6,
+    "start" : "12:00",
+    "end" : "14:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 8,
+    "start" : "13:00",
+    "end" : "17:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 9,
+    "start" : "14:30",
+    "end" : "22:00",
+    "pause" : "01:45"
+  }, {
+    "action" : "Folienvorbereitung",
+    "day" : 10,
+    "start" : "09:00",
+    "end" : "12:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Tutoren Meeting",
+    "day" : 10,
+    "start" : "13:00",
+    "end" : "14:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Tutorium",
+    "day" : 10,
+    "start" : "17:15",
+    "end" : "19:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Urlaub",
+    "day" : 12,
+    "start" : "13:00",
+    "end" : "19:00",
+    "vacation" : true
+  }, {
+    "action" : "Tutorium",
+    "day" : 16,
+    "start" : "15:30",
+    "end" : "17:15",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 19,
+    "start" : "14:00",
+    "end" : "17:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 20,
+    "start" : "18:00",
+    "end" : "22:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 22,
+    "start" : "15:00",
+    "end" : "21:00",
+    "pause" : "00:00"
+  }, {
+    "action" : "Korrektur",
+    "day" : 23,
+    "start" : "14:00",
+    "end" : "22:00",
+    "pause" : "01:00"
+  } ]
+}

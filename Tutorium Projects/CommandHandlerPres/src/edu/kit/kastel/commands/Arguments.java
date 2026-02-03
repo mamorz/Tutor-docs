@@ -13,7 +13,7 @@ public class Arguments {
     //Regex defining that a monster's name can include numbers
     private static final String MONSTER_NAME_REGEX = "[a-zA-Z]+#[1-9]\\d*";
     //Regex checking if the source root path is valid (covers multiple possible path inputs)
-    private static final String FILE_PATH_REGEX = "([A-Z]:|.|)/?([a-zA-Z0-9_., -]+/)+([a-zA-Z0-9_. ,-]+)\\.txt";
+    private static final String FILE_PATH_REGEX = "([A-Z]:|.|)/?(([a-zA-Z0-9_., -]+)/)+\3\\.txt";
     private static final String DOUBLE_NUMBER_REGEX = "\\d+(\\.\\d+)?";
     private static final String INTEGER_NUMBER_REGEX = "[1-9]\\d*";
     private static final String SUCCESS_OR_FAIL_REGEX = "[yn]";
